@@ -1,0 +1,62 @@
+@use '../../styles/variables' as *;
+
+.header {
+  padding-top: 68px; // 상단 여백
+  margin-bottom: 42px; // 히어로 상단간 여백
+  
+  @include respond-to(mobile) {
+    margin-bottom: 24px;
+    padding-top: 40px;
+  }
+
+  .header-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+
+    img {
+      display: block;
+      width: auto;
+    }
+  }
+
+  .auth-buttons {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+
+    .auth-btn {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 0;
+
+      .icon {
+        width: 14px;
+        height: auto;
+        display: block;
+      }
+
+      span {
+        font-size: $font-size-body-md;
+        font-weight: 500;
+        color: #8D8E8F;
+      }
+
+      &.logout {
+        .icon {
+          width: 14px; // 로그아웃 아이콘도 일단 동일 크기
+        }
+      }
+    }
+  }
+}

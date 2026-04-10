@@ -1,0 +1,71 @@
+@import 'variables';
+@import 'base/fonts';
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  overflow-y: scroll;
+  overflow-x: hidden; // 가로 스크롤 원천 차단
+  scrollbar-gutter: stable;
+
+  &.no-scroll {
+    overflow: hidden !important;
+  }
+}
+
+body {
+  &.no-scroll {
+    overflow: hidden !important;
+  }
+  font-family: $font-primary;
+  color: $text-white;
+  background-color: $bg-color;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden; // 가로 스크롤 원천 차단
+  width: 100%;
+}
+
+#root {
+  width: 100%;
+  overflow-x: hidden; // 한 번 더 방어
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+button {
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.swiper {
+  width: 100%;
+}
+
+.container {
+  width: 100%;
+  max-width: $container-max;
+  margin: 0 auto;
+  padding: 0 64px; // 데스크톱 기본 여백 추가
+
+  @include respond-to(tablet) {
+    padding: 0 32px;
+  }
+
+  @include respond-to(mobile) {
+    padding: 0 20px;
+  }
+}

@@ -1,0 +1,10 @@
+@use '../../styles/variables' as *;
+
+.home-page {
+  display: flex;
+  flex-direction: column;
+  gap: 100px;
+
+  @include respond-to(tablet) { gap: 80px; }
+  @include respond-to(mobile) { gap: 60px; }
+}
