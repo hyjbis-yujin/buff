@@ -1,0 +1,43 @@
+// src/components/overlay/PosterOverlay.scss
+@use '../../styles/abstracts/variables' as *;
+@use '../../styles/abstracts/mixins' as *;
+
+.poster-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4); 
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border-radius: inherit;
+  padding: 1.6rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 5;
+
+  .top-area {
+    position: absolute;
+    top: 1.2rem;
+    right: 1.2rem;
+  }
+
+  .overlay-title {
+    font-size: 2.0rem;
+    font-weight: 600;
+    color: white;
+    margin-bottom: 1.6rem;
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .bottom-area {
+    // 테그 등 하단 정보 영역
+    width: 100%;
+  }
+}

@@ -1,34 +1,30 @@
-@use '../../styles/variables' as *;
+@use '../../styles/abstracts/variables' as *;
+@use '../../styles/abstracts/mixins' as *;
 
 .hero-banner {
   width: 100%;
   position: relative;
 
   .nav-btn {
+    @include nav-btn-base;
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background-color: transparent;
     z-index: 10;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: none;
-    cursor: pointer;
     padding: 0;
 
-    &.swiper-button-disabled,
-    &:disabled {
+    &.swiper-button-disabled {
       opacity: 0;
       pointer-events: none;
     }
 
     &.prev-btn {
-      left: 32px;
+      left: 3.2rem;
     }
 
     &.next-btn {
-      right: 32px;
+      right: 3.2rem;
+      img { transform: rotate(180deg); }
     }
 
     img {
@@ -37,68 +33,77 @@
       height: auto;
       
       @include respond-to(mobile) {
-        max-width: 24px;
-        max-height: 24px;
+        max-width: 2.4rem;
+        max-height: 2.4rem;
       }
     }
     
     @include respond-to(mobile) {
-      &.prev-btn { left: 16px; }
-      &.next-btn { right: 16px; }
+      &.prev-btn { left: 1.6rem; }
+      &.next-btn { right: 1.6rem; }
     }
   }
 
-  .hero-swiper {
-    border-radius: 30px;
-    overflow: hidden;
-
-    @include respond-to(mobile) {
-      border-radius: 12px;
-    }
-  }
-
-  .slide-image-placeholder {
+  .banner-slide {
     width: 100%;
     aspect-ratio: 896 / 335;
-    background-color: #333;
+    background-color: #111;
+    border-radius: 3.0rem;
+    overflow: hidden;
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
+    cursor: pointer;
+
+    .banner-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      image-rendering: -webkit-optimize-contrast; // 렌더링 선명도 보류
+    }
+
+    @include respond-to(tablet) {
+      aspect-ratio: 896 / 335; // 비율 유지
+      border-radius: 2.0rem;
+    }
 
     @include respond-to(mobile) {
-      aspect-ratio: 16 / 9; // 비율 축소 방어
+      aspect-ratio: 16 / 9;
+      border-radius: 2.0rem;
     }
   }
 
   .swiper-pagination {
-    bottom: 36px !important;
+    bottom: 3.6rem !important;
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 6px;
+    gap: 0.6rem;
 
     @include respond-to(tablet) {
-      bottom: 24px !important;
+      bottom: 2.4rem !important;
     }
 
     @include respond-to(mobile) {
-      bottom: 12px !important; // 모바일에서 위로 올라가는 현상을 조절
+      bottom: 1.2rem !important;
     }
   }
 
   .swiper-pagination-bullet {
-    width: 12px;
-    height: 6px;
+    width: 1.2rem;
+    height: 0.6rem;
     background-color: #fff;
     opacity: 0.47;
-    border-radius: 100px;
+    border-radius: 10rem;
     margin: 0 !important;
     transition: all 0.3s ease;
   }
 
   .swiper-pagination-bullet-active {
-    width: 24px;
-    height: 6px;
+    width: 2.4rem;
+    height: 0.6rem;
     background-color: #fff;
     opacity: 1;
   }

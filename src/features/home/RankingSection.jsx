@@ -1,59 +1,66 @@
-import { useState, useRef } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useState, useRef, useEffect, useCallback } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
-import rankingArrow from '../../assets/ranking-arrow.png';
-import wavveIcon from '../../assets/wavve.png';
-import tvingIcon from '../../assets/tving.png';
-import netflixIcon from '../../assets/netflix.png';
-import disneyIcon from '../../assets/disneyplus.png';
-import coupangIcon from '../../assets/coupangplay.png';
+
+import rankingArrow from '../../assets/icons/ranking-arrow.png';
+import { fetchRankings } from '../../services/api/rankingService';
+import useContentNavigation from '../../hooks/useContentNavigation';
+import { PROVIDERS } from '../../constants/providers';
+import { SLIDER_PRESETS } from '../../constants/sliderPresets';
+
+// Components
+import SectionHeader from '../../components/common/SectionHeader';
+import PosterCard from '../../components/cards/PosterCard';
+import { SkeletonBox } from '../../components/common/SkeletonAtom';
+
 import './RankingSection.scss';
 
-const PLATFORM_ICONS = {
-  '넷플릭스': netflixIcon,
-  '티빙': tvingIcon,
-  '웨이브': wavveIcon,
-  '디즈니+': disneyIcon,
-  '쿠팡플레이': coupangIcon,
-};
-
-const PLATFORMS = ['넷플릭스', '티빙', '웨이브', '디즈니+', '쿠팡플레이'];
-
-const PLATFORM_DATA = {
-  '넷플릭스': [
-    { id: 1, title: '나는 SOLO', tags: ['# 연애', '# 리얼리티'], image: 'https://static.tvmaze.com/uploads/images/original_untouched/342/855015.jpg' },
-    { id: 2, title: '놀면 뭐하니?', tags: ['# 예능', '# 최고재미'], image: 'https://static.tvmaze.com/uploads/images/original_untouched/212/530351.jpg' },
-    { id: 3, title: 'THE 시즌즈', tags: ['# 음악', '# 토크쇼'], image: 'https://static.tvmaze.com/uploads/images/original_untouched/442/1107293.jpg' },
-    { id: 4, title: '콩콩팥팥', tags: ['# 예능', '# 힐링'], image: 'https://static.tvmaze.com/uploads/images/original_untouched/434/1085235.jpg' },
-    { id: 5, title: '나는 SOLO', tags: ['# 연애', '# 리얼리티'], image: 'https://static.tvmaze.com/uploads/images/original_untouched/342/855015.jpg' },
-    { id: 6, title: '오징어 게임', tags: ['# 스릴러', '# 서바이벌'], image: 'https://static.tvmaze.com/uploads/images/original_untouched/576/1440521.jpg' }
-  ],
-  '티빙': [
-    { id: 11, title: '환승연애3', tags: ['# 연애', '# 리얼리티'], image: 'https://static.tvmaze.com/uploads/images/original_untouched/442/1107293.jpg' }
-  ],
-  '웨이브': [
-    { id: 21, title: '연인', tags: ['# 사극', '# 멜로'], image: 'https://static.tvmaze.com/uploads/images/original_untouched/472/1182142.jpg' }
-  ],
-  '디즈니+': [
-    { id: 31, title: '무빙', tags: ['# 초능력', '# 히어로'], image: 'https://static.tvmaze.com/uploads/images/original_untouched/472/1181779.jpg' }
-  ],
-  '쿠팡플레이': [
-    { id: 41, title: '소년시대', tags: ['# 코미디', '# 드라마'], image: 'https://static.tvmaze.com/uploads/images/original_untouched/484/1211756.jpg' }
-  ]
-};
+const PLATFORMS = Object.values(PROVIDERS).map(p => ({
+  label: p.label,
+  key: p.key
+}));
 
 const RankingSection = () => {
-  const navigate = useNavigate();
-  const [activePlatform, setActivePlatform] = useState('넷플릭스');
+  const { goToDetail } = useContentNavigation();
+  const [activePlatform, setActivePlatform] = useState(PLATFORMS[0]); // {label, key}
+  const [rankingData, setRankingData] = useState({});
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(null);
 
+  const swiperRef = useRef(null);
+  const prevRef = useRef(null);
+  const nextRef = useRef(null);
   const tabsRef = useRef(null);
+  
   const [isDragging, setIsDragging] = useState(false);
-  // 드래그 중 탭 클릭 이벤트를 방지하기 위해 사용
   const dragState = useRef({ isMoved: false, startX: 0, scrollLeft: 0 });
 
+  const loadData = useCallback(async () => {
+    try {
+      setIsLoading(true);
+      setError(null);
+      const data = await fetchRankings();
+      setRankingData(data);
+    } catch (err) {
+      setError(err);
+    } finally {
+      setIsLoading(false);
+    }
+  }, []);
+
+  useEffect(() => {
+    loadData();
+  }, [loadData]);
+
+  useEffect(() => {
+    if (swiperRef.current) {
+      swiperRef.current.slideTo(0, 0);
+    }
+  }, [activePlatform]);
+
+  // Tab Drag Logic
   const onDragStart = (e) => {
     setIsDragging(true);
     dragState.current.isMoved = false;
@@ -70,17 +77,92 @@ const RankingSection = () => {
   };
 
   const handleTabClick = (platform) => {
-    // 드래그 중(isMoved=true)일 땐 클릭 안되도록 방어
     if (dragState.current.isMoved) return;
     setActivePlatform(platform);
   };
 
-  const currentData = PLATFORM_DATA[activePlatform] || [];
+  const currentData = rankingData[activePlatform.key] || [];
+
+  const renderContent = () => {
+    if (error) {
+      return (
+        <div className="status-fallback error">
+          <p>오늘의 인기 콘텐츠 정보를 불러오지 못했습니다.</p>
+          <button className="retry-btn" onClick={loadData}>새로고침 시도 🔄</button>
+        </div>
+      );
+    }
+
+    if (isLoading) {
+      return (
+        <div className="slider-container loading">
+          <div className="skeleton-cards">
+            {[1, 2, 3, 4, 5].map(i => (
+              <SkeletonBox key={i} className="sk-card" borderRadius="20px" />
+            ))}
+          </div>
+        </div>
+      );
+    }
+
+    if (currentData.length === 0) {
+      return (
+        <div className="status-fallback empty">
+          <p>해당 플랫폼의 오늘의 인기 콘텐츠가 준비 중입니다.</p>
+        </div>
+      );
+    }
+
+    return (
+      <div className="slider-container">
+        <button ref={prevRef} className="nav-btn prev-btn">
+          <img src={rankingArrow} alt="Previous" />
+        </button>
+        
+        <Swiper
+          modules={[Navigation]}
+          onBeforeInit={(swiper) => {
+            swiper.params.navigation.prevEl = prevRef.current;
+            swiper.params.navigation.nextEl = nextRef.current;
+          }}
+          onSwiper={(swiper) => {
+            swiperRef.current = swiper;
+            if (swiper.params.navigation) {
+              swiper.navigation.init();
+              swiper.navigation.update();
+            }
+          }}
+          navigation={{
+            prevEl: prevRef.current,
+            nextEl: nextRef.current,
+          }}
+          {...SLIDER_PRESETS.RANKING}
+          className="ranking-swiper"
+          observer={true}
+          observeParents={true}
+        >
+          {currentData.map((item, index) => (
+            <SwiperSlide key={item.id}>
+              <PosterCard 
+                item={item}
+                rank={index + 1}
+                showRank={true}
+                onClick={() => goToDetail(item.mediaType, item.id)}
+              />
+            </SwiperSlide>
+          ))}
+        </Swiper>
+        
+        <button ref={nextRef} className="nav-btn next-btn">
+          <img src={rankingArrow} alt="Next" />
+        </button>
+      </div>
+    );
+  };
 
   return (
     <section className="ranking-section">
-      <div className="section-header">
-        <h2 className="section-title">플랫폼별 실시간 인기 콘텐츠</h2>
+      <SectionHeader title="플랫폼별 오늘의 인기 콘텐츠">
         <div 
           className="platform-tabs"
           ref={tabsRef}
@@ -91,65 +173,18 @@ const RankingSection = () => {
         >
           {PLATFORMS.map((platform) => (
             <button 
-              key={platform}
-              className={`tab-btn ${activePlatform === platform ? 'active' : ''}`}
+              key={platform.key}
+              className={`tab-btn ${activePlatform.key === platform.key ? 'active' : ''}`}
               onClick={() => handleTabClick(platform)}
-              draggable={false} // 브라우저 기본 드래그 막기
+              draggable={false}
             >
-              {platform}
+              {platform.label}
             </button>
           ))}
         </div>
-      </div>
+      </SectionHeader>
 
-      <div className="slider-container">
-        <button className="nav-btn prev-btn">
-          <img src={rankingArrow} alt="Previous" />
-        </button>
-        
-        <Swiper
-          modules={[Navigation]}
-          navigation={{
-            prevEl: '.ranking-section .prev-btn',
-            nextEl: '.ranking-section .next-btn',
-          }}
-          spaceBetween={26}
-          slidesPerView={2.2}
-          breakpoints={{
-            768: { slidesPerView: 3.5 },
-            1024: { slidesPerView: 5 }
-          }}
-          className="ranking-swiper"
-        >
-          {currentData.map((item, index) => (
-            <SwiperSlide key={item.id}>
-              <div className="poster-card" onClick={() => navigate(`/detail/${item.id}`)}>
-                <div className="poster-image" style={{ backgroundImage: `url(${item.image})`, backgroundSize: 'cover' }}></div>
-                <div className="overlay-info">
-                  <div className="top-icons">
-                    <img
-                      src={PLATFORM_ICONS[activePlatform]}
-                      alt={activePlatform}
-                      className="platform-icon-img"
-                    />
-                  </div>
-                  <h3 className="overlay-title">{item.title}</h3>
-                  <div className="tag-chips">
-                    {item.tags.map(tag => (
-                      <span key={tag} className="tag-chip">{tag}</span>
-                    ))}
-                  </div>
-                </div>
-                <div className="ranking-number">{index + 1}</div>
-              </div>
-            </SwiperSlide>
-          ))}
-        </Swiper>
-        
-        <button className="nav-btn next-btn">
-          <img src={rankingArrow} alt="Next" style={{ transform: 'rotate(180deg)' }} />
-        </button>
-      </div>
+      {renderContent()}
     </section>
   );
 };

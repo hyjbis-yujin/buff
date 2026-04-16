@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { useNavigate, Link, useLocation } from 'react-router-dom';
-import logo from '../../assets/logo.png';
-import loginIcon from '../../assets/login-icon.png';
-import logoutIcon from '../../assets/logout-icon.png';
+import logo from '../../assets/common/logo.png';
+import loginIcon from '../../assets/icons/login-icon.png';
+import logoutIcon from '../../assets/icons/logout-icon.png';
 import './Header.scss';
 
 const Header = () => {

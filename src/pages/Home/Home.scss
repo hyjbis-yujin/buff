@@ -1,10 +1,11 @@
-@use '../../styles/variables' as *;
+@use '../../styles/abstracts/variables' as *;
+@use '../../styles/abstracts/mixins' as *;
 
 .home-page {
   display: flex;
   flex-direction: column;
-  gap: 100px;
+  gap: 10.0rem;
 
-  @include respond-to(tablet) { gap: 80px; }
-  @include respond-to(mobile) { gap: 60px; }
+  @include respond-to(tablet) { gap: 8.0rem; }
+  @include respond-to(mobile) { gap: 6.0rem; }
 }

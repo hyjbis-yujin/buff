@@ -1,4 +1,5 @@
-@use '../styles/variables' as *;
+@use '../styles/abstracts/variables' as *;
+@use '../styles/abstracts/mixins' as *;
 
 .main-layout {
   min-height: 100vh;
@@ -11,16 +12,16 @@
     margin: 0 auto;
     
     @include respond-to(tablet) {
-      padding: 0 32px;
+      padding: 0 3.2rem;
     }
     
     @include respond-to(mobile) {
-      padding: 0 20px;
+      padding: 0 2.0rem;
     }
   }
 
   .main-content {
     flex: 1;
-    padding-bottom: 96px; // 시안 하단 여백: 96px
+    padding-bottom: 9.6rem; // 시안 하단 여백: 96px
   }
 }

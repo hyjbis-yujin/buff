@@ -1,12 +1,13 @@
-@use '../../styles/variables' as *;
+@use '../../styles/abstracts/variables' as *;
+@use '../../styles/abstracts/mixins' as *;
 
 .header {
-  padding-top: 68px; // 상단 여백
-  margin-bottom: 42px; // 히어로 상단간 여백
+  padding-top: 6.8rem; // 상단 여백
+  margin-bottom: 4.2rem; // 히어로 상단간 여백
   
   @include respond-to(mobile) {
-    margin-bottom: 24px;
-    padding-top: 40px;
+    margin-bottom: 2.4rem;
+    padding-top: 4.0rem;
   }
 
   .header-inner {
@@ -29,19 +30,19 @@
   .auth-buttons {
     display: flex;
     align-items: center;
-    gap: 24px;
+    gap: 2.4rem;
 
     .auth-btn {
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 0.8rem;
       cursor: pointer;
       background: none;
       border: none;
       padding: 0;
 
       .icon {
-        width: 14px;
+        width: 1.4rem;
         height: auto;
         display: block;
       }
@@ -54,7 +55,7 @@
 
       &.logout {
         .icon {
-          width: 14px; // 로그아웃 아이콘도 일단 동일 크기
+          width: 1.4rem; 
         }
       }
     }

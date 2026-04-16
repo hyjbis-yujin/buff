@@ -1,59 +1,59 @@
-@use '../../styles/variables' as *;
+@use '../../styles/abstracts/variables' as *;
+@use '../../styles/abstracts/mixins' as *;
 
 .login-page {
   display: flex;
   justify-content: center;
-  align-items: center; // 화면 세로 중앙 정렬
+  align-items: center; 
   width: 100%;
   min-height: 100vh;
-  padding: 0 64px;
+  padding: 0 6.4rem;
   box-sizing: border-box;
 
   @include respond-to(mobile) {
-    padding: 0 20px;
+    padding: 0 2.0rem;
   }
 
   .login-panel {
     background-color: #252628;
     width: 100%;
-    max-width: 720px;
-    min-height: 520px;
-    border-radius: 30px;
-    padding: 20px 80px; // 상하 여백 줄임 (중앙 정렬을 위해)
+    max-width: 72.0rem;
+    min-height: 52.0rem;
+    border-radius: 3.0rem;
+    padding: 2.0rem 8.0rem; 
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center; // 패널 내부 요소 세로 중앙 정렬
+    justify-content: center; 
     box-sizing: border-box;
-    // margin-top: 10vh; // 상단 치우침 제거
 
     @include respond-to(tablet) {
-      max-width: 640px;
-      padding: 64px 40px;
+      max-width: 64.0rem;
+      padding: 6.4rem 4.0rem;
     }
 
     @include respond-to(mobile) {
       max-width: 100%;
       min-height: auto;
-      padding: 60px 24px;
-      margin-top: 40px;
+      padding: 6.0rem 2.4rem;
+      margin-top: 4.0rem;
     }
 
     .panel-logo-img {
       width: auto;
       height: auto;
-      margin-bottom: 48px;
+      margin-bottom: 4.8rem;
     }
 
     .login-form {
       width: 100%;
-      max-width: 420px;
+      max-width: 42.0rem;
       display: flex;
       flex-direction: column;
       align-items: center;
 
       @include respond-to(tablet) {
-        max-width: 380px;
+        max-width: 38.0rem;
       }
 
       @include respond-to(mobile) {
@@ -64,19 +64,19 @@
         width: 100%;
         display: flex;
         flex-direction: column;
-        gap: 18px;
-        margin-bottom: 40px;
+        gap: 1.8rem;
+        margin-bottom: 4.0rem;
       }
 
       .login-input {
         width: 100%;
-        height: 56px;
+        height: 5.6rem;
         background-color: #4A4A4A;
-        border-radius: 12px;
+        border-radius: 1.2rem;
         border: 2px solid transparent;
-        padding: 0 20px;
+        padding: 0 2.0rem;
         color: #FFFFFF;
-        font-size: 16px;
+        font-size: 1.6rem;
         box-sizing: border-box;
         transition: border-color 0.2s ease;
 
@@ -93,8 +93,8 @@
 
       .login-submit-btn {
         width: 100%;
-        height: 56px;
-        border-radius: 12px;
+        height: 5.6rem;
+        border-radius: 1.2rem;
         background: $recommend-gradient;
         color: #FFFFFF;
         font-size: $font-size-body-lg;

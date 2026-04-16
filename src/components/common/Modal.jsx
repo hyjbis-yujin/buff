@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import closeIcon from '../../assets/modal-close.png';
+import closeIcon from '../../assets/icons/modal-close.png';
 import './Modal.scss';
 
 const Modal = ({ isOpen, onClose, children }) => {

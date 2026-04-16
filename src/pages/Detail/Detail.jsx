@@ -1,71 +1,126 @@
-import React, { useEffect } from 'react';
-import { useNavigate, useParams, Link } from 'react-router-dom';
+import React, { useEffect, useState, useCallback } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation } from 'swiper/modules';
+import { Navigation, Scrollbar, Mousewheel } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
-import logo from '../../assets/logo.png';
-import wavveIcon from '../../assets/wavve.png';
-import tvingIcon from '../../assets/tving.png';
-import backIcon from '../../assets/back-icon.png';
-import wishIcon from '../../assets/wish-icon.png';
-import wishIconActive from '../../assets/wish-icon-active.png';
-import seenIcon from '../../assets/seen-icon.png';
-import seenIconActive from '../../assets/seen-icon-active.png';
+import 'swiper/css/scrollbar';
+
+import backIcon from '../../assets/icons/back-icon.png';
+import wishIcon from '../../assets/icons/wish-icon.png';
+import wishIconActive from '../../assets/icons/wish-icon-active.png';
+import seenIcon from '../../assets/icons/seen-icon.png';
+import seenIconActive from '../../assets/icons/seen-icon-active.png';
+
+import { fetchContentDetail } from '../../services/api/detailService';
+import useContentNavigation from '../../hooks/useContentNavigation';
+import { SLIDER_PRESETS } from '../../constants/sliderPresets';
+
+// Components
+import SectionHeader from '../../components/common/SectionHeader';
+import PosterCard from '../../components/cards/PosterCard';
+import { SkeletonBox, SkeletonGrid } from '../../components/common/SkeletonAtom';
+
 import './Detail.scss';
 
-// 상세 페이지 실제 시안 데이터 (놀면뭐하니?)
-const DETAIL_DATA = {
-  id: 2,
-  title: '놀면 뭐하니?',
-  image: 'https://static.tvmaze.com/uploads/images/original_untouched/212/530351.jpg',
-  tags: ['# 예능', '# 리얼 버라이어티', '# 2025', '# 15세'],
-  description: '주말 휴일엔 뭐 먹고 쉴까? 유재석이 선사하는 리얼 버라이어티!\n매주 토요일 저녁을 책임지는 무한한 웃음의 세계로 당신을 초대합니다.',
-  credits: {
-    director: '김태호, 박창훈',
-    cast: '유재석, 하하, 주우재, 박진주, 이이경, 미주'
-  },
-  similarContent: [
-    { id: 101, title: '나는 SOLO', tags: ['# 연애', '# 리얼리티'], image: 'https://static.tvmaze.com/uploads/images/original_untouched/342/855015.jpg' },
-    { id: 102, title: 'THE 시즌즈', tags: ['# 음악', '# 토크쇼'], image: 'https://static.tvmaze.com/uploads/images/original_untouched/442/1107293.jpg' },
-    { id: 103, title: '경성크리처', tags: ['# 스릴러', '# 시대극'], image: 'https://static.tvmaze.com/uploads/images/original_untouched/534/1337244.jpg' },
-    { id: 104, title: '오징어 게임', tags: ['# 스릴러', '# 서바이벌'], image: 'https://static.tvmaze.com/uploads/images/original_untouched/576/1440521.jpg' },
-    { id: 105, title: '연인', tags: ['# 사극', '# 로맨스'], image: 'https://static.tvmaze.com/uploads/images/original_untouched/472/1182142.jpg' }
-  ]
-};
-
 const Detail = () => {
-  const { id } = useParams();
+  const { mediaType, id } = useParams();
   const navigate = useNavigate();
-  const [isWished, setIsWished] = React.useState(false);
-  const [isHovered, setIsHovered] = React.useState(false);
-  const [isSeen, setIsSeen] = React.useState(false);
-  const [isSeenHovered, setIsSeenHovered] = React.useState(false);
+  const { goToDetail } = useContentNavigation();
 
-  // 페이지 진입 시 최상단으로 스크롤 이동
+  const [data, setData] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  const [isWished, setIsWished] = useState(false);
+  const [isHovered, setIsHovered] = useState(false);
+  const [isSeen, setIsSeen] = useState(false);
+  const [isSeenHovered, setIsSeenHovered] = useState(false);
+
+  const loadDetailData = useCallback(async () => {
+    if (!id || !mediaType) return;
+    
+    try {
+      setIsLoading(true);
+      setError(null);
+      const detailData = await fetchContentDetail(mediaType, id);
+      setData(detailData);
+    } catch (err) {
+      console.error('Failed to load detail:', err);
+      setError(err);
+    } finally {
+      setIsLoading(false);
+    }
+  }, [id, mediaType]);
+
   useEffect(() => {
     window.scrollTo(0, 0);
-  }, [id]);
-  
-  // 현재는 데모용으로 고정 데이터를 사용 (id에 따라 데이터 확장 가능)
-  const data = DETAIL_DATA;
+    loadDetailData();
+  }, [loadDetailData]);
+
+  if (isLoading) {
+    return (
+      <div className="detail-page loading">
+        <div className="container">
+          <div className="skeleton-hero">
+            <SkeletonBox className="skeleton-poster" width="300px" height="450px" borderRadius="20px" />
+            <div className="skeleton-info">
+              <SkeletonBox className="sk-title" width="60%" height="48px" />
+              <div className="sk-tag-row">
+                <SkeletonBox width="60px" height="28px" borderRadius="100px" />
+                <SkeletonBox width="60px" height="28px" borderRadius="100px" />
+                <SkeletonBox width="60px" height="28px" borderRadius="100px" />
+              </div>
+              <div className="sk-desc-row">
+                <SkeletonBox width="100%" height="20px" />
+                <SkeletonBox width="100%" height="20px" />
+                <SkeletonBox width="80%" height="20px" />
+              </div>
+              <div className="sk-credits-row">
+                <SkeletonBox width="40%" height="18px" />
+                <SkeletonBox width="50%" height="18px" />
+              </div>
+              <div className="sk-ott-row">
+                <SkeletonBox width="140px" height="46px" borderRadius="10px" />
+                <SkeletonBox width="140px" height="46px" borderRadius="10px" />
+              </div>
+            </div>
+          </div>
+          <div className="skeleton-similar">
+            <SkeletonBox className="sk-sec-title" width="300px" height="32px" />
+            <SkeletonGrid count={5} columns={5} />
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  if (error || !data) {
+    return (
+      <div className="detail-page error">
+        <div className="status-message">
+          <p>콘텐츠 정보를 불러오지 못했습니다.</p>
+          <button className="back-home-btn" onClick={() => navigate('/')}>메인으로 돌아가기</button>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="detail-page">
-      {/* 상단 히어로 정보 영역 */}
       <section className="hero-section">
         <div className="hero-visual-wrapper">
           <div 
             className="hero-background" 
-            style={{ backgroundImage: `url(${data.image})` }}
+            style={{ backgroundImage: `url(${data.backdrop || data.poster})` }}
           ></div>
           <div className="hero-overlay"></div>
         </div>
         
         <div className="container hero-content">
           <div className="top-nav">
-            <button className="back-btn" onClick={() => navigate(-1)}>
-              <img src={backIcon} alt="뒤로가기" />
+            <button className="back-btn" onClick={() => navigate('/')}>
+              <img src={backIcon} alt="메인으로 가기" />
             </button>
 
             <div className="action-area">
@@ -106,87 +161,91 @@ const Detail = () => {
 
           <div className="main-info">
             <div className="poster-area">
-              <img src={data.image} alt={data.title} className="poster-img" />
+              <img src={data.poster} alt={data.title} className="poster-img" />
             </div>
 
             <div className="text-info">
-              <h1 className="title">{data.title}</h1>
+              <div className="title-row">
+                <h1 className="title">{data.title}</h1>
+              </div>
               
               <div className="tag-list">
-                {data.tags.map(tag => (
-                  <span key={tag} className="tag-pill">{tag}</span>
+                <span className="tag-pill"># {mediaType === 'movie' ? '영화' : 'TV'}</span>
+                {data.genres.slice(0, 3).map(genre => (
+                  <span key={genre} className="tag-pill"># {genre}</span>
                 ))}
+                {data.runtime !== '정보 없음' && (
+                  <span className="tag-pill"># {data.runtime}</span>
+                )}
               </div>
 
               <p className="description">
-                {data.description.split('\n').map((line, i) => (
-                  <span key={i}>{line}<br/></span>
-                ))}
+                {data.description}
               </p>
 
               <div className="credits">
                 <p>감독 | {data.credits.director}</p>
                 <p>출연진 | {data.credits.cast}</p>
+                <p>개봉/방영일 | {data.releaseDate}</p>
               </div>
 
               <div className="ott-buttons">
-                <button className="ott-btn">
-                  <img src={wavveIcon} alt="웨이브" className="ott-icon" />
-                  <span className="ott-name">웨이브</span>
-                  <svg className="chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                    <polyline points="9 18 15 12 9 6"></polyline>
-                  </svg>
-                </button>
-                <button className="ott-btn">
-                  <img src={tvingIcon} alt="티빙" className="ott-icon" />
-                  <span className="ott-name">티빙</span>
-                  <svg className="chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                    <polyline points="9 18 15 12 9 6"></polyline>
-                  </svg>
-                </button>
+                {data.providers.length > 0 ? (
+                  data.providers.map(provider => (
+                    <a 
+                      key={provider.id} 
+                      href={provider.link} 
+                      target="_blank" 
+                      rel="noopener noreferrer" 
+                      className="ott-btn"
+                    >
+                      <img src={provider.logo} alt={provider.name} className="ott-icon" />
+                      <span className="ott-name">{provider.name}</span>
+                      <svg className="chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                        <polyline points="9 18 15 12 9 6"></polyline>
+                      </svg>
+                    </a>
+                  ))
+                ) : (
+                  <p className="no-providers">제공 중인 OTT 플랫폼 정보가 없습니다.</p>
+                )}
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* 하단 비슷한 콘텐츠 섹션 */}
       <section className="similar-section">
         <div className="container">
-          <h2 className="section-title">{data.title} 와 비슷한 콘텐츠</h2>
-          <div className="card-rail">
-            <Swiper
-              modules={[Navigation]}
-              spaceBetween={26}
-              slidesPerView={2.2}
-              breakpoints={{
-                768: { slidesPerView: 3.5 },
-                1024: { slidesPerView: 5 }
-              }}
-              style={{ overflow: 'visible' }}
-            >
-              {data.similarContent.map(item => (
-                <SwiperSlide key={item.id}>
-                  <div className="similar-card" onClick={() => navigate(`/detail/${item.id}`)}>
-                    <img src={item.image} alt={item.title} />
-                    <div className="overlay-info">
-                      <h3 className="overlay-title">{item.title}</h3>
-                      <div className="tag-chips">
-                        {item.tags.map(tag => (
-                          <span key={tag} className="tag-chip">{tag}</span>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-                </SwiperSlide>
-              ))}
-            </Swiper>
-          </div>
+          <SectionHeader title={`'${data.title}'와 비슷한 콘텐츠`} />
+          {data.similarContent.length > 0 ? (
+            <div className="card-rail">
+              <Swiper
+                modules={[Navigation, Scrollbar, Mousewheel]}
+                {...SLIDER_PRESETS.DETAIL_SIMILAR}
+                grabCursor={true}
+                mousewheel={true}
+                scrollbar={{ draggable: true }}
+              >
+                {data.similarContent.map(item => (
+                  <SwiperSlide key={item.id}>
+                    <PosterCard 
+                      item={item}
+                      onClick={() => goToDetail(item.mediaType, item.id)}
+                    />
+                  </SwiperSlide>
+                ))}
+              </Swiper>
+            </div>
+          ) : (
+            <div className="no-similar-content">
+              <p>현재 제공 가능한 비슷한 콘텐츠가 없어요.</p>
+            </div>
+          )}
         </div>
       </section>
     </div>
   );
 };
-
 
 export default Detail;

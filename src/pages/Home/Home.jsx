@@ -2,7 +2,7 @@ import HeroBanner from '../../features/home/HeroBanner';
 import RankingSection from '../../features/home/RankingSection';
 import RecommendSection from '../../features/home/RecommendSection';
 import YoutubeSection from '../../features/home/YoutubeSection';
-import CommunitySection from '../../features/home/CommunitySection';
+import ThemeCollectionSection from '../../features/home/ThemeCollectionSection';
 import './Home.scss';
 
 const Home = () => {
@@ -12,7 +12,7 @@ const Home = () => {
       <RankingSection />
       <RecommendSection />
       <YoutubeSection />
-      <CommunitySection /> 
+      <ThemeCollectionSection /> 
     </div>
   );
 };

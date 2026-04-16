@@ -1,4 +1,5 @@
-@import '../../styles/variables';
+@use '../../styles/abstracts/variables' as *;
+@use '../../styles/abstracts/mixins' as *;
 
 .detail-page {
   background-color: $bg-color;
@@ -7,16 +8,16 @@
   .hero-section {
     position: relative;
     width: 100%;
-    min-height: 720px; // 720px로 수정
+    min-height: 72.0rem;
     display: flex;
-    align-items: flex-start; // 중앙 정렬 대신 상단 정렬로 변경
-    overflow: visible; // 그림자가 외부로 보이기 위해 visible로 변경
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.23); // 그림자 투명도 0.23으로 수정
-    z-index: 10; // 인접 섹션보다 위에 오도록 설정
+    align-items: flex-start;
+    overflow: visible;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.23);
+    z-index: 10;
 
     @include respond-to(mobile) {
       min-height: auto;
-      padding: 100px 0 60px;
+      padding: 10.0rem 0 3.0rem;
     }
 
     .hero-visual-wrapper {
@@ -25,7 +26,7 @@
       left: 0;
       width: 100%;
       height: 100%;
-      overflow: hidden; // 배경 블러와 변형이 밖으로 튀어나오지 않게 함
+      overflow: hidden;
       z-index: 1;
 
       .hero-background {
@@ -65,85 +66,49 @@
     .hero-content {
       position: relative;
       z-index: 10;
-      padding-top: 68px; // 콘텐츠 전체의 시작 기준점
-      padding-left: 64px;
-      padding-right: 64px;
+      padding: 6.8rem 6.4rem 12.0rem;
 
-      @include respond-to(tablet) {
-        padding-left: 32px;
-        padding-right: 32px;
-      }
-
-      @include respond-to(mobile) {
-        padding-top: 0;
-        padding-left: 20px;
-        padding-right: 20px;
-      }
+      @include respond-to(tablet) { padding: 6.8rem 3.2rem 4.0rem; }
+      @include respond-to(mobile) { padding: 0 2.0rem 3.0rem; }
     }
 
     .top-nav {
       position: absolute;
-      top: 80px;
+      top: 8.0rem;
       left: 0;
       width: 100%;
-      padding: 0 64px; // 좌우 여백을 콘텐츠와 동일하게 맞춤
+      padding: 0 6.4rem;
       display: flex;
       justify-content: space-between;
       align-items: flex-start;
       z-index: 30;
 
-      @include respond-to(tablet) {
-        padding: 0 32px;
-      }
-
-      @include respond-to(mobile) {
-        top: -60px;
-        padding: 0 20px;
-      }
+      @include respond-to(tablet) { padding: 0 3.2rem; }
+      @include respond-to(mobile) { top: -6.0rem; padding: 0 2.0rem; }
 
       .back-btn {
-        position: relative; // 절대 위치 해제
-        top: 0;
-        left: 0;
         display: flex;
         align-items: center;
         justify-content: center;
-        padding: 0;
         transition: transform 0.2s ease;
-        background: transparent;
-        border: none;
-        cursor: pointer;
-
+        
         img {
-          width: auto;
-          height: auto;
-          max-height: 24px; // 너무 커지지 않도록 최대 높이 제한 복구
+          max-height: 2.4rem;
           opacity: 0.8;
           transition: opacity 0.2s ease;
         }
 
         &:hover {
           transform: translateX(-4px);
-
-          img {
-            opacity: 1;
-          }
+          img { opacity: 1; }
         }
       }
 
       .action-area {
-        position: relative;
-        z-index: 30;
-
         .top-actions {
           display: flex;
-          flex-direction: row;
           gap: 24px;
-          justify-content: flex-end;
-
-          @include respond-to(mobile) {
-            gap: 16px; // 모바일에서는 간격 살짝 축소
-          }
+          @include respond-to(mobile) { gap: 16px; }
 
           .action-btn {
             display: flex;
@@ -154,32 +119,22 @@
             font-size: $font-size-body-md;
             opacity: 0.8;
             transition: all 0.2s ease;
-            background: none;
-            border: none;
-            cursor: pointer;
 
             .action-icon-wrapper {
-              height: 28px; // 32px에서 28px로 하향 조정
-              display: flex;
-              align-items: center;
-              justify-content: center;
-              margin-bottom: 6px; 
+              height: 2.8rem;
+              @include flex-center;
+              margin-bottom: 0.6rem; 
             }
 
             .action-icon {
-              width: auto;
-              height: auto;
               max-height: 100%; 
               display: block;
             }
 
-            &:hover {
-              opacity: 1;
-            }
-
+            &:hover { opacity: 1; }
             &.active {
               opacity: 1;
-              animation: click-bounce 0.4s ease;
+              @include click-bounce;
             }
           }
         }
@@ -188,270 +143,219 @@
 
     .main-info {
       display: grid;
-      grid-template-columns: 260px 1fr 210px;
-      gap: 72px;
-      align-items: center; // 포스터 세로 중앙 기준으로 전체 정보 영역 정렬 (수정 1 반영)
-      max-width: 1160px;
-      margin: 120px auto 0;
+      grid-template-columns: 26.0rem 1fr;
+      gap: 7.2rem;
+      align-items: flex-start;
+      margin: 12.0rem auto 0;
       position: relative;
       z-index: 5;
 
-      @include respond-to(tablet) {
-        grid-template-columns: 200px 1fr;
-        gap: 40px;
-        margin-top: 80px; // 줄임
-      }
-
-      @include respond-to(mobile) {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-        gap: 32px;
-        margin-top: 40px; // 대폭 줄임
+      @include respond-to(tablet) { grid-template-columns: 20.0rem 1fr; gap: 4.0rem; margin-top: 8.0rem; }
+      @include respond-to(mobile) { 
+        display: flex; flex-direction: column; align-items: center; text-align: center; gap: 3.2rem; margin-top: 4.0rem;
       }
 
       .poster-area {
         .poster-img {
-          width: 260px; // 크기 키움
-          height: 380px;
+          width: 26.0rem;
+          aspect-ratio: 2 / 3;
           object-fit: cover;
-          border-radius: 24px;
+          border-radius: 2.4rem;
           box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-
-          @include respond-to(tablet) {
-            width: 200px;
-            height: 290px;
-          }
+          @include respond-to(tablet) { width: 20.0rem; }
         }
       }
 
       .text-info {
         .title {
-          font-size: 30px; // 30px로 변경
+          font-size: 3.0rem;
           font-weight: 700;
           color: #FFFFFF;
           letter-spacing: -0.03em;
           line-height: 1.1;
-          margin-bottom: 30px;
-
-          @include respond-to(mobile) {
-            font-size: 22px;
-          }
+          margin-bottom: 3.0rem;
+          @include respond-to(mobile) { font-size: 2.2rem; }
         }
 
         .tag-list {
           display: flex;
           flex-wrap: wrap;
-          gap: 12px;
-          margin-bottom: 26px;
-
-          @include respond-to(mobile) {
-            justify-content: center;
-          }
+          gap: 1.2rem;
+          margin-bottom: 2.6rem;
+          @include respond-to(mobile) { justify-content: center; }
 
           .tag-pill {
-            height: 42px;
-            padding: 0 18px;
-            display: flex;
-            align-items: center;
-            background: rgba(255, 255, 255, 0.08); // 메인 태그 스타일 참고
-            border-radius: 999px;
-            font-size: $font-size-body-md; // 14px로 변경
+            height: 4.2rem;
+            padding: 0 1.8rem;
+            @include flex-center;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 99.9rem;
+            font-size: $font-size-body-md;
             font-weight: 500;
             color: #FFFFFF;
           }
         }
 
         .description {
-          font-size: 16px;
+          font-size: 1.6rem;
           line-height: 1.75;
           color: rgba(255, 255, 255, 0.78);
-          max-width: 520px;
-          margin-bottom: 26px;
-
-          @include respond-to(mobile) {
-            max-width: 100%;
-          }
+          margin-bottom: 2.6rem;
         }
 
         .credits {
-          font-size: 16px;
+          font-size: 1.6rem;
           line-height: 1.7;
           color: rgba(255, 255, 255, 0.52);
-          margin-bottom: 32px;
-
-          p {
-            margin-bottom: 4px;
-          }
+          margin-bottom: 3.2rem;
+          p { margin-bottom: 0.4rem; }
         }
 
         .ott-buttons {
           display: flex;
-          flex-direction: row; // 한 줄 정렬
-          gap: 12px;
-
-          @include respond-to(mobile) {
-            justify-content: center;
-          }
+          flex-wrap: wrap;
+          gap: 1.2rem;
+          @include respond-to(mobile) { justify-content: center; }
 
           .ott-btn {
-            flex: 1; // 유연하게
-            min-width: 140px;
-            max-width: 168px;
-            height: 58px; // 높이 조정
-            background: rgba(15, 16, 18, 0.4); // 0.72에서 0.4로 더욱 연하게 수정
-            border: 1px solid rgba(255, 255, 255, 0.06);
-            border-radius: 13px; // 13px로 수정
-            padding: 0 16px;
             display: flex;
             align-items: center;
-            gap: 10px;
-            color: #FFFFFF;
-            transition: background 0.2s ease;
-
-            @include respond-to(mobile) {
-              width: 100%;
-              max-width: 100%;
-            }
+            justify-content: space-between;
+            width: 19.0rem;
+            height: 5.8rem;
+            background: rgba(255, 255, 255, 0.04);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 1.2rem;
+            padding: 0 1.6rem;
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 
             &:hover {
-              background: #111; // rgba(25, 26, 28, 0.85)에서 #111로 변경
+              background: rgba(255, 255, 255, 0.1);
+              transform: translateY(-2px);
+              border-color: rgba(255, 255, 255, 0.2);
             }
 
-            .ott-icon {
-              width: 28px; // 메인 아이콘 사이즈와 동일하게
-              height: 28px;
-              border-radius: 8px;
-              object-fit: cover;
-            }
-
-            .ott-name {
-              flex: 1;
-              text-align: left;
-              font-size: $font-size-body-lg; // 16px
-              font-weight: 500; // 500으로 수정
-            }
-
-            .chevron {
-              opacity: 0.5;
-            }
+            .ott-icon { width: 3.2rem; height: 3.2rem; border-radius: 0.6rem; object-fit: cover; }
+            .ott-name { flex: 1; margin-left: 1.2rem; font-size: 1.5rem; font-weight: 500; color: rgba(255, 255, 255, 0.9); }
+            .chevron { color: rgba(255, 255, 255, 0.4); }
           }
         }
       }
-    }
-  }
-
-  @keyframes click-bounce {
-    0% {
-      transform: scale(1);
-    }
-
-    30% {
-      transform: scale(0.85);
-    }
-
-    // 살짝 눌리는 느낌 추가
-    100% {
-      transform: scale(1);
     }
   }
 
   .similar-section {
-    padding-top: 95px; // 95px로 변경
-    padding-bottom: 95px; // 95px로 변경
+    padding: 9.5rem 0;
+
+    @include respond-to(tablet) { padding: 6.0rem 0 8.0rem; }
+    @include respond-to(mobile) { padding: 6.0rem 0 6.0rem; }
 
     .container {
-      padding-left: 64px;
-      padding-right: 64px;
-
-      @include respond-to(tablet) {
-        padding-left: 32px;
-        padding-right: 32px;
-      }
-
-      @include respond-to(mobile) {
-        padding-left: 20px;
-        padding-right: 20px;
-      }
-    }
-
-    .section-title {
-      font-size: $font-size-section; // 메인페이지와 동일한 변수로 수정
-      font-weight: 700; // 메인페이지(700)와 동일하게 수정
-      color: #FFFFFF;
-      margin-bottom: 55px;
+      padding: 0 6.4rem;
+      @include respond-to(tablet) { padding: 0 3.2rem; }
+      @include respond-to(mobile) { padding: 0 2.0rem; }
     }
 
     .card-rail {
       width: 100%;
-      // Swiper가 레이아웃을 전담하므로 기존 Grid 및 가로 스크롤 제거
-      
-      .similar-card {
-        position: relative;
+
+      .swiper {
+        padding-bottom: 4.0rem; // Swiper 내부에 패딩을 주어 포스터와의 간격 확보
+      }
+
+      .swiper-scrollbar {
+        background: rgba(255, 255, 255, 0.05); // 모달 트랙 색상과 통일
+        height: 0.6rem; // 6px로 재조정
+        bottom: 0; // 패딩의 최하단에 배치
+        left: 0;
         width: 100%;
-        aspect-ratio: 128 / 168;
-        border-radius: 20px;
-        @include respond-to(tablet) { border-radius: 15px; }
-        @include respond-to(mobile) { border-radius: 15px; }
-        overflow: hidden;
-        cursor: pointer;
-        transition: transform 0.2s ease;
+        border-radius: 1.0rem;
+        opacity: 0;
+        transition: opacity 0.3s ease;
 
-        &:hover {
-          transform: translateY(-8px);
-
-          .overlay-info {
-            opacity: 1;
-          }
+        .swiper-scrollbar-drag {
+          background: rgba(255, 255, 255, 0.2); // 모달 썸(thumb) 색상과 통일
+          border-radius: 10.0rem;
         }
+      }
 
-        img {
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
+      // 호버 시에만 노출
+      &:hover {
+        .swiper-scrollbar {
+          opacity: 1;
         }
+      }
 
-        .overlay-info {
-          position: absolute;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 100%;
-          background: rgba(0, 0, 0, 0.4);
-          backdrop-filter: blur(4px);
-          -webkit-backdrop-filter: blur(4px);
-          padding: 16px;
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          align-items: center;
-          text-align: center;
-          opacity: 0;
-          transition: opacity 0.3s ease;
+      // overflow가 아닐 때는 Swiper가 자동으로 .swiper-scrollbar-lock 클래스를 붙임
+      .swiper-scrollbar-lock {
+        display: none !important;
+      }
+    }
+    
+    .no-similar-content {
+      width: 100%;
+      padding: 6.0rem 0;
+      @include flex-center;
+      text-align: center;
+      @include respond-to(mobile) { padding: 4.0rem 0; }
+      
+      p { font-size: 1.6rem; color: rgba(255, 255, 255, 0.4); word-break: keep-all; }
+    }
+  }
 
-          .overlay-title {
-            font-size: 20px; // 22px에서 20px로 복구
-            font-weight: 600;
-            color: white;
-            margin-bottom: 16px; 
-          }
+  &.loading {
+    padding-bottom: 10.0rem;
+    
+    .container {
+      padding-top: 10.0rem;
+      @include respond-to(mobile) { padding-top: 4.0rem; }
+    }
 
-          .tag-chips {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 8px; // 8px로 수정
+    .skeleton-hero {
+      display: grid;
+      grid-template-columns: 26.0rem 1fr;
+      gap: 7.2rem;
+      margin-top: 12.0rem;
 
-            .tag-chip {
-              padding: 8px 16px; // 8x16px로 수정
-              background-color: rgba(255, 255, 255, 0.2);
-              border-radius: 100px;
-              font-size: $font-size-body-md; // 14px로 수정
-              color: white;
-            }
-          }
-        }
+      @include respond-to(tablet) { grid-template-columns: 20.0rem 1fr; gap: 4.0rem; margin-top: 8.0rem; }
+      @include respond-to(mobile) { display: flex; flex-direction: column; align-items: center; gap: 3.2rem; margin-top: 4.0rem; }
+    }
+
+    .skeleton-info {
+      display: flex;
+      flex-direction: column;
+      gap: 2.0rem;
+      width: 100%;
+      @include respond-to(mobile) { align-items: center; }
+
+      .sk-tag-row { display: flex; gap: 1.2rem; margin-bottom: 1.0rem; }
+      .sk-desc-row, .sk-credits-row {
+        display: flex;
+        flex-direction: column;
+        gap: 1.0rem;
+        margin-top: 1.0rem;
+        width: 100%;
+        @include respond-to(mobile) { align-items: center; }
+      }
+
+      .sk-credits-row { margin-top: 2.4rem; gap: 0.8rem; }
+
+      .sk-ott-row {
+        display: flex;
+        gap: 1.2rem;
+        margin-top: 3.2rem;
+        flex-wrap: wrap;
+        @include respond-to(mobile) { justify-content: center; }
+      }
+    }
+
+    .skeleton-similar {
+      margin-top: 9.5rem; // .similar-section의 padding-top과 동일하게 맞춤
+      
+      .sk-sec-title {
+        margin-bottom: 4.6rem; // SectionHeader의 margin-bottom과 동일하게 맞춤
       }
     }
   }

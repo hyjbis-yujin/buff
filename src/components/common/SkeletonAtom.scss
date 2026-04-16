@@ -1,0 +1,29 @@
+// src/components/common/SkeletonAtom.scss
+@use '../../styles/abstracts/variables' as *;
+@use '../../styles/abstracts/mixins' as *;
+
+.skeleton-box {
+  background-color: $skeleton-bg;
+  
+  &.pulse {
+    @include skeleton-pulse;
+  }
+}
+
+.skeleton-circle {
+  flex-shrink: 0;
+}
+
+.skeleton-grid {
+  display: flex;
+  width: 100%;
+  
+  .sk-grid-item {
+    flex: 1;
+    aspect-ratio: 2 / 3;
+    
+    // 모바일 대응 (대략적)
+    &:nth-child(n+3) { @include respond-to(mobile) { display: none; } }
+    &:nth-child(n+4) { @include respond-to(tablet) { display: none; } }
+  }
+}

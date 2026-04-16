@@ -1,0 +1,25 @@
+// src/components/common/SectionHeader.scss
+@use '../../styles/abstracts/variables' as *;
+@use '../../styles/abstracts/mixins' as *;
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end; // 버튼과 제목 하단 정렬 유지
+  flex-wrap: wrap;       // 공간 부족 시 줄바꿈 허용
+  gap: 1.2rem;           // 줄바꿈 시 타이틀-버튼 간격
+  margin-bottom: 4.6rem;
+
+  @include respond-to(tablet) {
+    margin-bottom: 3.2rem;
+  }
+
+  .section-title {
+    font-size: $font-size-section;
+    font-weight: 700;
+    color: $text-white;
+    white-space: normal;
+    word-break: keep-all; // 한글 단어 단위 줄바꿈
+    line-height: 1.3;
+  }
+}

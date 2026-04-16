@@ -20,7 +20,7 @@ const router = createBrowserRouter([
     ]
   },
   {
-    path: '/detail/:id',
+    path: '/detail/:mediaType/:id',
     element: <Detail />
   },
   {

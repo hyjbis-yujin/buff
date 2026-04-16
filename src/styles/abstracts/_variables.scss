@@ -1,0 +1,45 @@
+// abstracts/_variables.scss
+
+// Layout & Breakpoints
+$desktop-large: 1280px;
+$desktop: 1024px;
+$tablet: 768px;
+$mobile: 767px;
+$container-max: 128rem;
+
+// Colors
+$bg-color: #1C1D1F;
+$text-white: #FFFFFF;
+$text-secondary: #B7B8BE;
+$text-muted: #8B8D94;
+$chip-bg-inactive: #26282C;
+$chip-text-inactive: #F2F2F3;
+$border-color: #2F3136;
+$active-purple: #6A44F3;
+$active-purple-dark: #5A34D6;
+$recommend-gradient: linear-gradient(90deg, #5C36DB 0%, #6D46F3 100%);
+$nav-bg: rgba(255, 255, 255, 0.14);
+$overlay-dim: rgba(0, 0, 0, 0.38);
+$placeholder: #F4F4F5;
+$skeleton-bg: rgba(255, 255, 255, 0.03); // 투명도를 더 낮추어 한층 더 은은하게 조정
+
+// Typography Tokens
+$font-primary: 'Pretendard', -apple-system, sans-serif;
+
+$font-size-display: 3.2rem;       // 32px
+$font-size-section: 2.4rem;       // 24px
+$font-size-title-lg: 2.6rem;      // 26px
+$font-size-title-md: 2.0rem;      // 20px
+$font-size-title-sm: 1.8rem;      // 18px
+$font-size-body-lg: 1.6rem;       // 16px
+$font-size-body-md: 1.4rem;       // 14.px
+$font-size-body-sm: 1.2rem;       // 12px
+$font-size-rank: 5.6rem;          // 56px
+
+// Spacing & Sizing Tokens
+$spacing-xs: 1.2rem;
+$spacing-sm: 1.6rem;
+$spacing-md: 2.4rem;
+$spacing-lg: 3.2rem;
+$size-icon-sm: 2.4rem;
+$size-icon-md: 3.2rem;

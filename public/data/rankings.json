@@ -1,0 +1,1218 @@
+{
+  "code": 200,
+  "status": "success",
+  "message": "success",
+  "meta": {
+    "updatedAt": "2026-04-12T14:36:10.524Z",
+    "region": "KR",
+    "platformCounts": {
+      "netflix": 10,
+      "disney": 10,
+      "wavve": 10,
+      "coupang": 6,
+      "tving": 10
+    }
+  },
+  "data": {
+    "netflix": [
+      {
+        "id": "127529",
+        "title": "사냥개들",
+        "mediaType": "tv",
+        "image": "https://image.tmdb.org/t/p/w500/j4BjkbSqY7Cbc4XcdKMyJGyr9iT.jpg",
+        "genreIds": [
+          18,
+          10759,
+          80
+        ],
+        "tags": [
+          "# 드라마",
+          "# 액션",
+          "# 범죄"
+        ],
+        "popularity": 249.1094,
+        "originalLanguage": "ko",
+        "providers": [
+          {
+            "id": 8,
+            "name": "Netflix",
+            "logo": "https://image.tmdb.org/t/p/w92/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg"
+          }
+        ]
+      },
+      {
+        "id": "1268127",
+        "title": "휴민트",
+        "mediaType": "movie",
+        "image": "https://image.tmdb.org/t/p/w500/f7sCSLEPRfV2fWQ0RYOtHhnHXuG.jpg",
+        "genreIds": [
+          53,
+          28,
+          18
+        ],
+        "tags": [
+          "# 스릴러",
+          "# 액션",
+          "# 드라마"
+        ],
+        "popularity": 158.4597,
+        "originalLanguage": "ko",
+        "providers": [
+          {
+            "id": 8,
+            "name": "Netflix",
+            "logo": "https://image.tmdb.org/t/p/w92/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg"
+          }
+        ]
+      },
+      {
+        "id": "33238",
+        "title": "런닝맨",
+        "mediaType": "tv",
+        "image": "https://image.tmdb.org/t/p/w500/15SMnscZqd7HZ0bzruatOcKUlOV.jpg",
+        "genreIds": [
+          35,
+          10764
+        ],
+        "tags": [
+          "# 코미디",
+          "# 리얼리티"
+        ],
+        "popularity": 157.2167,
+        "originalLanguage": "ko",
+        "providers": [
+          {
+            "id": 8,
+            "name": "Netflix",
+            "logo": "https://image.tmdb.org/t/p/w92/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg"
+          }
+        ]
+      },
+      {
+        "id": "496243",
+        "title": "기생충",
+        "mediaType": "movie",
+        "image": "https://image.tmdb.org/t/p/w500/jjHccoFjbqlfr4VGLVLT7yek0Xn.jpg",
+        "genreIds": [
+          35,
+          53,
+          18
+        ],
+        "tags": [
+          "# 코미디",
+          "# 스릴러",
+          "# 드라마"
+        ],
+        "popularity": 32.6696,
+        "originalLanguage": "ko",
+        "providers": [
+          {
+            "id": 8,
+            "name": "Netflix",
+            "logo": "https://image.tmdb.org/t/p/w92/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg"
+          },
+          {
+            "id": 1883,
+            "name": "TVING",
+            "logo": "https://image.tmdb.org/t/p/w92/qHThQdkJuROK0k5QTCrknaNukWe.jpg"
+          }
+        ]
+      },
+      {
+        "id": "79744",
+        "title": "더 루키",
+        "mediaType": "tv",
+        "image": "https://image.tmdb.org/t/p/w500/7LUiqnZFX9JXYZtRpzv8n7taKV.jpg",
+        "genreIds": [
+          80,
+          18,
+          35
+        ],
+        "tags": [
+          "# 범죄",
+          "# 드라마",
+          "# 코미디"
+        ],
+        "popularity": 285.2744,
+        "originalLanguage": "en",
+        "providers": [
+          {
+            "id": 8,
+            "name": "Netflix",
+            "logo": "https://image.tmdb.org/t/p/w92/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg"
+          },
+          {
+            "id": 356,
+            "name": "wavve",
+            "logo": "https://image.tmdb.org/t/p/w92/hPcjSaWfMwEqXaCMu7Fkb529Dkc.jpg"
+          },
+          {
+            "id": 1883,
+            "name": "TVING",
+            "logo": "https://image.tmdb.org/t/p/w92/qHThQdkJuROK0k5QTCrknaNukWe.jpg"
+          }
+        ]
+      },
+      {
+        "id": "1290417",
+        "title": "스래시: 상어의 습격",
+        "mediaType": "movie",
+        "image": "https://image.tmdb.org/t/p/w500/8HjP0vqOk1FIxoN96ciRnOcmGu4.jpg",
+        "genreIds": [
+          27,
+          53
+        ],
+        "tags": [
+          "# 공포",
+          "# 스릴러"
+        ],
+        "popularity": 234.5679,
+        "originalLanguage": "en",
+        "providers": [
+          {
+            "id": 8,
+            "name": "Netflix",
+            "logo": "https://image.tmdb.org/t/p/w92/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg"
+          }
+        ]
+      },
+      {
+        "id": "1408",
+        "title": "하우스",
+        "mediaType": "tv",
+        "image": "https://image.tmdb.org/t/p/w500/3Cz7ySOQJmqiuTdrc6CY0r65yDI.jpg",
+        "genreIds": [
+          18
+        ],
+        "tags": [
+          "# 드라마"
+        ],
+        "popularity": 201.1316,
+        "originalLanguage": "en",
+        "providers": [
+          {
+            "id": 8,
+            "name": "Netflix",
+            "logo": "https://image.tmdb.org/t/p/w92/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg"
+          }
+        ]
+      },
+      {
+        "id": "95479",
+        "title": "주술회전",
+        "mediaType": "tv",
+        "image": "https://image.tmdb.org/t/p/w500/pnn223i9v5kfYku6TbqdSbPePJp.jpg",
+        "genreIds": [
+          16,
+          10759,
+          10765
+        ],
+        "tags": [
+          "# 애니메이션",
+          "# 액션",
+          "# SF/판타지"
+        ],
+        "popularity": 198.4011,
+        "originalLanguage": "ja",
+        "providers": [
+          {
+            "id": 8,
+            "name": "Netflix",
+            "logo": "https://image.tmdb.org/t/p/w92/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg"
+          },
+          {
+            "id": 1883,
+            "name": "TVING",
+            "logo": "https://image.tmdb.org/t/p/w92/qHThQdkJuROK0k5QTCrknaNukWe.jpg"
+          }
+        ]
+      },
+      {
+        "id": "5920",
+        "title": "멘탈리스트",
+        "mediaType": "tv",
+        "image": "https://image.tmdb.org/t/p/w500/acYXu4KaDj1NIkMgObnhe4C4a0T.jpg",
+        "genreIds": [
+          80,
+          18,
+          9648
+        ],
+        "tags": [
+          "# 범죄",
+          "# 드라마",
+          "# 미스터리"
+        ],
+        "popularity": 193.5046,
+        "originalLanguage": "en",
+        "providers": [
+          {
+            "id": 8,
+            "name": "Netflix",
+            "logo": "https://image.tmdb.org/t/p/w92/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg"
+          }
+        ]
+      },
+      {
+        "id": "60574",
+        "title": "피키 블라인더스",
+        "mediaType": "tv",
+        "image": "https://image.tmdb.org/t/p/w500/tNywkichh1mbS8BZA6CUPB8Zqgd.jpg",
+        "genreIds": [
+          18,
+          80
+        ],
+        "tags": [
+          "# 드라마",
+          "# 범죄"
+        ],
+        "popularity": 191.3273,
+        "originalLanguage": "en",
+        "providers": [
+          {
+            "id": 8,
+            "name": "Netflix",
+            "logo": "https://image.tmdb.org/t/p/w92/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg"
+          }
+        ]
+      }
+    ],
+    "disney": [
+      {
+        "id": "1416",
+        "title": "그레이 아나토미",
+        "mediaType": "tv",
+        "image": "https://image.tmdb.org/t/p/w500/lCUvpSvjAPU82HvJ8XfR74Chv5r.jpg",
+        "genreIds": [
+          18
+        ],
+        "tags": [
+          "# 드라마"
+        ],
+        "popularity": 270.0972,
+        "originalLanguage": "en",
+        "providers": [
+          {
+            "id": 337,
+            "name": "Disney",
+            "logo": "https://image.tmdb.org/t/p/w92/97yvRBw1GzX7fXprcF80er19ot.jpg"
+          }
+        ]
+      },
+      {
+        "id": "279471",
+        "title": "말콤네 좀 말려줘: 인생은 여전히 불공평해",
+        "mediaType": "tv",
+        "image": "https://image.tmdb.org/t/p/w500/iisy8JGtVvcAhtNrQHafHRKHZlE.jpg",
+        "genreIds": [
+          35,
+          18
+        ],
+        "tags": [
+          "# 코미디",
+          "# 드라마"
+        ],
+        "popularity": 257.6359,
+        "originalLanguage": "en",
+        "providers": [
+          {
+            "id": 337,
+            "name": "Disney",
+            "logo": "https://image.tmdb.org/t/p/w92/97yvRBw1GzX7fXprcF80er19ot.jpg"
+          }
+        ]
+      },
+      {
+        "id": "456",
+        "title": "심슨 가족",
+        "mediaType": "tv",
+        "image": "https://image.tmdb.org/t/p/w500/7HKQieF8YqXgTwBVjWFGWaEKNS7.jpg",
+        "genreIds": [
+          10751,
+          16,
+          35
+        ],
+        "tags": [
+          "# 가족",
+          "# 애니메이션",
+          "# 코미디"
+        ],
+        "popularity": 255.5576,
+        "originalLanguage": "en",
+        "providers": [
+          {
+            "id": 337,
+            "name": "Disney",
+            "logo": "https://image.tmdb.org/t/p/w92/97yvRBw1GzX7fXprcF80er19ot.jpg"
+          }
+        ]
+      },
+      {
+        "id": "1434",
+        "title": "패밀리 가이",
+        "mediaType": "tv",
+        "image": "https://image.tmdb.org/t/p/w500/1pbtcqNDKeWErfsDQo82pTPXQjT.jpg",
+        "genreIds": [
+          16,
+          35
+        ],
+        "tags": [
+          "# 애니메이션",
+          "# 코미디"
+        ],
+        "popularity": 187.5898,
+        "originalLanguage": "en",
+        "providers": [
+          {
+            "id": 337,
+            "name": "Disney",
+            "logo": "https://image.tmdb.org/t/p/w92/97yvRBw1GzX7fXprcF80er19ot.jpg"
+          }
+        ]
+      },
+      {
+        "id": "1911",
+        "title": "본즈",
+        "mediaType": "tv",
+        "image": "https://image.tmdb.org/t/p/w500/24Mi1oDrdc1zbHju7FVHJA4sgYt.jpg",
+        "genreIds": [
+          80,
+          18
+        ],
+        "tags": [
+          "# 범죄",
+          "# 드라마"
+        ],
+        "popularity": 184.8817,
+        "originalLanguage": "en",
+        "providers": [
+          {
+            "id": 8,
+            "name": "Netflix",
+            "logo": "https://image.tmdb.org/t/p/w92/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg"
+          },
+          {
+            "id": 337,
+            "name": "Disney",
+            "logo": "https://image.tmdb.org/t/p/w92/97yvRBw1GzX7fXprcF80er19ot.jpg"
+          }
+        ]
+      },
+      {
+        "id": "4057",
+        "title": "크리미널 마인드",
+        "mediaType": "tv",
+        "image": "https://image.tmdb.org/t/p/w500/A5hvLZpYcpT2GFA3j8LtI6eINFr.jpg",
+        "genreIds": [
+          80,
+          18,
+          9648
+        ],
+        "tags": [
+          "# 범죄",
+          "# 드라마",
+          "# 미스터리"
+        ],
+        "popularity": 145.1625,
+        "originalLanguage": "en",
+        "providers": [
+          {
+            "id": 337,
+            "name": "Disney",
+            "logo": "https://image.tmdb.org/t/p/w92/97yvRBw1GzX7fXprcF80er19ot.jpg"
+          }
+        ]
+      },
+      {
+        "id": "1421",
+        "title": "모던 패밀리",
+        "mediaType": "tv",
+        "image": "https://image.tmdb.org/t/p/w500/k5Qg5rgPoKdh3yTJJrLtyoyYGwC.jpg",
+        "genreIds": [
+          35
+        ],
+        "tags": [
+          "# 코미디"
+        ],
+        "popularity": 135.7487,
+        "originalLanguage": "en",
+        "providers": [
+          {
+            "id": 337,
+            "name": "Disney",
+            "logo": "https://image.tmdb.org/t/p/w92/97yvRBw1GzX7fXprcF80er19ot.jpg"
+          }
+        ]
+      },
+      {
+        "id": "202555",
+        "title": "데어데블: 본 어게인",
+        "mediaType": "tv",
+        "image": "https://image.tmdb.org/t/p/w500/qj0N5af5CHGY0MdZehgEzf6WBV3.jpg",
+        "genreIds": [
+          18,
+          10759,
+          80
+        ],
+        "tags": [
+          "# 드라마",
+          "# 액션",
+          "# 범죄"
+        ],
+        "popularity": 128.3829,
+        "originalLanguage": "en",
+        "providers": [
+          {
+            "id": 337,
+            "name": "Disney",
+            "logo": "https://image.tmdb.org/t/p/w92/97yvRBw1GzX7fXprcF80er19ot.jpg"
+          }
+        ]
+      },
+      {
+        "id": "4087",
+        "title": "엑스 파일",
+        "mediaType": "tv",
+        "image": "https://image.tmdb.org/t/p/w500/6BVL2a1fuRAj7rEflQ5HcrM2dRS.jpg",
+        "genreIds": [
+          9648,
+          10765,
+          80
+        ],
+        "tags": [
+          "# 미스터리",
+          "# SF/판타지",
+          "# 범죄"
+        ],
+        "popularity": 126.1265,
+        "originalLanguage": "en",
+        "providers": [
+          {
+            "id": 337,
+            "name": "Disney",
+            "logo": "https://image.tmdb.org/t/p/w92/97yvRBw1GzX7fXprcF80er19ot.jpg"
+          }
+        ]
+      },
+      {
+        "id": "1433",
+        "title": "아메리칸 대드!",
+        "mediaType": "tv",
+        "image": "https://image.tmdb.org/t/p/w500/eb9sH2am9IUSQ8GhXTNAVoujk8W.jpg",
+        "genreIds": [
+          16,
+          35
+        ],
+        "tags": [
+          "# 애니메이션",
+          "# 코미디"
+        ],
+        "popularity": 123.4209,
+        "originalLanguage": "en",
+        "providers": [
+          {
+            "id": 337,
+            "name": "Disney",
+            "logo": "https://image.tmdb.org/t/p/w92/97yvRBw1GzX7fXprcF80er19ot.jpg"
+          }
+        ]
+      }
+    ],
+    "wavve": [
+      {
+        "id": "278573",
+        "title": "21세기 대군부인",
+        "mediaType": "tv",
+        "image": "https://image.tmdb.org/t/p/w500/j37wlFXIPcSVEjWOi1KBxzWK0in.jpg",
+        "genreIds": [
+          35,
+          18
+        ],
+        "tags": [
+          "# 코미디",
+          "# 드라마"
+        ],
+        "popularity": 121.7056,
+        "originalLanguage": "ko",
+        "providers": [
+          {
+            "id": 356,
+            "name": "wavve",
+            "logo": "https://image.tmdb.org/t/p/w92/hPcjSaWfMwEqXaCMu7Fkb529Dkc.jpg"
+          }
+        ]
+      },
+      {
+        "id": "70672",
+        "title": "아는 형님",
+        "mediaType": "tv",
+        "image": "https://image.tmdb.org/t/p/w500/zak7mqMxJGnnWplSdbjDtV7bg2Y.jpg",
+        "genreIds": [
+          10764,
+          35
+        ],
+        "tags": [
+          "# 리얼리티",
+          "# 코미디"
+        ],
+        "popularity": 65.7969,
+        "originalLanguage": "ko",
+        "providers": [
+          {
+            "id": 356,
+            "name": "wavve",
+            "logo": "https://image.tmdb.org/t/p/w92/hPcjSaWfMwEqXaCMu7Fkb529Dkc.jpg"
+          },
+          {
+            "id": 1883,
+            "name": "TVING",
+            "logo": "https://image.tmdb.org/t/p/w92/qHThQdkJuROK0k5QTCrknaNukWe.jpg"
+          }
+        ]
+      },
+      {
+        "id": "5092",
+        "title": "무한도전",
+        "mediaType": "tv",
+        "image": "https://image.tmdb.org/t/p/w500/fpXfEfcZu5uDTOKqjwXSGgrL4iY.jpg",
+        "genreIds": [
+          10764,
+          35
+        ],
+        "tags": [
+          "# 리얼리티",
+          "# 코미디"
+        ],
+        "popularity": 59.9939,
+        "originalLanguage": "ko",
+        "providers": [
+          {
+            "id": 356,
+            "name": "wavve",
+            "logo": "https://image.tmdb.org/t/p/w92/hPcjSaWfMwEqXaCMu7Fkb529Dkc.jpg"
+          }
+        ]
+      },
+      {
+        "id": "200709",
+        "title": "약한영웅",
+        "mediaType": "tv",
+        "image": "https://image.tmdb.org/t/p/w500/jXd83QZhBDAFno4OGqHcMMDs56i.jpg",
+        "genreIds": [
+          10759,
+          18
+        ],
+        "tags": [
+          "# 액션",
+          "# 드라마"
+        ],
+        "popularity": 57.5974,
+        "originalLanguage": "ko",
+        "providers": [
+          {
+            "id": 8,
+            "name": "Netflix",
+            "logo": "https://image.tmdb.org/t/p/w92/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg"
+          },
+          {
+            "id": 356,
+            "name": "wavve",
+            "logo": "https://image.tmdb.org/t/p/w92/hPcjSaWfMwEqXaCMu7Fkb529Dkc.jpg"
+          }
+        ]
+      },
+      {
+        "id": "91121",
+        "title": "놀면 뭐하니?",
+        "mediaType": "tv",
+        "image": "https://image.tmdb.org/t/p/w500/10dL6iCqPIaAoDq1CTBOrOmbsmo.jpg",
+        "genreIds": [
+          10764,
+          35
+        ],
+        "tags": [
+          "# 리얼리티",
+          "# 코미디"
+        ],
+        "popularity": 51.2998,
+        "originalLanguage": "ko",
+        "providers": [
+          {
+            "id": 356,
+            "name": "wavve",
+            "logo": "https://image.tmdb.org/t/p/w92/hPcjSaWfMwEqXaCMu7Fkb529Dkc.jpg"
+          },
+          {
+            "id": 1883,
+            "name": "TVING",
+            "logo": "https://image.tmdb.org/t/p/w92/qHThQdkJuROK0k5QTCrknaNukWe.jpg"
+          }
+        ]
+      },
+      {
+        "id": "39429",
+        "title": "유희열의 스케치북",
+        "mediaType": "tv",
+        "image": "https://image.tmdb.org/t/p/w500/gOYCF1iyYiDHqoST7wfkqBCAB8I.jpg",
+        "genreIds": [
+          10767
+        ],
+        "tags": [],
+        "popularity": 46.2493,
+        "originalLanguage": "ko",
+        "providers": [
+          {
+            "id": 356,
+            "name": "wavve",
+            "logo": "https://image.tmdb.org/t/p/w92/hPcjSaWfMwEqXaCMu7Fkb529Dkc.jpg"
+          }
+        ]
+      },
+      {
+        "id": "18495",
+        "title": "논스톱",
+        "mediaType": "tv",
+        "image": "https://image.tmdb.org/t/p/w500/elXJzhz1dM0lO7fK2BfO2pVtC7l.jpg",
+        "genreIds": [
+          18,
+          35
+        ],
+        "tags": [
+          "# 드라마",
+          "# 코미디"
+        ],
+        "popularity": 41.7672,
+        "originalLanguage": "ko",
+        "providers": [
+          {
+            "id": 356,
+            "name": "wavve",
+            "logo": "https://image.tmdb.org/t/p/w92/hPcjSaWfMwEqXaCMu7Fkb529Dkc.jpg"
+          }
+        ]
+      },
+      {
+        "id": "66046",
+        "title": "미스터리 음악쇼 복면가왕",
+        "mediaType": "tv",
+        "image": "https://image.tmdb.org/t/p/w500/tEqL1b5NOhGUJgV62tyb6Q2gQtI.jpg",
+        "genreIds": [
+          10764
+        ],
+        "tags": [
+          "# 리얼리티"
+        ],
+        "popularity": 38.8995,
+        "originalLanguage": "ko",
+        "providers": [
+          {
+            "id": 356,
+            "name": "wavve",
+            "logo": "https://image.tmdb.org/t/p/w92/hPcjSaWfMwEqXaCMu7Fkb529Dkc.jpg"
+          }
+        ]
+      },
+      {
+        "id": "81978",
+        "title": "유 퀴즈 온 더 블럭",
+        "mediaType": "tv",
+        "image": "https://image.tmdb.org/t/p/w500/tdGJ2swRbtHT2O3fUXauKVSXNp9.jpg",
+        "genreIds": [
+          10767,
+          35
+        ],
+        "tags": [
+          "# 코미디"
+        ],
+        "popularity": 33.5832,
+        "originalLanguage": "ko",
+        "providers": [
+          {
+            "id": 356,
+            "name": "wavve",
+            "logo": "https://image.tmdb.org/t/p/w92/hPcjSaWfMwEqXaCMu7Fkb529Dkc.jpg"
+          },
+          {
+            "id": 1883,
+            "name": "TVING",
+            "logo": "https://image.tmdb.org/t/p/w92/qHThQdkJuROK0k5QTCrknaNukWe.jpg"
+          }
+        ]
+      },
+      {
+        "id": "496243",
+        "title": "기생충",
+        "mediaType": "movie",
+        "image": "https://image.tmdb.org/t/p/w500/jjHccoFjbqlfr4VGLVLT7yek0Xn.jpg",
+        "genreIds": [
+          35,
+          53,
+          18
+        ],
+        "tags": [
+          "# 코미디",
+          "# 스릴러",
+          "# 드라마"
+        ],
+        "popularity": 32.6696,
+        "originalLanguage": "ko",
+        "providers": [
+          {
+            "id": 8,
+            "name": "Netflix",
+            "logo": "https://image.tmdb.org/t/p/w92/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg"
+          },
+          {
+            "id": 1883,
+            "name": "TVING",
+            "logo": "https://image.tmdb.org/t/p/w92/qHThQdkJuROK0k5QTCrknaNukWe.jpg"
+          }
+        ]
+      }
+    ],
+    "coupang": [
+      {
+        "id": "281005",
+        "title": "경도를 기다리며",
+        "mediaType": "tv",
+        "image": "https://image.tmdb.org/t/p/w500/pkEq1AhKKkUzYomIw5hhz4exWFv.jpg",
+        "genreIds": [
+          35,
+          18
+        ],
+        "tags": [
+          "# 코미디",
+          "# 드라마"
+        ],
+        "popularity": 6.2803,
+        "originalLanguage": "ko",
+        "providers": [
+          {
+            "id": 1881,
+            "name": "Coupang",
+            "logo": "https://image.tmdb.org/t/p/w92/vpBRsCSyuwxwGDB2JeqyBVECUYF.jpg"
+          }
+        ]
+      },
+      {
+        "id": "287346",
+        "title": "아너: 그녀들의 법정",
+        "mediaType": "tv",
+        "image": "https://image.tmdb.org/t/p/w500/sBrWQaVEa6e4KjXsHepYPBilvJJ.jpg",
+        "genreIds": [
+          9648,
+          80,
+          18
+        ],
+        "tags": [
+          "# 미스터리",
+          "# 범죄",
+          "# 드라마"
+        ],
+        "popularity": 4.4443,
+        "originalLanguage": "ko",
+        "providers": [
+          {
+            "id": 1881,
+            "name": "Coupang",
+            "logo": "https://image.tmdb.org/t/p/w92/vpBRsCSyuwxwGDB2JeqyBVECUYF.jpg"
+          }
+        ]
+      },
+      {
+        "id": "236356",
+        "title": "가족계획",
+        "mediaType": "tv",
+        "image": "https://image.tmdb.org/t/p/w500/3Ee1rjX1aycWOHQux9rzLMVWNnt.jpg",
+        "genreIds": [
+          18,
+          80,
+          35,
+          9648
+        ],
+        "tags": [
+          "# 드라마",
+          "# 범죄",
+          "# 코미디"
+        ],
+        "popularity": 4.1671,
+        "originalLanguage": "ko",
+        "providers": [
+          {
+            "id": 1881,
+            "name": "Coupang",
+            "logo": "https://image.tmdb.org/t/p/w92/vpBRsCSyuwxwGDB2JeqyBVECUYF.jpg"
+          }
+        ]
+      },
+      {
+        "id": "293530",
+        "title": "UDT: 우리 동네 특공대",
+        "mediaType": "tv",
+        "image": "https://image.tmdb.org/t/p/w500/uBWlSo0O7VfWzjO5i8hG2E4dexG.jpg",
+        "genreIds": [
+          9648,
+          10759,
+          35,
+          18
+        ],
+        "tags": [
+          "# 미스터리",
+          "# 액션",
+          "# 코미디"
+        ],
+        "popularity": 3.6366,
+        "originalLanguage": "ko",
+        "providers": [
+          {
+            "id": 1881,
+            "name": "Coupang",
+            "logo": "https://image.tmdb.org/t/p/w92/vpBRsCSyuwxwGDB2JeqyBVECUYF.jpg"
+          }
+        ]
+      },
+      {
+        "id": "238786",
+        "title": "대학전쟁",
+        "mediaType": "tv",
+        "image": "https://image.tmdb.org/t/p/w500/1tsV62hYAC7YFu1wZw9G8IYnt4O.jpg",
+        "genreIds": [
+          10764
+        ],
+        "tags": [
+          "# 리얼리티"
+        ],
+        "popularity": 3.2383,
+        "originalLanguage": "ko",
+        "providers": [
+          {
+            "id": 1881,
+            "name": "Coupang",
+            "logo": "https://image.tmdb.org/t/p/w92/vpBRsCSyuwxwGDB2JeqyBVECUYF.jpg"
+          }
+        ]
+      },
+      {
+        "id": "314669",
+        "title": "닥터신",
+        "mediaType": "tv",
+        "image": "https://image.tmdb.org/t/p/w500/mPOtEq4nC5Hxtehd3ljm4REjKzd.jpg",
+        "genreIds": [
+          18,
+          10765,
+          9648
+        ],
+        "tags": [
+          "# 드라마",
+          "# SF/판타지",
+          "# 미스터리"
+        ],
+        "popularity": 2.6067,
+        "originalLanguage": "ko",
+        "providers": [
+          {
+            "id": 1881,
+            "name": "Coupang",
+            "logo": "https://image.tmdb.org/t/p/w92/vpBRsCSyuwxwGDB2JeqyBVECUYF.jpg"
+          }
+        ]
+      }
+    ],
+    "tving": [
+      {
+        "id": "496243",
+        "title": "기생충",
+        "mediaType": "movie",
+        "image": "https://image.tmdb.org/t/p/w500/jjHccoFjbqlfr4VGLVLT7yek0Xn.jpg",
+        "genreIds": [
+          35,
+          53,
+          18
+        ],
+        "tags": [
+          "# 코미디",
+          "# 스릴러",
+          "# 드라마"
+        ],
+        "popularity": 32.6696,
+        "originalLanguage": "ko",
+        "providers": [
+          {
+            "id": 8,
+            "name": "Netflix",
+            "logo": "https://image.tmdb.org/t/p/w92/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg"
+          },
+          {
+            "id": 1883,
+            "name": "TVING",
+            "logo": "https://image.tmdb.org/t/p/w92/qHThQdkJuROK0k5QTCrknaNukWe.jpg"
+          }
+        ]
+      },
+      {
+        "id": "670",
+        "title": "올드보이",
+        "mediaType": "movie",
+        "image": "https://image.tmdb.org/t/p/w500/xpa9ybm6tYGna5LseqSXvKpSSJn.jpg",
+        "genreIds": [
+          18,
+          53,
+          9648,
+          28
+        ],
+        "tags": [
+          "# 드라마",
+          "# 스릴러",
+          "# 미스터리"
+        ],
+        "popularity": 16.9776,
+        "originalLanguage": "ko",
+        "providers": [
+          {
+            "id": 8,
+            "name": "Netflix",
+            "logo": "https://image.tmdb.org/t/p/w92/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg"
+          },
+          {
+            "id": 1883,
+            "name": "TVING",
+            "logo": "https://image.tmdb.org/t/p/w92/qHThQdkJuROK0k5QTCrknaNukWe.jpg"
+          }
+        ]
+      },
+      {
+        "id": "290098",
+        "title": "아가씨",
+        "mediaType": "movie",
+        "image": "https://image.tmdb.org/t/p/w500/62l7g8lUJufEcd1Qz9TbAL5HR9t.jpg",
+        "genreIds": [
+          53,
+          18,
+          10749
+        ],
+        "tags": [
+          "# 스릴러",
+          "# 드라마",
+          "# 로맨스"
+        ],
+        "popularity": 15.6499,
+        "originalLanguage": "ko",
+        "providers": [
+          {
+            "id": 8,
+            "name": "Netflix",
+            "logo": "https://image.tmdb.org/t/p/w92/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg"
+          },
+          {
+            "id": 1883,
+            "name": "TVING",
+            "logo": "https://image.tmdb.org/t/p/w92/qHThQdkJuROK0k5QTCrknaNukWe.jpg"
+          }
+        ]
+      },
+      {
+        "id": "1267319",
+        "title": "사마귀",
+        "mediaType": "movie",
+        "image": "https://image.tmdb.org/t/p/w500/gRPSu4sG5iVnWyLv9um7t3L0yhH.jpg",
+        "genreIds": [
+          28,
+          80,
+          53
+        ],
+        "tags": [
+          "# 액션",
+          "# 범죄",
+          "# 스릴러"
+        ],
+        "popularity": 13.2018,
+        "originalLanguage": "ko",
+        "providers": [
+          {
+            "id": 8,
+            "name": "Netflix",
+            "logo": "https://image.tmdb.org/t/p/w92/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg"
+          },
+          {
+            "id": 1883,
+            "name": "TVING",
+            "logo": "https://image.tmdb.org/t/p/w92/qHThQdkJuROK0k5QTCrknaNukWe.jpg"
+          }
+        ]
+      },
+      {
+        "id": "8962",
+        "title": "엄마 찾아 삼만리",
+        "mediaType": "tv",
+        "image": "https://image.tmdb.org/t/p/w500/oRHR9lAPuyeInl3ah8htwXD6MvR.jpg",
+        "genreIds": [
+          16,
+          10759,
+          18,
+          10751
+        ],
+        "tags": [
+          "# 애니메이션",
+          "# 액션",
+          "# 드라마"
+        ],
+        "popularity": 427.0631,
+        "originalLanguage": "ja",
+        "providers": [
+          {
+            "id": 1883,
+            "name": "TVING",
+            "logo": "https://image.tmdb.org/t/p/w92/qHThQdkJuROK0k5QTCrknaNukWe.jpg"
+          }
+        ]
+      },
+      {
+        "id": "79744",
+        "title": "더 루키",
+        "mediaType": "tv",
+        "image": "https://image.tmdb.org/t/p/w500/7LUiqnZFX9JXYZtRpzv8n7taKV.jpg",
+        "genreIds": [
+          80,
+          18,
+          35
+        ],
+        "tags": [
+          "# 범죄",
+          "# 드라마",
+          "# 코미디"
+        ],
+        "popularity": 285.2744,
+        "originalLanguage": "en",
+        "providers": [
+          {
+            "id": 8,
+            "name": "Netflix",
+            "logo": "https://image.tmdb.org/t/p/w92/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg"
+          },
+          {
+            "id": 356,
+            "name": "wavve",
+            "logo": "https://image.tmdb.org/t/p/w92/hPcjSaWfMwEqXaCMu7Fkb529Dkc.jpg"
+          },
+          {
+            "id": 1883,
+            "name": "TVING",
+            "logo": "https://image.tmdb.org/t/p/w92/qHThQdkJuROK0k5QTCrknaNukWe.jpg"
+          }
+        ]
+      },
+      {
+        "id": "95479",
+        "title": "주술회전",
+        "mediaType": "tv",
+        "image": "https://image.tmdb.org/t/p/w500/pnn223i9v5kfYku6TbqdSbPePJp.jpg",
+        "genreIds": [
+          16,
+          10759,
+          10765
+        ],
+        "tags": [
+          "# 애니메이션",
+          "# 액션",
+          "# SF/판타지"
+        ],
+        "popularity": 198.4011,
+        "originalLanguage": "ja",
+        "providers": [
+          {
+            "id": 8,
+            "name": "Netflix",
+            "logo": "https://image.tmdb.org/t/p/w92/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg"
+          },
+          {
+            "id": 1883,
+            "name": "TVING",
+            "logo": "https://image.tmdb.org/t/p/w92/qHThQdkJuROK0k5QTCrknaNukWe.jpg"
+          }
+        ]
+      },
+      {
+        "id": "1049471",
+        "title": "'부메랑' - Outcome",
+        "mediaType": "movie",
+        "image": "https://image.tmdb.org/t/p/w500/17QQjBBCYiZb0BhtwEUp5W1oyny.jpg",
+        "genreIds": [
+          35,
+          18
+        ],
+        "tags": [
+          "# 코미디",
+          "# 드라마"
+        ],
+        "popularity": 155.3174,
+        "originalLanguage": "en",
+        "providers": [
+          {
+            "id": 1883,
+            "name": "TVING",
+            "logo": "https://image.tmdb.org/t/p/w92/qHThQdkJuROK0k5QTCrknaNukWe.jpg"
+          }
+        ]
+      },
+      {
+        "id": "65733",
+        "title": "신 도라에몽",
+        "mediaType": "tv",
+        "image": "https://image.tmdb.org/t/p/w500/vhythNI2xgNwXLmDvZzw6f48uPg.jpg",
+        "genreIds": [
+          10759,
+          16,
+          35,
+          10765,
+          10762,
+          10751
+        ],
+        "tags": [
+          "# 액션",
+          "# 애니메이션",
+          "# 코미디"
+        ],
+        "popularity": 152.1086,
+        "originalLanguage": "ja",
+        "providers": [
+          {
+            "id": 8,
+            "name": "Netflix",
+            "logo": "https://image.tmdb.org/t/p/w92/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg"
+          },
+          {
+            "id": 1883,
+            "name": "TVING",
+            "logo": "https://image.tmdb.org/t/p/w92/qHThQdkJuROK0k5QTCrknaNukWe.jpg"
+          }
+        ]
+      },
+      {
+        "id": "65503",
+        "title": "아이엠스타!",
+        "mediaType": "tv",
+        "image": "https://image.tmdb.org/t/p/w500/tRALkRAPfXlDsJ8XPx9Shz4mvsC.jpg",
+        "genreIds": [
+          16,
+          35,
+          18,
+          10762,
+          10765
+        ],
+        "tags": [
+          "# 애니메이션",
+          "# 코미디",
+          "# 드라마"
+        ],
+        "popularity": 142.0605,
+        "originalLanguage": "ja",
+        "providers": [
+          {
+            "id": 1883,
+            "name": "TVING",
+            "logo": "https://image.tmdb.org/t/p/w92/qHThQdkJuROK0k5QTCrknaNukWe.jpg"
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,113 @@
+{
+  "code": 200,
+  "status": "success",
+  "message": "success",
+  "meta": {
+    "updatedAt": "2026-04-12T12:40:42.668Z",
+    "totalCount": 10
+  },
+  "data": {
+    "list": [
+      {
+        "videoId": "G2snH2c1cEU",
+        "title": "[특집 예고캠] 풍향고2 후일담｜4/18(토) 오전 9시 공개",
+        "thumbnail": "https://i.ytimg.com/vi/G2snH2c1cEU/hqdefault.jpg",
+        "channelName": "뜬뜬 DdeunDdeun",
+        "channelImage": "https://yt3.ggpht.com/D0eRDrxMc6Yu0AZSQobnV21TwXPPUo9GWk4a5RunYUXpjyLqJdqw-WNeEZ1RjVfH39TeHr37ng=s88-c-k-c0x00ffffff-no-rj",
+        "viewCount": "조회수 13.1만회",
+        "url": "https://www.youtube.com/watch?v=G2snH2c1cEU",
+        "publishedAt": "2026-04-12T11:16:18Z"
+      },
+      {
+        "videoId": "A9Z2wrZM8D0",
+        "title": "[12화 예고] 심장 쫄깃 마지막 선물은?! 끝날 때 까진 끝난 게 아니다 | 마니또 클럽",
+        "thumbnail": "https://i.ytimg.com/vi/A9Z2wrZM8D0/hqdefault.jpg",
+        "channelName": "TEO 테오",
+        "channelImage": "https://yt3.ggpht.com/rHO6yWNDSuMvF-vaLb7SWaZQBbcDuqRGOIyHyYuFgzkqGo7e7pUg6oJl1pRq2ZFPnPG_W3koTw=s88-c-k-c0x00ffffff-no-rj",
+        "viewCount": "조회수 540회",
+        "url": "https://www.youtube.com/watch?v=A9Z2wrZM8D0",
+        "publishedAt": "2026-04-12T11:00:00Z"
+      },
+      {
+        "videoId": "RSgPFcRdWig",
+        "title": "진짜 파리지앙의 농도 짙은 파리 생활..🇫🇷 (구독자 선물 有)",
+        "thumbnail": "https://i.ytimg.com/vi/RSgPFcRdWig/hqdefault.jpg",
+        "channelName": "요정재형",
+        "channelImage": "https://yt3.ggpht.com/y3JMnr5ZNC0flAJhoqb-5vceNtB5fpX590cFC5ssSbJsRvs0o9ONjqFaYzYgAmjFs8_Jmh2PwTU=s88-c-k-c0x00ffffff-no-rj",
+        "viewCount": "조회수 6.1만회",
+        "url": "https://www.youtube.com/watch?v=RSgPFcRdWig",
+        "publishedAt": "2026-04-12T08:00:26Z"
+      },
+      {
+        "videoId": "YO7tYucRNUc",
+        "title": "[11화 선공개] (((느껴진다 재능의 벽))) 광희의 웃다가 힘빠지는 응원가 | 마니또 클럽",
+        "thumbnail": "https://i.ytimg.com/vi/YO7tYucRNUc/hqdefault.jpg",
+        "channelName": "TEO 테오",
+        "channelImage": "https://yt3.ggpht.com/rHO6yWNDSuMvF-vaLb7SWaZQBbcDuqRGOIyHyYuFgzkqGo7e7pUg6oJl1pRq2ZFPnPG_W3koTw=s88-c-k-c0x00ffffff-no-rj",
+        "viewCount": "조회수 5098회",
+        "url": "https://www.youtube.com/watch?v=YO7tYucRNUc",
+        "publishedAt": "2026-04-11T23:30:00Z"
+      },
+      {
+        "videoId": "5i98v3ASKHg",
+        "title": "충격 비주얼 수상한 음식의 정체 #크레이지투어",
+        "thumbnail": "https://i.ytimg.com/vi/5i98v3ASKHg/hqdefault.jpg",
+        "channelName": "TEO 테오",
+        "channelImage": "https://yt3.ggpht.com/rHO6yWNDSuMvF-vaLb7SWaZQBbcDuqRGOIyHyYuFgzkqGo7e7pUg6oJl1pRq2ZFPnPG_W3koTw=s88-c-k-c0x00ffffff-no-rj",
+        "viewCount": "조회수 9212회",
+        "url": "https://www.youtube.com/watch?v=5i98v3ASKHg",
+        "publishedAt": "2026-04-11T14:00:00Z"
+      },
+      {
+        "videoId": "1Xo3kycJork",
+        "title": "콧털 다 뽑히는 튀르키예식 제모 #크레이지투어",
+        "thumbnail": "https://i.ytimg.com/vi/1Xo3kycJork/hqdefault.jpg",
+        "channelName": "TEO 테오",
+        "channelImage": "https://yt3.ggpht.com/rHO6yWNDSuMvF-vaLb7SWaZQBbcDuqRGOIyHyYuFgzkqGo7e7pUg6oJl1pRq2ZFPnPG_W3koTw=s88-c-k-c0x00ffffff-no-rj",
+        "viewCount": "조회수 1.7만회",
+        "url": "https://www.youtube.com/watch?v=1Xo3kycJork",
+        "publishedAt": "2026-04-11T14:00:00Z"
+      },
+      {
+        "videoId": "TdCxC08h6gA",
+        "title": "식감이 왜이래ㅜㅜ 양 눈알 먹방 #크레이지투어",
+        "thumbnail": "https://i.ytimg.com/vi/TdCxC08h6gA/hqdefault.jpg",
+        "channelName": "TEO 테오",
+        "channelImage": "https://yt3.ggpht.com/rHO6yWNDSuMvF-vaLb7SWaZQBbcDuqRGOIyHyYuFgzkqGo7e7pUg6oJl1pRq2ZFPnPG_W3koTw=s88-c-k-c0x00ffffff-no-rj",
+        "viewCount": "조회수 6203회",
+        "url": "https://www.youtube.com/watch?v=TdCxC08h6gA",
+        "publishedAt": "2026-04-11T14:00:00Z"
+      },
+      {
+        "videoId": "gF7bB6vAzy4",
+        "title": "[축제 FULL] 원하~잖니 - Call Me Baby | 🏫응답하라 하이스쿨",
+        "thumbnail": "https://i.ytimg.com/vi/gF7bB6vAzy4/hqdefault.jpg",
+        "channelName": "채널십오야",
+        "channelImage": "https://yt3.ggpht.com/iKz6OMmWDbyN7Yi5AN6E-pKw-d9em-C9UVYvClL2A4EmUdHL1qlrxs4WL20QJF8ym0QBXD9EcQ=s88-c-k-c0x00ffffff-no-rj",
+        "viewCount": "조회수 1.5만회",
+        "url": "https://www.youtube.com/watch?v=gF7bB6vAzy4",
+        "publishedAt": "2026-04-11T11:00:52Z"
+      },
+      {
+        "videoId": "1vmkCtVjjvQ",
+        "title": "[축제 FULL] 꽃보다 5인조 - 사랑해 그리고 기억해 | 🏫응답하라 하이스쿨",
+        "thumbnail": "https://i.ytimg.com/vi/1vmkCtVjjvQ/hqdefault.jpg",
+        "channelName": "채널십오야",
+        "channelImage": "https://yt3.ggpht.com/iKz6OMmWDbyN7Yi5AN6E-pKw-d9em-C9UVYvClL2A4EmUdHL1qlrxs4WL20QJF8ym0QBXD9EcQ=s88-c-k-c0x00ffffff-no-rj",
+        "viewCount": "조회수 1.1만회",
+        "url": "https://www.youtube.com/watch?v=1vmkCtVjjvQ",
+        "publishedAt": "2026-04-11T11:00:32Z"
+      },
+      {
+        "videoId": "6i7fbkSf6wI",
+        "title": "[축제 FULL] A.U.I - 환상 속의 그대 | 🏫응답하라 하이스쿨",
+        "thumbnail": "https://i.ytimg.com/vi/6i7fbkSf6wI/hqdefault.jpg",
+        "channelName": "채널십오야",
+        "channelImage": "https://yt3.ggpht.com/iKz6OMmWDbyN7Yi5AN6E-pKw-d9em-C9UVYvClL2A4EmUdHL1qlrxs4WL20QJF8ym0QBXD9EcQ=s88-c-k-c0x00ffffff-no-rj",
+        "viewCount": "조회수 9115회",
+        "url": "https://www.youtube.com/watch?v=6i7fbkSf6wI",
+        "publishedAt": "2026-04-11T11:00:24Z"
+      }
+    ]
+  }
+}

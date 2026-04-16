@@ -1,0 +1,364 @@
+{
+  "code": 200,
+  "status": "success",
+  "message": "success",
+  "meta": {
+    "updatedAt": "2026-04-12T14:36:13.278Z",
+    "theme": "최근 12개월 완성도 높은 K-콘텐츠",
+    "totalCount": 15
+  },
+  "data": {
+    "list": [
+      {
+        "contentId": "280945",
+        "tmdbId": 280945,
+        "mediaType": "tv",
+        "title": "폭군의 셰프",
+        "synopsis": "타임슬립 한 프렌치 셰프가 최악의 폭군이면서 최고의 미식가인 왕을 만나게 되면서 500년을 뛰어넘는 판타지 서바이벌 로맨스",
+        "posterUrl": "https://image.tmdb.org/t/p/w500/kqFofZ0hOQ7Y3VUQQ59lpHaCJpM.jpg",
+        "backdropUrl": "https://image.tmdb.org/t/p/original/ttbmzTZHTzqDK4JniKonMrsQath.jpg",
+        "tags": [
+          "# 드라마",
+          "# SF/판타지"
+        ],
+        "providers": [
+          {
+            "id": 8,
+            "name": "Netflix",
+            "logo": "https://image.tmdb.org/t/p/w92/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg"
+          },
+          {
+            "id": 1883,
+            "name": "TVING",
+            "logo": "https://image.tmdb.org/t/p/w92/qHThQdkJuROK0k5QTCrknaNukWe.jpg"
+          }
+        ]
+      },
+      {
+        "contentId": "231280",
+        "tmdbId": 231280,
+        "mediaType": "tv",
+        "title": "굿보이",
+        "synopsis": "폭력과 범죄가 난무하는 세상. 경찰이 된 챔피언 운동선수들이 탁월한 능력으로 잔악무도한 악당들을 상대한다.",
+        "posterUrl": "https://image.tmdb.org/t/p/w500/cARQJDG8E2wY854UjVQPtFsjuvE.jpg",
+        "backdropUrl": "https://image.tmdb.org/t/p/original/8l1BN0IIjHmRyW0oDfUfs3F6F4N.jpg",
+        "tags": [
+          "# 범죄",
+          "# 코미디",
+          "# 액션"
+        ],
+        "providers": [
+          {
+            "id": 8,
+            "name": "Netflix",
+            "logo": "https://image.tmdb.org/t/p/w92/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg"
+          },
+          {
+            "id": 337,
+            "name": "Disney",
+            "logo": "https://image.tmdb.org/t/p/w92/97yvRBw1GzX7fXprcF80er19ot.jpg"
+          },
+          {
+            "id": 356,
+            "name": "wavve",
+            "logo": "https://image.tmdb.org/t/p/w92/hPcjSaWfMwEqXaCMu7Fkb529Dkc.jpg"
+          },
+          {
+            "id": 1883,
+            "name": "TVING",
+            "logo": "https://image.tmdb.org/t/p/w92/qHThQdkJuROK0k5QTCrknaNukWe.jpg"
+          }
+        ]
+      },
+      {
+        "contentId": "258025",
+        "tmdbId": 258025,
+        "mediaType": "tv",
+        "title": "견우와 선녀",
+        "synopsis": "죽음의 운명이 결정된 소년 견우와 그의 목숨을 구하기 위해 나선 MZ 무당 소녀 성아의 첫사랑이 담긴 청춘의 이야기가 시작된다.",
+        "posterUrl": "https://image.tmdb.org/t/p/w500/g0GH6h5UERTa1UhgQOaDITipk5m.jpg",
+        "backdropUrl": "https://image.tmdb.org/t/p/original/jpxN1QHRSG660Ql62EHZvZzeaCA.jpg",
+        "tags": [
+          "# SF/판타지",
+          "# 드라마",
+          "# 코미디"
+        ],
+        "providers": [
+          {
+            "id": 1883,
+            "name": "TVING",
+            "logo": "https://image.tmdb.org/t/p/w92/qHThQdkJuROK0k5QTCrknaNukWe.jpg"
+          }
+        ]
+      },
+      {
+        "contentId": "229891",
+        "tmdbId": 229891,
+        "mediaType": "tv",
+        "title": "이 사랑 통역 되나요?",
+        "synopsis": "촬영차 전 세계를 오가는 스타 배우와 그녀의 통역사. 서로를 향한 마음이 깊어지는 것과 달리 설렘의 감정은 자꾸만 오역이 되는데. 과연 둘만의 사랑의 언어를 찾을 수 있을까?",
+        "posterUrl": "https://image.tmdb.org/t/p/w500/ePz0D6B6wbxoLHsUtcaqfGx7E41.jpg",
+        "backdropUrl": "https://image.tmdb.org/t/p/original/60Hm8JC1Ps8DsrstAt4PTQuBdIB.jpg",
+        "tags": [
+          "# 드라마",
+          "# 코미디"
+        ],
+        "providers": [
+          {
+            "id": 8,
+            "name": "Netflix",
+            "logo": "https://image.tmdb.org/t/p/w92/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg"
+          }
+        ]
+      },
+      {
+        "contentId": "261980",
+        "tmdbId": 261980,
+        "mediaType": "tv",
+        "title": "미지의 서울",
+        "synopsis": "얼굴 빼고 모든 게 다른 쌍둥이 자매가 인생을 맞바꾸는 거짓말로 진짜 사랑과 인생을 찾아가는 로맨틱 성장 드라마",
+        "posterUrl": "https://image.tmdb.org/t/p/w500/woGYRE5vChxqUqTBJJaOhO9Cqk6.jpg",
+        "backdropUrl": "https://image.tmdb.org/t/p/original/m0VuPoWQhbgMjVIwAdZmmHgHQrl.jpg",
+        "tags": [
+          "# 드라마"
+        ],
+        "providers": [
+          {
+            "id": 8,
+            "name": "Netflix",
+            "logo": "https://image.tmdb.org/t/p/w92/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg"
+          },
+          {
+            "id": 1883,
+            "name": "TVING",
+            "logo": "https://image.tmdb.org/t/p/w92/qHThQdkJuROK0k5QTCrknaNukWe.jpg"
+          }
+        ]
+      },
+      {
+        "contentId": "281006",
+        "tmdbId": 281006,
+        "mediaType": "tv",
+        "title": "당신의 맛",
+        "synopsis": "식품 기업을 물려받기 위해 작은 식당을 인수 합병하는 '레시피 사냥꾼'이 된 재벌 상속남 한범우와 전주에서 간판도 없는 원테이블 식당을 운영 중인 똥고집 셰프 모연주의 전쟁 같은 키친 타카 성장 로맨스",
+        "posterUrl": "https://image.tmdb.org/t/p/w500/i4AkVeH64zvm2CL33FtYfzZqMup.jpg",
+        "backdropUrl": "https://image.tmdb.org/t/p/original/xMgfvjhKwuFTyoXNpa8UVV74rek.jpg",
+        "tags": [
+          "# 코미디",
+          "# 드라마"
+        ],
+        "providers": [
+          {
+            "id": 8,
+            "name": "Netflix",
+            "logo": "https://image.tmdb.org/t/p/w92/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg"
+          }
+        ]
+      },
+      {
+        "contentId": "254389",
+        "tmdbId": 254389,
+        "mediaType": "tv",
+        "title": "천국보다 아름다운",
+        "synopsis": "80세의 모습으로 천국에 도착한 해숙이 젊어진 남편 낙준과 재회하면서 벌어지는 현생 초월 로맨스.",
+        "posterUrl": "https://image.tmdb.org/t/p/w500/v9CJ1UWnRQkRdC77tHdHIDCzFEm.jpg",
+        "backdropUrl": "https://image.tmdb.org/t/p/original/1SC2gbJA5zZ2x3YGMtlqbr3bIzk.jpg",
+        "tags": [
+          "# SF/판타지",
+          "# 드라마"
+        ],
+        "providers": [
+          {
+            "id": 8,
+            "name": "Netflix",
+            "logo": "https://image.tmdb.org/t/p/w92/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg"
+          },
+          {
+            "id": 1883,
+            "name": "TVING",
+            "logo": "https://image.tmdb.org/t/p/w92/qHThQdkJuROK0k5QTCrknaNukWe.jpg"
+          }
+        ]
+      },
+      {
+        "contentId": "280946",
+        "tmdbId": 280946,
+        "mediaType": "tv",
+        "title": "태풍상사",
+        "synopsis": "IMF 부도위기를 온몸으로 맞았지만, 정면으로 돌파해 나가는 중소기업과 그 가족들을 고군분투를 그리는 드라마",
+        "posterUrl": "https://image.tmdb.org/t/p/w500/k60BloWxlWTpVumWR4cioC8OLi1.jpg",
+        "backdropUrl": "https://image.tmdb.org/t/p/original/qb9e6TO8UU1DNkiGxHHOiqNA5iF.jpg",
+        "tags": [
+          "# 드라마"
+        ],
+        "providers": [
+          {
+            "id": 8,
+            "name": "Netflix",
+            "logo": "https://image.tmdb.org/t/p/w92/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg"
+          },
+          {
+            "id": 1883,
+            "name": "TVING",
+            "logo": "https://image.tmdb.org/t/p/w92/qHThQdkJuROK0k5QTCrknaNukWe.jpg"
+          }
+        ]
+      },
+      {
+        "contentId": "239385",
+        "tmdbId": 239385,
+        "mediaType": "tv",
+        "title": "조각도시",
+        "synopsis": "평범하게 살아가던 한 남자가 어느 날 갑자기 삶이 송두리째 조작돼 나락에 떨어지자 지옥에서 돌아와 벌이는 핏빛 복수극",
+        "posterUrl": "https://image.tmdb.org/t/p/w500/pwin3qnVXs9tD3nU5hkl70wO1dx.jpg",
+        "backdropUrl": "https://image.tmdb.org/t/p/original/ngP3rIU1KY7ek0r6hSJFnVsrh9g.jpg",
+        "tags": [
+          "# 범죄",
+          "# 드라마"
+        ],
+        "providers": [
+          {
+            "id": 337,
+            "name": "Disney",
+            "logo": "https://image.tmdb.org/t/p/w92/97yvRBw1GzX7fXprcF80er19ot.jpg"
+          }
+        ]
+      },
+      {
+        "contentId": "281016",
+        "tmdbId": 281016,
+        "mediaType": "tv",
+        "title": "월간남친",
+        "synopsis": "현실 생활에 지쳐 연애할 여유도 없는 웹툰 PD 서미래. 연애 구독 서비스를 통해 새로운 만남과 설렘 가득한 데이트를 경험한다. 어쩌면 그녀에게도 사랑이 다시 찾아올지도?",
+        "posterUrl": "https://image.tmdb.org/t/p/w500/hqIXo0s2gof6UxWDWeiP4d3rMr0.jpg",
+        "backdropUrl": "https://image.tmdb.org/t/p/original/3ZfyrJoxPffyIprG0FiqZfpEQde.jpg",
+        "tags": [
+          "# 코미디",
+          "# SF/판타지",
+          "# 드라마"
+        ],
+        "providers": [
+          {
+            "id": 8,
+            "name": "Netflix",
+            "logo": "https://image.tmdb.org/t/p/w92/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg"
+          }
+        ]
+      },
+      {
+        "contentId": "284744",
+        "tmdbId": 284744,
+        "mediaType": "tv",
+        "title": "프로보노",
+        "synopsis": "출세에 목맨 속물 판사, 본의 아니게 공익변호사 되다(?)! 초대형 로펌 구석방, 매출 제로 공익팀에 갇힌 전직 판사의 좌충우돌 휴먼 법정물",
+        "posterUrl": "https://image.tmdb.org/t/p/w500/sNGKN7Nvdi85gj75pnSvqzMF3MC.jpg",
+        "backdropUrl": "https://image.tmdb.org/t/p/original/dxLxJVZQQ77S8K52myee4sJskxc.jpg",
+        "tags": [
+          "# 코미디",
+          "# 드라마"
+        ],
+        "providers": [
+          {
+            "id": 8,
+            "name": "Netflix",
+            "logo": "https://image.tmdb.org/t/p/w92/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg"
+          },
+          {
+            "id": 1883,
+            "name": "TVING",
+            "logo": "https://image.tmdb.org/t/p/w92/qHThQdkJuROK0k5QTCrknaNukWe.jpg"
+          }
+        ]
+      },
+      {
+        "contentId": "256226",
+        "tmdbId": 256226,
+        "mediaType": "tv",
+        "title": "친애하는 X",
+        "synopsis": "국내 최고의 여배우 '백아진'의 몰락, 그리고 그 뒤에 숨겨진 그녀의 두 얼굴. 반지운의 동명 웹툰 원작",
+        "posterUrl": "https://image.tmdb.org/t/p/w500/9eTQfA8lC4027DrG0PBvEBVRKuM.jpg",
+        "backdropUrl": "https://image.tmdb.org/t/p/original/xsxp0zFlF7PNwg2MJHg8XGrYCsh.jpg",
+        "tags": [
+          "# 드라마",
+          "# 범죄"
+        ],
+        "providers": [
+          {
+            "id": 356,
+            "name": "wavve",
+            "logo": "https://image.tmdb.org/t/p/w92/hPcjSaWfMwEqXaCMu7Fkb529Dkc.jpg"
+          },
+          {
+            "id": 1883,
+            "name": "TVING",
+            "logo": "https://image.tmdb.org/t/p/w92/qHThQdkJuROK0k5QTCrknaNukWe.jpg"
+          }
+        ]
+      },
+      {
+        "contentId": "281013",
+        "tmdbId": 281013,
+        "mediaType": "tv",
+        "title": "키스는 괜히 해서!",
+        "synopsis": "생계를 위해 애엄마로 위장취업한 싱글녀와 그녀를 사랑하게 된 팀장님의 로맨스",
+        "posterUrl": "https://image.tmdb.org/t/p/w500/tuEbKYEdNZopNWoKhWpftSYgJVC.jpg",
+        "backdropUrl": "https://image.tmdb.org/t/p/original/cTFQKu8CLftXHUCIBGksfL8uhf3.jpg",
+        "tags": [
+          "# 드라마",
+          "# 코미디"
+        ],
+        "providers": [
+          {
+            "id": 8,
+            "name": "Netflix",
+            "logo": "https://image.tmdb.org/t/p/w92/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg"
+          }
+        ]
+      },
+      {
+        "contentId": "235355",
+        "tmdbId": 235355,
+        "mediaType": "tv",
+        "title": "언젠가는 슬기로울 전공의생활",
+        "synopsis": "대학병원 교수와 전공의들의 리얼한 병원생활과 우정 이야기. 드라마 \"슬기로운 의사생활\"의 스핀오프 작품",
+        "posterUrl": "https://image.tmdb.org/t/p/w500/oXaMHOQGx2V4HwoBa0IrouBe1yb.jpg",
+        "backdropUrl": "https://image.tmdb.org/t/p/original/A4X2JVnABZeZpMAWcI0eBHvLYAl.jpg",
+        "tags": [
+          "# 드라마"
+        ],
+        "providers": [
+          {
+            "id": 8,
+            "name": "Netflix",
+            "logo": "https://image.tmdb.org/t/p/w92/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg"
+          },
+          {
+            "id": 1883,
+            "name": "TVING",
+            "logo": "https://image.tmdb.org/t/p/w92/qHThQdkJuROK0k5QTCrknaNukWe.jpg"
+          }
+        ]
+      },
+      {
+        "contentId": "297424",
+        "tmdbId": 297424,
+        "mediaType": "tv",
+        "title": "우주를 줄게",
+        "synopsis": "첫 만남부터 꼬인 사돈남녀가 하루아침에 20개월 조카 '우주'를 키우게 되면서 벌어지는 좌충우돌 동거 로맨스",
+        "posterUrl": "https://image.tmdb.org/t/p/w500/2H3LxJjSQNCtMfG1zwToWH5L4RM.jpg",
+        "backdropUrl": "https://image.tmdb.org/t/p/original/bHv9tTPd0dxpV2OD3WeDoZOFzPQ.jpg",
+        "tags": [
+          "# 코미디",
+          "# 드라마"
+        ],
+        "providers": [
+          {
+            "id": 1883,
+            "name": "TVING",
+            "logo": "https://image.tmdb.org/t/p/w92/qHThQdkJuROK0k5QTCrknaNukWe.jpg"
+          }
+        ]
+      }
+    ]
+  }
+}

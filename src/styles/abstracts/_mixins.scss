@@ -1,0 +1,91 @@
+// abstracts/_mixins.scss
+@use 'variables' as *;
+
+@mixin desktop-large {
+  @media (min-width: #{$desktop-large}) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: #{$desktop}) and (max-width: #{$desktop-large - 1}) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (max-width: #{$desktop - 1}) and (min-width: #{$tablet}) {
+    @content;
+  }
+}
+
+@mixin mobile {
+  @media (max-width: #{$mobile}) {
+    @content;
+  }
+}
+
+@mixin respond-to($media) {
+  @if $media == desktop-large {
+    @media (min-width: #{$desktop-large}) { @content; }
+  }
+  @else if $media == desktop {
+    @media (min-width: #{$desktop}) { @content; }
+  }
+  @else if $media == tablet {
+    @media (max-width: #{$desktop - 1}) { @content; }
+  }
+  @else if $media == mobile {
+    @media (max-width: #{$mobile}) { @content; }
+  }
+}
+
+// Animations
+@mixin skeleton-pulse {
+  @keyframes skeleton-pulse {
+    0% { background-color: rgba(255, 255, 255, 0.05); }
+    50% { background-color: rgba(255, 255, 255, 0.12); }
+    100% { background-color: rgba(255, 255, 255, 0.05); }
+  }
+  animation: skeleton-pulse 1.5s infinite;
+}
+
+@mixin click-bounce {
+  @keyframes click-bounce {
+    0% { transform: scale(1); }
+    30% { transform: scale(0.85); }
+    100% { transform: scale(1); }
+  }
+  animation: click-bounce 0.4s ease;
+}
+
+// Layout Helpers
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin multi-line-ellipsis($lines: 2) {
+  display: -webkit-box;
+  -webkit-line-clamp: $lines;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+// Slider Navigation Base (Visual only)
+@mixin nav-btn-base {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  opacity: 0.3;
+  transition: opacity 0.2s ease;
+  @include flex-center;
+
+  &:hover {
+    opacity: 1;
+    background-color: transparent; // 호버 시 배경색 제거 가이드 준수
+  }
+
+  // disabled 상태 스타일은 개별 섹션에서 제거하거나 최소화
+}

@@ -1,0 +1,138 @@
+@use '../../styles/abstracts/variables' as *;
+@use '../../styles/abstracts/mixins' as *;
+
+.theme-collection-section {
+  padding: 0;
+
+  .section-header {
+    // 공통 SectionHeader의 flex-wrap 로직을 따름
+    @include respond-to(tablet) {
+      margin-bottom: 3.2rem;
+    }
+  }
+
+  .nav-buttons {
+    display: flex;
+    gap: 0.8rem;
+
+    .nav-btn {
+      @include nav-btn-base;
+      width: 4.0rem;
+      height: 4.0rem;
+      border-radius: 50%;
+
+      @include respond-to(mobile) {
+        width: 3.4rem;
+        height: 3.4rem;
+      }
+
+      &.theme-next {
+        img { transform: rotate(180deg); }
+      }
+
+      img {
+        width: 1.4rem;
+        opacity: 0.8;
+        @include respond-to(mobile) { width: 1.2rem; }
+      }
+    }
+  }
+
+  .slider-container {
+    &.loading {
+      .skeleton-cards {
+        display: flex;
+        gap: 2.6rem;
+        overflow: hidden;
+        .skeleton-card {
+          flex: 0 0 calc((100% - (2.6rem * 3)) / 4);
+          @include respond-to(tablet) { flex: 0 0 calc((100% - (2.6rem * 1.2)) / 2.2); }
+
+          .skeleton-info { margin-top: 1.6rem; }
+        }
+      }
+    }
+  }
+
+  .status-fallback {
+    width: 100%;
+    @include flex-center;
+    flex-direction: column;
+    min-height: 30.0rem;
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 2.0rem;
+    color: white;
+    text-align: center;
+    gap: 1.6rem;
+    p { font-size: 1.8rem; color: rgba(255, 255, 255, 0.6); }
+    .retry-btn {
+      padding: 1.0rem 2.4rem;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 10.0rem;
+      color: white;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      &:hover { background: $active-purple; border-color: $active-purple; }
+    }
+  }
+
+  .theme-card {
+    width: 100%;
+    cursor: pointer;
+    .image-group-box {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      background-color: #121212;
+      border-radius: 2.0rem;
+      margin-bottom: 1.6rem;
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+      gap: 1.4rem;
+      padding: 1.6rem;
+      @include respond-to(tablet) { padding: 1.2rem; gap: 1.0rem; }
+      @include respond-to(mobile) { padding: 0.8rem; gap: 0.8rem; }
+
+      .sub-image {
+        width: 100%;
+        height: 100%;
+        border-radius: 1.0rem;
+        background-size: cover;
+        background-position: center;
+        background-color: #444;
+      }
+    }
+
+    .info {
+      .card-title {
+        font-size: $font-size-body-lg;
+        font-weight: 500;
+        color: white;
+        margin-bottom: 0.6rem;
+      }
+
+      .author-row {
+        display: flex;
+        align-items: center;
+        gap: 0.8rem;
+
+        .official-badge {
+          font-size: 1.0rem;
+          font-weight: 800;
+          color: white;
+          background: $active-purple;
+          padding: 0.2rem 0.6rem;
+          border-radius: 0.4rem;
+          text-transform: uppercase;
+        }
+
+        .author-text {
+          font-size: $font-size-body-md;
+          color: #8b8d94;
+        }
+      }
+    }
+  }
+}

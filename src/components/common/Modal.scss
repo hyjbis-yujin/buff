@@ -1,4 +1,5 @@
-@import '../../styles/variables';
+@use '../../styles/abstracts/variables' as *;
+@use '../../styles/abstracts/mixins' as *;
 
 .common-modal-overlay {
   position: fixed;
@@ -22,14 +23,16 @@
     background: #1F2024;
     width: 95%;
     max-width: $container-max;
-    min-height: 550px; // 588px에서 550px로 수정
-    border-radius: 36px;
-    padding: 62px; // 85px에서 62px로 축소
+    min-height: 55.0rem; 
+    border-radius: 3.6rem;
+    padding: 6.5rem 5.0rem 8.5rem; // 상단 2rem 축소 (8.5 -> 6.5)
+    max-height: 90vh; 
+    overflow: hidden; 
     position: relative;
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.28);
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start; 
     animation: modalSlideUp 0.4s cubic-bezier(0.25, 1, 0.5, 1);
 
     &.closing {
@@ -38,27 +41,27 @@
 
     @include respond-to(tablet) {
       width: 90%;
-      max-height: calc(100vh - 24px); 
+      max-height: 95vh; 
       min-height: auto;
-      padding: 64px 48px 64px 64px; // 오른쪽 패딩을 48px로 조정하여 스크롤바 여백 확보
+      padding: 6.0rem 4.0rem; // 전체적으로 패딩 축소
     }
 
     @include respond-to(mobile) {
       width: 95%;
-      border-radius: 20px;
-      padding: 64px 28px 40px; // 오른쪽 패딩을 28px로 조정하여 스크롤바 여백 확보
+      border-radius: 2.0rem;
+      padding: 6.5rem 2.0rem 4.0rem; // 상단 패딩을 5.0 -> 6.5로 확대
     }
 
     .close-btn {
       position: absolute;
-      top: 72px; // 64px에서 더욱 깊숙이 안쪽으로 이동
-      right: 80px; // 72px에서 더욱 깊숙이 안쪽으로 이동
+      top: 5.2rem; // 상단 패딩 축소에 맞춰 위치 조정
+      right: 5.0rem; // 좌우 패딩 라인(스크롤 라인)과 일치하도록 바깥쪽으로 이동
       display: flex;
       align-items: center;
       justify-content: center;
       padding: 0;
       cursor: pointer;
-      z-index: 20; // 겹침 방지
+      z-index: 20; 
       transition: transform 0.2s ease;
 
       img {
@@ -74,8 +77,8 @@
       }
 
       @include respond-to(mobile) {
-        top: 36px; // 28px에서 더욱 깊숙이 이동
-        right: 36px; 
+        top: 2.4rem; // 더 위로 이동 (3.6 -> 2.4)
+        right: 2.0rem; // 바깥쪽으로 이동 (3.6 -> 2.0)
       }
     }
   }
@@ -95,7 +98,7 @@
 @keyframes modalSlideUp {
   from {
     opacity: 0;
-    transform: translateY(30px);
+    transform: translateY(3.0rem);
   }
   to {
     opacity: 1;
@@ -110,7 +113,7 @@
   }
   to {
     opacity: 0;
-    transform: translateY(30px);
+    transform: translateY(3.0rem);
   }
 }
 

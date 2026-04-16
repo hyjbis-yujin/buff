@@ -1,38 +1,80 @@
-@use '../../styles/variables' as *;
+@use '../../styles/abstracts/variables' as *;
+@use '../../styles/abstracts/mixins' as *;
 
 .youtube-section {
   padding: 0;
 
   .section-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 46px;
-
-    .section-title {
-      font-size: $font-size-section;
-      font-weight: 700;
-      color: white;
+    // 공통 SectionHeader의 flex-wrap 로직을 따름
+    @include respond-to(tablet) {
+      margin-bottom: 3.2rem; 
     }
+  }
 
-    .nav-buttons {
-      display: flex;
-      gap: 16px; // Restored from 12px
+  .nav-buttons {
+    display: flex;
+    gap: 0.8rem;
 
-      .nav-btn {
-        width: 32px; // Restored from 24px
-        height: 32px; // Restored from 24px
-        background: none;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        opacity: 0.5; // Restored from 0.4
-        transition: opacity 0.2s ease;
+    .nav-btn {
+      @include nav-btn-base;
+      width: 4.0rem;
+      height: 4.0rem;
+      border-radius: 50%;
 
-        &:hover { opacity: 1; }
-        
-        img { width: 12px; } // Restored from 8px
+      @include respond-to(mobile) {
+        width: 3.4rem;
+        height: 3.4rem;
       }
+
+      img {
+        width: 1.4rem;
+        opacity: 0.8;
+        @include respond-to(mobile) { width: 1.2rem; }
+      }
+
+      &.youtube-next {
+        img { transform: rotate(180deg); }
+      }
+    }
+  }
+
+  .slider-container {
+    &.loading {
+      .skeleton-cards {
+        display: flex;
+        gap: 2.6rem;
+        overflow: hidden;
+        .skeleton-card {
+          flex: 0 0 calc((100% - (2.6rem * 2)) / 3);
+          @include respond-to(tablet) { flex: 0 0 calc((100% - (2.6rem * 1.2)) / 2.2); }
+          
+          .skeleton-title { margin-top: 1.6rem; }
+          .skeleton-meta { margin-top: 0.8rem; }
+        }
+      }
+    }
+  }
+
+  .status-fallback {
+    width: 100%;
+    @include flex-center;
+    flex-direction: column;
+    min-height: 20.0rem;
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 2.0rem;
+    color: white;
+    text-align: center;
+    gap: 1.6rem;
+    p { font-size: 1.8rem; color: rgba(255, 255, 255, 0.6); }
+    .retry-btn {
+      padding: 1.0rem 2.4rem;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 10.0rem;
+      color: white;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      &:hover { background: $active-purple; border-color: $active-purple; }
     }
   }
 
@@ -44,42 +86,51 @@
       width: 100%;
       aspect-ratio: 16 / 9;
       background-color: #222;
-      border-radius: 20px; // Updated to 20px
-      margin-bottom: 16px;
+      border-radius: 2.0rem;
+      margin-bottom: 1.6rem;
       overflow: hidden;
+      background-size: cover;
+      background-position: center;
 
-      @include respond-to(tablet) { border-radius: 15px; }
-      @include respond-to(mobile) { border-radius: 15px; }
+      @include respond-to(tablet) { border-radius: 1.5rem; }
+      @include respond-to(mobile) { border-radius: 1.5rem; }
     }
 
     .video-title {
-      font-size: $font-size-body-lg; // 16px
+      font-size: $font-size-body-lg;
       font-weight: 500;
       color: white;
       line-height: 1.5;
-      margin-bottom: 8px;
-      display: -webkit-box;
-      -webkit-line-clamp: 2;
-      line-clamp: 2;
-      -webkit-box-orient: vertical;
-      overflow: hidden;
+      margin-bottom: 0.8rem;
+      @include multi-line-ellipsis(2);
     }
 
     .meta-info {
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 0.8rem;
 
       .channel-icon {
-        width: 16px;
-        height: 16px;
+        width: 2.2rem;
+        height: 2.2rem;
         border-radius: 50%;
         background-color: #555;
+        background-size: cover;
+        background-position: center;
       }
 
       .channel-name {
-        font-size: $font-size-body-md; // 14px
+        font-size: $font-size-body-md;
         color: #8b8d94;
+      }
+
+      .view-count {
+        font-size: $font-size-body-md;
+        color: #8b8d94;
+        &::before {
+          content: '•';
+          margin: 0 0.4rem;
+        }
       }
     }
   }

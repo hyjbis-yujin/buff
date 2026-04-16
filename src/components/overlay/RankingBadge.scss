@@ -1,0 +1,28 @@
+// src/components/overlay/RankingBadge.scss
+@use '../../styles/abstracts/variables' as *;
+@use '../../styles/abstracts/mixins' as *;
+
+.ranking-badge {
+  position: absolute;
+  left: 0.8rem;
+  bottom: -1.8rem;
+  font-size: $font-size-rank;
+  font-weight: 800;
+  color: #FFFFFF;
+  line-height: 1;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  z-index: 10;
+  pointer-events: none;
+
+  @include respond-to(tablet) {
+    font-size: 4.2rem;
+    left: 0.6rem;
+    bottom: -1.5rem;
+  }
+
+  @include respond-to(mobile) {
+    font-size: 3.6rem;
+    left: 0.4rem;
+    bottom: -1.2rem;
+  }
+}

@@ -1,5 +1,6 @@
-@import 'variables';
-@import 'base/fonts';
+@use 'abstracts/variables' as *;
+@use 'abstracts/mixins' as *;
+@use 'base/fonts' as *;
 
 * {
   box-sizing: border-box;
@@ -8,8 +9,9 @@
 }
 
 html {
+  font-size: 62.5%; // 1rem = 10px
   overflow-y: scroll;
-  overflow-x: hidden; // 가로 스크롤 원천 차단
+  overflow-x: hidden;
   scrollbar-gutter: stable;
 
   &.no-scroll {
@@ -26,13 +28,13 @@ body {
   background-color: $bg-color;
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
-  overflow-x: hidden; // 가로 스크롤 원천 차단
+  overflow-x: hidden;
   width: 100%;
 }
 
 #root {
   width: 100%;
-  overflow-x: hidden; // 한 번 더 방어
+  overflow-x: hidden;
 }
 
 a {
@@ -59,13 +61,13 @@ button {
   width: 100%;
   max-width: $container-max;
   margin: 0 auto;
-  padding: 0 64px; // 데스크톱 기본 여백 추가
+  padding: 0 6.4rem;
 
   @include respond-to(tablet) {
-    padding: 0 32px;
+    padding: 0 3.2rem;
   }
 
   @include respond-to(mobile) {
-    padding: 0 20px;
+    padding: 0 2.0rem;
   }
 }
