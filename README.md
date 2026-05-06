@@ -11,7 +11,7 @@
 ---
 
 ## 🔗 배포 및 데이터 링크
-- **Demo**: [🔗 홈페이지 바로가기](https://buff-gamma.vercel.app/)
+- **Demo**: [홈페이지 바로가기](https://buff-gamma.vercel.app/)
 - **Data Source**: TMDB API, YouTube Data API v3
 
 ---
