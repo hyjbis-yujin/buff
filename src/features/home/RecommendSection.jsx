@@ -119,7 +119,7 @@ const RecommendSection = () => {
           <h4 className="title">{activeData.title}</h4>
           
           <div className="chips">
-            <TagChipList tags={activeData.tags} />
+            <TagChipList tags={activeData.tags} variant="recommend" />
           </div>
           
           <p className="description">

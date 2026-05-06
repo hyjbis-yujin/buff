@@ -17,7 +17,7 @@ export const mapRecommendData = (rawItem) => {
     id: rawItem.contentId?.toString() || rawItem.tmdbId?.toString(),
     tmdbId: rawItem.tmdbId,
     mediaType: rawItem.mediaType || 'tv',
-    image: normalizeImageUrl(rawItem.posterUrl, 'w500') || rawItem.posterUrl, 
+    image: rawItem.image || normalizeImageUrl(rawItem.posterUrl, 'w500') || rawItem.posterUrl, 
     providers: mappedProviders.map(p => ({
       id: p.id,
       name: p.label,

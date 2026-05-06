@@ -18,32 +18,17 @@ const useStore = create((set, get) => ({
 
   // Actions
   fetchHomeData: async () => {
-    // 이미 초기화되었거나 로딩 중이면 중복 호출 방지
-    if (get().isLoading || get().isInitialized) return;
-
-    set({ isLoading: true, error: null });
-
-    try {
-      // Priority 1: Parallel Fetching
-      const [rankings, youtube, recommends, collections] = await Promise.all([
-        fetchRankings().catch(err => { console.error('Rankings load failed', err); return {}; }),
-        fetchYoutubeVideos().catch(err => { console.error('Youtube load failed', err); return []; }),
-        fetchRecommendations().catch(err => { console.error('Recommendations load failed', err); return []; }),
-        fetchThemeCollections().catch(err => { console.error('Collections load failed', err); return []; })
-      ]);
-
-      set({ 
-        rankings, 
-        youtubeList: youtube, 
-        recommends, 
-        collections,
-        isInitialized: true 
-      });
-    } catch (err) {
-      set({ error: err });
-    } finally {
-      set({ isLoading: false });
-    }
+    if (get().isInitialized) return;
+    
+    // 개별적으로 페칭을 시작하고 결과가 나오는 대로 즉시 업데이트
+    // 이렇게 하면 빠른 응답(예: 랭킹)은 먼저 화면에 뜹니다.
+    
+    fetchRankings().then(data => set({ rankings: data })).catch(() => {});
+    fetchYoutubeVideos().then(data => set({ youtubeList: data })).catch(() => {});
+    fetchRecommendations().then(data => set({ recommends: data })).catch(() => {});
+    fetchThemeCollections().then(data => set({ collections: data })).catch(() => {});
+    
+    set({ isInitialized: true });
   },
 
   // Partial refresh actions if needed

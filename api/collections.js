@@ -1,7 +1,8 @@
 import { getLiveCollections } from '../src/services/server/themeService.js';
 
 export default async function handler(req, res) {
-  res.setHeader('Cache-Control', 's-maxage=3600, stale-while-revalidate=86400');
+  // 캐시 무효화로 로컬 데이터 즉시 반영 보장
+  res.setHeader('Cache-Control', 'no-store, max-age=0');
 
   try {
     const list = await getLiveCollections();
@@ -9,14 +10,8 @@ export default async function handler(req, res) {
     return res.status(200).json({
       code: 200,
       status: "success",
-      message: "success",
-      meta: {
-        updatedAt: new Date().toISOString(),
-        totalCount: list.length,
-        isLive: true
-      },
       data: {
-        list
+        list: list
       }
     });
   } catch (error) {

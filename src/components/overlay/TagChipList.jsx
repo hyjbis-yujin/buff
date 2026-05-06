@@ -2,13 +2,13 @@
 import React from 'react';
 import './TagChipList.scss';
 
-const TagChipList = ({ tags }) => {
+const TagChipList = ({ tags, variant = 'default' }) => {
   if (!tags || tags.length === 0) return null;
 
   return (
     <div className="tag-chip-list">
       {tags.map((tag) => (
-        <span key={tag} className="tag-chip">
+        <span key={tag} className={`tag-chip variant-${variant}`}>
           {tag}
         </span>
       ))}

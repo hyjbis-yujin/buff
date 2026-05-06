@@ -5,9 +5,8 @@ import RecommendSection from '../../features/home/RecommendSection';
 import useHomeData from '../../hooks/useHomeData';
 import './Home.scss';
 
-// Lazy loaded sections
-const YoutubeSection = lazy(() => import('../../features/home/YoutubeSection'));
-const ThemeCollectionSection = lazy(() => import('../../features/home/ThemeCollectionSection'));
+import YoutubeSection from '../../features/home/YoutubeSection';
+import ThemeCollectionSection from '../../features/home/ThemeCollectionSection';
 
 const Home = () => {
   // Priority 1: Parallel Fetching 트리거
@@ -19,13 +18,9 @@ const Home = () => {
       <RankingSection />
       <RecommendSection />
       
-      <Suspense fallback={<div className="section-loader" style={{ height: '300px' }}></div>}>
-        <YoutubeSection />
-      </Suspense>
+      <YoutubeSection />
 
-      <Suspense fallback={<div className="section-loader" style={{ height: '300px' }}></div>}>
-        <ThemeCollectionSection /> 
-      </Suspense>
+      <ThemeCollectionSection /> 
     </div>
   );
 };

@@ -9,9 +9,22 @@
 
   .tag-chip {
     padding: 0.8rem 1.6rem;
-    background-color: rgba(255, 255, 255, 0.1);
     border-radius: 10.0rem;
     font-size: $font-size-body-md;
     color: white;
+
+    // 기본 투명도 강화 (이전 스타일 복구)
+    background-color: rgba(255, 255, 255, 0.25);
+
+    // 추천작 섹션 전용 (더 강조된 스타일)
+    &.variant-recommend {
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+
+    // 포스터 오버레이 전용 (시인성 최우선)
+    &.variant-overlay {
+      background-color: rgba(255, 255, 255, 0.2);
+      font-weight: 500;
+    }
   }
 }

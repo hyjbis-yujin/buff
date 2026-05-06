@@ -12,7 +12,7 @@ const PosterOverlay = ({ title, providers, tags }) => {
       </div>
       <h3 className="overlay-title">{title}</h3>
       <div className="bottom-area">
-        <TagChipList tags={tags} />
+        <TagChipList tags={tags} variant="overlay" />
       </div>
     </div>
   );

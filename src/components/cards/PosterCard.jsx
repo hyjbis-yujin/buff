@@ -2,6 +2,7 @@ import React from 'react';
 import PosterOverlay from '../overlay/PosterOverlay';
 import RankingBadge from '../overlay/RankingBadge';
 import './PosterCard.scss';
+import '../overlay/PosterOverlay.scss';
 
 import { getOptimizedImageUrl } from '../../utils/imageUtils';
 import { prefetchContentDetail } from '../../services/api/detailService';

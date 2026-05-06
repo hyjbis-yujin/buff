@@ -15,7 +15,9 @@ const CURATED_RECOMMENDS = [
   { id: 281006, type: 'tv', synopsis: "재벌 상속남과 똥고집 셰프의 전쟁 같은 키친 타카 성장 로맨스" },
   { id: 280946, type: 'tv', synopsis: "IMF 부도위기를 온몸으로 맞았지만, 정면으로 돌파해 나가는 중소기업과 그 가족들의 고군분투를 그리는 드라마" },
   { id: 284744, type: 'tv', synopsis: "출세에 목맨 속물 판사가 본의 아니게 공익변호사가 되며 벌어지는 좌충우돌 휴먼 법정물" },
-  { id: 256226, type: 'tv', synopsis: "국내 최고의 여배우 '백아진'의 몰락, 그리고 그 뒤에 숨겨진 그녀의 두 얼굴." }
+  { id: 256226, type: 'tv', synopsis: "국내 최고의 여배우 '백아진'의 몰락, 그리고 그 뒤에 숨겨진 그녀의 두 얼굴." },
+  { id: 1396, type: 'tv', synopsis: "화학 교사 월터 화이트가 암 선고를 받은 후 가족을 위해 마약 제조에 뛰어들며 벌어지는 범죄 드라마의 마스터피스" },
+  { id: 213713, type: 'tv', synopsis: "평범한 대학생이 우연히 살인을 저지르게 되고, 그를 쫓는 형사와의 쫓고 쫓기는 심리전이 펼쳐진다." }
 ];
 
 export async function getLiveRecommendations() {
@@ -28,14 +30,13 @@ export async function getLiveRecommendations() {
         tmdbId: item.id,
         mediaType: item.type,
         title: details.name || details.title,
-        description: item.synopsis, // Use curated synopsis
+        description: item.synopsis, 
         image: `https://image.tmdb.org/t/p/w500${details.poster_path}`,
         backdrop: `https://image.tmdb.org/t/p/original${details.backdrop_path}`,
         tags: getTagsFromGenreIds(details.genres?.map(g => g.id)),
         providers: getValidKRProviders(details['watch/providers'])
       };
     } catch (e) {
-      console.error(`Failed to enrich recommend item ${item.id}:`, e.message);
       return null;
     }
   }));

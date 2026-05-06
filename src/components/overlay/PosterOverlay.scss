@@ -5,9 +5,11 @@
 .poster-overlay {
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.4); 
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
+  background: rgba(0, 0, 0, 0.4) !important;
+  backdrop-filter: blur(4px) !important;
+  -webkit-backdrop-filter: blur(4px) !important;
+  will-change: backdrop-filter;
+  transform: translateZ(0); 
   border-radius: inherit;
   padding: 1.6rem;
   display: flex;

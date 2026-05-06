@@ -93,26 +93,15 @@ const RankingSection = () => {
 
     return (
       <div className="slider-container">
-        <button ref={prevRef} className="nav-btn prev-btn">
+        <button className="nav-btn prev-btn ranking-prev">
           <img src={rankingArrow} alt="Previous" />
         </button>
         
         <Swiper
           modules={[Navigation]}
-          onBeforeInit={(swiper) => {
-            swiper.params.navigation.prevEl = prevRef.current;
-            swiper.params.navigation.nextEl = nextRef.current;
-          }}
-          onSwiper={(swiper) => {
-            swiperRef.current = swiper;
-            if (swiper.params.navigation) {
-              swiper.navigation.init();
-              swiper.navigation.update();
-            }
-          }}
           navigation={{
-            prevEl: prevRef.current,
-            nextEl: nextRef.current,
+            prevEl: '.ranking-prev',
+            nextEl: '.ranking-next',
           }}
           {...SLIDER_PRESETS.RANKING}
           className="ranking-swiper"
@@ -131,7 +120,7 @@ const RankingSection = () => {
           ))}
         </Swiper>
         
-        <button ref={nextRef} className="nav-btn next-btn">
+        <button className="nav-btn next-btn ranking-next">
           <img src={rankingArrow} alt="Next" />
         </button>
       </div>
