@@ -30,68 +30,187 @@ function getExistingData() {
 /**
  * 플랫폼별 데이터 수집 로직
  */
-async function fetchRankingsByProvider(providerId, providerKey) {
+async function fetchRankingsByProvider(providerId, providerKey, globalKOPools) {
   console.log(`[Fetch] '${providerKey}'(ID: ${providerId}) 데이터 수집 중...`);
   
   try {
-    // TV와 Movie 각각 인기순 20개씩 호출 (플랫폼별 트렌드이므로 언어 필터 해제)
-    const [tvRes, movieRes] = await Promise.all([
-      fetchTMDB(`/discover/tv?language=ko-KR&sort_by=popularity.desc&watch_region=KR&with_watch_providers=${providerId}`, API_KEY),
-      fetchTMDB(`/discover/movie?language=ko-KR&sort_by=popularity.desc&watch_region=KR&with_watch_providers=${providerId}`, API_KEY)
-    ]);
+    const { RANKING_CONFIG } = require('./lib/config');
 
-    const tvItems = (tvRes.results || []).map(item => ({
-      id: item.id.toString(),
-      title: item.name,
-      mediaType: 'tv',
-      image: item.poster_path ? `https://image.tmdb.org/t/p/w500${item.poster_path}` : null,
-      genreIds: item.genre_ids || [],
-      tags: getTagsFromGenreIds(item.genre_ids),
-      popularity: item.popularity || 0,
-      originalLanguage: item.original_language
-    }));
+    // 1. 플랫폼별 인기 순위 후보군 수집 (대표작 확보를 위해 5페이지까지 확대)
+    const pageIndices = [1, 2, 3, 4, 5];
+    const tvResponses = await Promise.all(pageIndices.map(p => 
+      fetchTMDB(`/discover/tv?language=ko-KR&sort_by=popularity.desc&watch_region=KR&with_watch_providers=${providerId}&page=${p}&include_adult=false`, API_KEY)
+    ));
+    const movieResponses = await Promise.all(pageIndices.map(p => 
+      fetchTMDB(`/discover/movie?language=ko-KR&sort_by=popularity.desc&watch_region=KR&with_watch_providers=${providerId}&page=${p}&include_adult=false`, API_KEY)
+    ));
 
-    const movieItems = (movieRes.results || []).map(item => ({
-      id: item.id.toString(),
-      title: item.title,
-      mediaType: 'movie',
-      image: item.poster_path ? `https://image.tmdb.org/t/p/w500${item.poster_path}` : null,
-      genreIds: item.genre_ids || [],
-      tags: getTagsFromGenreIds(item.genre_ids),
-      popularity: item.popularity || 0,
-      originalLanguage: item.original_language
-    }));
+    const tvResults = tvResponses.flatMap(res => res.results || []);
+    const movieResults = movieResponses.flatMap(res => res.results || []);
 
-    const rawItems = [...tvItems, ...movieItems].filter(item => item.image);
-
-    // [New] 개별 아이템의 모든 Provider 정보 수집
-    const enrichedItems = (await Promise.all(rawItems.map(async (item) => {
-      try {
-        const provData = await fetchTMDB(`/${item.mediaType}/${item.id}/watch/providers`, API_KEY);
-        const providers = getValidKRProviders(provData);
-        
-        // KR 유효 Provider가 없으면 제외 대상 (null 반환 후 필터링)
-        if (providers.length === 0) return null;
-        
-        return { ...item, providers };
-      } catch (e) {
-        return null;
+    // 2. 데이터 매핑 및 통합
+    const tvItems = tvResults.map(item => ({ ...item, mediaType: 'tv' }));
+    const movieItems = movieResults.map(item => ({ ...item, mediaType: 'movie' }));
+    
+    // 전역 최신/인기 한국 콘텐츠 풀과 통합
+    const combinedPool = [...tvItems, ...movieItems, ...globalKOPools];
+    
+    // 3. 중복 제거 및 필터링 (Adult 필터 강화)
+    const uniqueItemsMap = new Map();
+    combinedPool.forEach(item => {
+      if (item.poster_path && !uniqueItemsMap.has(item.id)) {
+        uniqueItemsMap.set(item.id, item);
       }
+    });
+
+    const candidateItems = Array.from(uniqueItemsMap.values());
+    console.log(`  [Candidates] 통합 후보군 ${candidateItems.length}개 분석 시작...`);
+
+    const enrichedItems = (await Promise.all(candidateItems.map(async (item) => {
+      try {
+        // 상세 정보 조회를 통해 Provider 및 성인물 여부 재확인
+        const details = await fetchTMDB(`/${item.mediaType}/${item.id}?language=ko-KR&append_to_response=watch/providers`, API_KEY);
+        
+        // 성인물 필터링 (flag 및 특정 키워드/장르 조합)
+        if (details.adult) return null;
+        
+        // 인기도는 높은데 투표수가 너무 적은 의심스러운 콘텐츠 제외 (성인물/노이즈 방지)
+        if (details.popularity > 50 && (details.vote_count || 0) < 3) return null;
+
+        const providers = getValidKRProviders(details['watch/providers']);
+        const isOnThisPlatform = providers.some(p => p.id === parseInt(providerId));
+        if (!isOnThisPlatform) return null;
+
+        const category = getCategory(details, item.mediaType);
+        
+        return {
+          id: item.id.toString(),
+          title: details.name || details.title || item.name || item.title,
+          mediaType: item.mediaType,
+          category,
+          image: details.poster_path ? `https://image.tmdb.org/t/p/w500${details.poster_path}` : null,
+          genreIds: details.genres?.map(g => g.id) || item.genre_ids || [],
+          tags: getTagsFromGenreIds(details.genres?.map(g => g.id) || item.genre_ids),
+          popularity: details.popularity || item.popularity || 0,
+          originalLanguage: details.original_language || item.original_language,
+          releaseDate: details.first_air_date || details.release_date || '0000-00-00',
+          providers
+        };
+      } catch (e) { return null; }
     }))).filter(Boolean);
 
-    // 병합 및 정렬 (1순위: 한국 콘텐츠 우선, 2순위: 인기순)
-    const sorted = enrichedItems
-      .sort((a, b) => {
-        if (a.originalLanguage === 'ko' && b.originalLanguage !== 'ko') return -1;
-        if (a.originalLanguage !== 'ko' && b.originalLanguage === 'ko') return 1;
-        return b.popularity - a.popularity;
-      })
-      .slice(0, 10);
+    // 카테고리별 버킷팅
+    const buckets = {};
+    RANKING_CONFIG.PRIORITY.forEach(cat => buckets[cat] = []);
+    buckets['others'] = [];
 
-    return sorted;
+    enrichedItems.forEach(item => {
+      if (buckets[item.category]) buckets[item.category].push(item);
+      else buckets['others'].push(item);
+    });
+
+    console.log(`  [Buckets] ${Object.entries(buckets).map(([k, v]) => `${k}: ${v.length}`).join(', ')}`);
+
+    // 정렬 규칙 (티빙/웨이브 등 로컬 플랫폼은 최신성 + 한국 콘텐츠 가중치)
+    const dateSortFn = (a, b) => new Date(b.releaseDate) - new Date(a.releaseDate);
+    const popSortFn = (a, b) => b.popularity - a.popularity;
+
+    Object.keys(buckets).forEach(cat => {
+      if (cat === 'koreanLatestDrama' || cat === 'koreanVariety') buckets[cat].sort(dateSortFn);
+      else buckets[cat].sort(popSortFn);
+    });
+
+    // 최종 슬롯 채우기
+    const selectedItems = [];
+    const usedIds = new Set();
+
+    for (const catName of RANKING_CONFIG.PRIORITY) {
+      const bucket = buckets[catName];
+      const cap = RANKING_CONFIG.CATEGORIES[catName]?.softCap || 0;
+      const toTake = bucket.splice(0, Math.min(bucket.length, cap));
+      toTake.forEach(item => {
+        if (selectedItems.length < RANKING_CONFIG.TOTAL_SLOTS) {
+          selectedItems.push(item);
+          usedIds.add(item.id);
+        }
+      });
+    }
+
+    if (selectedItems.length < RANKING_CONFIG.TOTAL_SLOTS) {
+      const residuals = [
+        ...RANKING_CONFIG.PRIORITY.flatMap(cat => buckets[cat]),
+        ...buckets['others']
+      ].sort(popSortFn);
+
+      for (const item of residuals) {
+        if (selectedItems.length < RANKING_CONFIG.TOTAL_SLOTS && !usedIds.has(item.id)) {
+          selectedItems.push(item);
+          usedIds.add(item.id);
+        }
+      }
+    }
+
+    console.log(`  [Top 3 Config] ${selectedItems.slice(0, 3).map(i => `${i.title}(${i.category})`).join(', ')}`);
+    return selectedItems;
   } catch (err) {
     console.error(`❌ '${providerKey}' 수집 중 에러 발생:`, err.message);
     return null;
+  }
+}
+
+function getCategory(details, mediaType) {
+  const genreIds = details.genres?.map(g => g.id) || [];
+  const isAnimation = genreIds.includes(16);
+  if (isAnimation) return 'animation';
+
+  if (mediaType === 'tv') {
+    const isVariety = genreIds.includes(10764) || genreIds.includes(10767);
+    const isKorean = details.original_language === 'ko';
+    if (isKorean) {
+      return isVariety ? 'koreanVariety' : 'koreanLatestDrama';
+    }
+    return genreIds.includes(18) ? 'globalDrama' : 'others';
+  }
+  return 'movie';
+}
+
+/**
+ * 전역 한국 콘텐츠 전략 후보군 수집 (최신작 + 대표 인기작)
+ */
+async function fetchGlobalKOPools() {
+  console.log("[Phase 1] 🇰🇷 한국 대표작 및 최신작 통합 후보군 수집 중...");
+  try {
+    const today = new Date().toISOString().split('T')[0];
+    const sixMonthsAgo = new Date();
+    sixMonthsAgo.setMonth(sixMonthsAgo.getMonth() - 6);
+    const startDate = sixMonthsAgo.toISOString().split('T')[0];
+
+    // 1. 최신 한국 TV (최신순) - 수집 범위 확대 (3페이지)
+    const latestResponses = await Promise.all([1, 2, 3].map(p => 
+      fetchTMDB(`/discover/tv?with_original_language=ko&sort_by=first_air_date.desc&first_air_date.lte=${today}&first_air_date.gte=${startDate}&page=${p}&include_adult=false`, API_KEY)
+    ));
+    const latestItems = latestResponses.flatMap(res => res.results || []);
+    
+    // 2. 인기 한국 TV (인기순 - 대표작 확보용)
+    const popularRes = await fetchTMDB(`/discover/tv?with_original_language=ko&sort_by=popularity.desc&page=1&include_adult=false`, API_KEY);
+
+    // 3. 인기 한국 예능 (Variety 전용) - 수집 범위 확대 (2페이지)
+    const varietyResponses = await Promise.all([1, 2].map(p =>
+      fetchTMDB(`/discover/tv?with_original_language=ko&with_genres=10764,10767&sort_by=popularity.desc&page=${p}&include_adult=false`, API_KEY)
+    ));
+    const varietyItems = varietyResponses.flatMap(res => res.results || []);
+
+    const merged = [
+      ...latestItems,
+      ...(popularRes.results || []),
+      ...varietyItems
+    ].map(i => ({ ...i, mediaType: 'tv' }));
+
+    console.log(`  >> ${merged.length}개의 한국 콘텐츠 후보를 확보했습니다.\n`);
+    return merged;
+  } catch (e) {
+    console.error("❌ 후보군 수집 실패:", e.message);
+    return [];
   }
 }
 
@@ -100,56 +219,45 @@ async function runPipeline() {
   console.log("🚀 TMDB 오늘의 인기 콘텐츠 파이프라인 시작");
   console.log("=========================================\n");
 
+  const globalKOPools = await fetchGlobalKOPools();
   const existingData = getExistingData();
   const finalData = {};
   const platformCounts = {};
   let successCount = 0;
 
-  const platforms = Object.entries(PROVIDER_MAP); // [[8, 'netflix'], ...]
+  const platforms = Object.entries(PROVIDER_MAP);
 
   for (const [id, key] of platforms) {
-    const freshItems = await fetchRankingsByProvider(id, key);
+    const freshItems = await fetchRankingsByProvider(id, key, globalKOPools);
     
-    // 검증: 5개 이상 수집 성공 시에만 최신 데이터로 인정
     if (freshItems && freshItems.length >= 5) {
       finalData[key] = freshItems;
       platformCounts[key] = freshItems.length;
       successCount++;
     } else {
-      // 폴백: 기존 데이터가 있으면 재사용
       if (existingData && existingData.data && existingData.data[key]) {
         console.log(`⚠️ '${key}' 데이터 부족/실패 -> 기존 데이터 유지(Fallback)`);
         finalData[key] = existingData.data[key];
         platformCounts[key] = finalData[key].length;
       } else {
-        console.log(`⚠️ '${key}' 데이터 부족 및 폴백 데이터 없음 -> 빈 배열 처리`);
         finalData[key] = [];
         platformCounts[key] = 0;
       }
     }
   }
 
-  // 최종 판단 (Majority Rule: 5개 플랫폼 중 3개 이상 정상 수집 시 파일 쓰기)
   const isHealthy = successCount >= 3 || (existingData && Object.keys(finalData).length === platforms.length);
 
   if (isHealthy) {
     const finalJSON = {
-      code: 200,
-      status: "success",
-      message: "success",
-      meta: {
-        updatedAt: new Date().toISOString(),
-        region: "KR",
-        platformCounts
-      },
+      code: 200, status: "success", message: "success",
+      meta: { updatedAt: new Date().toISOString(), region: "KR", platformCounts },
       data: finalData
     };
-
     fs.writeFileSync(OUT_PATH, JSON.stringify(finalJSON, null, 2), 'utf8');
     console.log(`\n[Phase 4] 💾 성공적으로 갱신되었습니다.\n>> PATH: ${OUT_PATH}`);
-    console.log(`>> 업데이트 성공 플랫폼: ${successCount} / ${platforms.length}`);
   } else {
-    console.error(`\n❌ [Fatal Error] 정상 수집된 플랫폼이 너무 적어(${successCount}개) 업데이트를 중단합니다.`);
+    console.error(`\n❌ [Fatal Error] 업데이트 중단.`);
     process.exit(1);
   }
 }

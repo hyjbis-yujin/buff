@@ -14,37 +14,20 @@ import { SkeletonBox } from '../../components/common/SkeletonAtom';
 
 import './YoutubeSection.scss';
 
+import useYoutubeCuration from '../../hooks/useYoutubeCuration';
+
 const YoutubeSection = () => {
-  const [videos, setVideos] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const { videos, isLoading, error, retryFetch } = useYoutubeCuration();
 
   const prevRef = useRef(null);
   const nextRef = useRef(null);
-
-  const loadData = useCallback(async () => {
-    try {
-      setIsLoading(true);
-      setError(null);
-      const data = await fetchYoutubeVideos();
-      setVideos(data);
-    } catch (err) {
-      setError(err);
-    } finally {
-      setIsLoading(false);
-    }
-  }, []);
-
-  useEffect(() => {
-    loadData();
-  }, [loadData]);
 
   const renderContent = () => {
     if (error) {
       return (
         <div className="status-fallback error">
           <p>유튜브 예능 정보를 불러오지 못했습니다.</p>
-          <button className="retry-btn" onClick={loadData}>새로고침 시도 🔄</button>
+          <button className="retry-btn" onClick={retryFetch}>새로고침 시도 🔄</button>
         </div>
       );
     }

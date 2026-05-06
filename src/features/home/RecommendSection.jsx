@@ -7,9 +7,9 @@ import 'swiper/css/navigation';
 import Modal from '../../components/common/Modal';
 import RecommendModalContent from './RecommendModalContent';
 import sectionArrow from '../../assets/icons/section-arrow.png';
-import { fetchRecommendations } from '../../services/api/recommendService';
 import useContentNavigation from '../../hooks/useContentNavigation';
 import { SLIDER_PRESETS } from '../../constants/sliderPresets';
+import useRecommendCuration from '../../hooks/useRecommendCuration';
 
 // Components
 import SectionHeader from '../../components/common/SectionHeader';
@@ -22,9 +22,7 @@ import './RecommendSection.scss';
 
 const RecommendSection = () => {
   const { goToDetail } = useContentNavigation();
-  const [recommendList, setRecommendList] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const { recommendList, isLoading, error, retryFetch } = useRecommendCuration();
   const [activeIndex, setActiveIndex] = useState(0);
   const [showModal, setShowModal] = useState(false);
 
@@ -73,30 +71,13 @@ const RecommendSection = () => {
     }
   };
 
-  const loadData = useCallback(async () => {
-    try {
-      setIsLoading(true);
-      setError(null);
-      const data = await fetchRecommendations();
-      setRecommendList(data);
-      setActiveIndex(0); 
-    } catch (err) {
-      setError(err);
-    } finally {
-      setIsLoading(false);
-    }
-  }, []);
-
-  useEffect(() => {
-    loadData();
-  }, [loadData]);
 
   const renderContent = () => {
     if (error) {
       return (
         <div className="status-fallback error">
           <p>추천작 메타데이터를 불러오지 못했습니다.</p>
-          <button className="retry-btn" onClick={loadData}>새로고침 시도 🔄</button>
+          <button className="retry-btn" onClick={retryFetch}>새로고침 시도 🔄</button>
         </div>
       );
     }

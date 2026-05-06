@@ -7,8 +7,8 @@ import 'swiper/css/navigation';
 import Modal from '../../components/common/Modal';
 import RecommendModalContent from './RecommendModalContent';
 import navArrow from '../../assets/icons/bottom-arrow.png';
-import { fetchThemeCollections } from '../../services/api/themeCollectionService';
 import { SLIDER_PRESETS } from '../../constants/sliderPresets';
+import useThemeCollection from '../../hooks/useThemeCollection';
 
 // Components
 import SectionHeader from '../../components/common/SectionHeader';
@@ -17,38 +17,20 @@ import { SkeletonBox } from '../../components/common/SkeletonAtom';
 import './ThemeCollectionSection.scss';
 
 const ThemeCollectionSection = () => {
+  const { collections, isLoading, error, retryFetch } = useThemeCollection();
   const [showModal, setShowModal] = useState(false);
-  const [collections, setCollections] = useState([]);
   const [selectedCollection, setSelectedCollection] = useState(null);
-  const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState(null);
 
   const prevRef = useRef(null);
   const nextRef = useRef(null);
 
-  const loadData = useCallback(async () => {
-    try {
-      setIsLoading(true);
-      setError(null);
-      const data = await fetchThemeCollections();
-      setCollections(data);
-    } catch (err) {
-      setError(err);
-    } finally {
-      setIsLoading(false);
-    }
-  }, []);
-
-  useEffect(() => {
-    loadData();
-  }, [loadData]);
 
   const renderContent = () => {
     if (error) {
       return (
         <div className="status-fallback error">
           <p>테마 컬렉션 정보를 불러오지 못했습니다.</p>
-          <button className="retry-btn" onClick={loadData}>새로고침 시도 🔄</button>
+          <button className="retry-btn" onClick={retryFetch}>새로고침 시도 🔄</button>
         </div>
       );
     }

@@ -12,7 +12,7 @@ import wishIconActive from '../../assets/icons/wish-icon-active.png';
 import seenIcon from '../../assets/icons/seen-icon.png';
 import seenIconActive from '../../assets/icons/seen-icon-active.png';
 
-import { fetchContentDetail } from '../../services/api/detailService';
+import { fetchContentDetail, fetchSimilarContent } from '../../services/api/detailService';
 import useContentNavigation from '../../hooks/useContentNavigation';
 import { SLIDER_PRESETS } from '../../constants/sliderPresets';
 
@@ -30,6 +30,7 @@ const Detail = () => {
 
   const [data, setData] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
+  const [isLoadingSimilar, setIsLoadingSimilar] = useState(true);
   const [error, setError] = useState(null);
 
   const [isWished, setIsWished] = useState(false);
@@ -42,14 +43,28 @@ const Detail = () => {
     
     try {
       setIsLoading(true);
+      setIsLoadingSimilar(true);
       setError(null);
-      const detailData = await fetchContentDetail(mediaType, id);
-      setData(detailData);
+
+      // 1단계: 메인 정보(Hero) 우선 로드
+      const heroResult = await fetchContentDetail(mediaType, id);
+      setData(heroResult);
+      setIsLoading(false); // Hero 정보 로드 완료 시 1차 렌더링
+
+      // 2단계: 비슷한 콘텐츠 검증 로드 (백그라운드)
+      if (heroResult.candidatePool) {
+        const enrichedSimilar = await fetchSimilarContent(mediaType, heroResult.candidatePool);
+        setData(prev => ({
+          ...prev,
+          similarContent: enrichedSimilar
+        }));
+      }
     } catch (err) {
       console.error('Failed to load detail:', err);
       setError(err);
-    } finally {
       setIsLoading(false);
+    } finally {
+      setIsLoadingSimilar(false);
     }
   }, [id, mediaType]);
 
@@ -218,7 +233,12 @@ const Detail = () => {
       <section className="similar-section">
         <div className="container">
           <SectionHeader title={`'${data.title}'와 비슷한 콘텐츠`} />
-          {data.similarContent.length > 0 ? (
+          
+          {isLoadingSimilar ? (
+            <div className="similar-skeleton-wrapper" style={{ marginTop: '2.4rem' }}>
+              <SkeletonGrid count={5} columns={5} />
+            </div>
+          ) : data.similarContent.length > 0 ? (
             <div className="card-rail">
               <Swiper
                 modules={[Navigation, Scrollbar, Mousewheel]}

@@ -11,7 +11,13 @@ function loadEnv() {
       const envFile = fs.readFileSync(envPath, 'utf8');
       envFile.split('\n').forEach(line => {
         const match = line.match(/^([^#=]+)=(.*)$/);
-        if (match) process.env[match[1].trim()] = match[2].trim();
+        if (match) {
+          const key = match[1].trim();
+          const val = match[2].trim();
+          process.env[key] = val;
+          if (key === 'VITE_TMDB_API_KEY') process.env['TMDB_API_KEY'] = val;
+          if (key === 'VITE_YOUTUBE_API_KEY') process.env['YOUTUBE_API_KEY'] = val;
+        }
       });
       return true;
     }

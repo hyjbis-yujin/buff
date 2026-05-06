@@ -3,30 +3,110 @@
   "status": "success",
   "message": "success",
   "meta": {
-    "updatedAt": "2026-04-12T12:40:42.668Z",
-    "totalCount": 10
+    "updatedAt": "2026-05-04T13:48:14.270Z",
+    "totalCount": 12
   },
   "data": {
     "list": [
       {
-        "videoId": "G2snH2c1cEU",
-        "title": "[특집 예고캠] 풍향고2 후일담｜4/18(토) 오전 9시 공개",
-        "thumbnail": "https://i.ytimg.com/vi/G2snH2c1cEU/hqdefault.jpg",
+        "videoId": "aIYDNRv3Dp0",
+        "title": "[EN] 홍보대사는 핑계고｜EP.106",
+        "thumbnail": "https://i.ytimg.com/vi/aIYDNRv3Dp0/hqdefault.jpg",
         "channelName": "뜬뜬 DdeunDdeun",
         "channelImage": "https://yt3.ggpht.com/D0eRDrxMc6Yu0AZSQobnV21TwXPPUo9GWk4a5RunYUXpjyLqJdqw-WNeEZ1RjVfH39TeHr37ng=s88-c-k-c0x00ffffff-no-rj",
-        "viewCount": "조회수 13.1만회",
-        "url": "https://www.youtube.com/watch?v=G2snH2c1cEU",
-        "publishedAt": "2026-04-12T11:16:18Z"
+        "viewCount": "조회수 179.5만회",
+        "url": "https://www.youtube.com/watch?v=aIYDNRv3Dp0",
+        "publishedAt": "2026-05-02T00:00:06Z"
       },
       {
-        "videoId": "A9Z2wrZM8D0",
-        "title": "[12화 예고] 심장 쫄깃 마지막 선물은?! 끝날 때 까진 끝난 게 아니다 | 마니또 클럽",
-        "thumbnail": "https://i.ytimg.com/vi/A9Z2wrZM8D0/hqdefault.jpg",
+        "videoId": "a2QGDKeGPgs",
+        "title": "보은의 신-서지니형을 받아준 바냐삼촌팀에게고마워서그래 | ☎소통의 신",
+        "thumbnail": "https://i.ytimg.com/vi/a2QGDKeGPgs/hqdefault.jpg",
+        "channelName": "채널십오야",
+        "channelImage": "https://yt3.ggpht.com/iKz6OMmWDbyN7Yi5AN6E-pKw-d9em-C9UVYvClL2A4EmUdHL1qlrxs4WL20QJF8ym0QBXD9EcQ=s88-c-k-c0x00ffffff-no-rj",
+        "viewCount": "조회수 70.8만회",
+        "url": "https://www.youtube.com/watch?v=a2QGDKeGPgs",
+        "publishedAt": "2026-05-01T09:00:01Z"
+      },
+      {
+        "videoId": "KS1GXq4I1wQ",
+        "title": "[하이라이트] 쏟아지는 정보를 캐치 캐치! 천재들의 필기 전쟁🧠 | 두 번째 토너먼트 매치 | 데스게임2",
+        "thumbnail": "https://i.ytimg.com/vi/KS1GXq4I1wQ/hqdefault.jpg",
         "channelName": "TEO 테오",
         "channelImage": "https://yt3.ggpht.com/rHO6yWNDSuMvF-vaLb7SWaZQBbcDuqRGOIyHyYuFgzkqGo7e7pUg6oJl1pRq2ZFPnPG_W3koTw=s88-c-k-c0x00ffffff-no-rj",
-        "viewCount": "조회수 540회",
-        "url": "https://www.youtube.com/watch?v=A9Z2wrZM8D0",
-        "publishedAt": "2026-04-12T11:00:00Z"
+        "viewCount": "조회수 8796회",
+        "url": "https://www.youtube.com/watch?v=KS1GXq4I1wQ",
+        "publishedAt": "2026-04-30T09:00:00Z"
+      },
+      {
+        "videoId": "uXN_HRwu31I",
+        "title": "[6회 하이라이트] 부동산? 배당주? 채권? 자산관리도 어렵지 않아요😉 | 만학도 지씨",
+        "thumbnail": "https://i.ytimg.com/vi/uXN_HRwu31I/hqdefault.jpg",
+        "channelName": "TEO 테오",
+        "channelImage": "https://yt3.ggpht.com/rHO6yWNDSuMvF-vaLb7SWaZQBbcDuqRGOIyHyYuFgzkqGo7e7pUg6oJl1pRq2ZFPnPG_W3koTw=s88-c-k-c0x00ffffff-no-rj",
+        "viewCount": "조회수 5435회",
+        "url": "https://www.youtube.com/watch?v=uXN_HRwu31I",
+        "publishedAt": "2026-04-29T03:00:00Z"
+      },
+      {
+        "videoId": "Z0T1XEyV3kg",
+        "title": "[SUB] 어디서 타는 냄새 안나요? 모터 단 교환 입이 불타고 있잖아 | EP. 137 구교환 | 살롱드립",
+        "thumbnail": "https://i.ytimg.com/vi/Z0T1XEyV3kg/hqdefault.jpg",
+        "channelName": "TEO 테오",
+        "channelImage": "https://yt3.ggpht.com/rHO6yWNDSuMvF-vaLb7SWaZQBbcDuqRGOIyHyYuFgzkqGo7e7pUg6oJl1pRq2ZFPnPG_W3koTw=s88-c-k-c0x00ffffff-no-rj",
+        "viewCount": "조회수 47만회",
+        "url": "https://www.youtube.com/watch?v=Z0T1XEyV3kg",
+        "publishedAt": "2026-04-28T09:00:00Z"
+      },
+      {
+        "videoId": "cbGvG2uMZeo",
+        "title": "한두 마디 들어보니까 너 토크쇼에 좀 나가야겠어..",
+        "thumbnail": "https://i.ytimg.com/vi/cbGvG2uMZeo/hqdefault.jpg",
+        "channelName": "요정재형",
+        "channelImage": "https://yt3.ggpht.com/y3JMnr5ZNC0flAJhoqb-5vceNtB5fpX590cFC5ssSbJsRvs0o9ONjqFaYzYgAmjFs8_Jmh2PwTU=s88-c-k-c0x00ffffff-no-rj",
+        "viewCount": "조회수 29.8만회",
+        "url": "https://www.youtube.com/watch?v=cbGvG2uMZeo",
+        "publishedAt": "2026-04-26T08:00:25Z"
+      },
+      {
+        "videoId": "98sjXSV6wWA",
+        "title": "삼계탕 좋아하시면, 프랑스식으로 살짝만 비틀어서 요리해보세요!ㅣ+야채 구이 샐러드ㅣ안효섭 편 레시피",
+        "thumbnail": "https://i.ytimg.com/vi/98sjXSV6wWA/hqdefault.jpg",
+        "channelName": "요정재형",
+        "channelImage": "https://yt3.ggpht.com/y3JMnr5ZNC0flAJhoqb-5vceNtB5fpX590cFC5ssSbJsRvs0o9ONjqFaYzYgAmjFs8_Jmh2PwTU=s88-c-k-c0x00ffffff-no-rj",
+        "viewCount": "조회수 2.9만회",
+        "url": "https://www.youtube.com/watch?v=98sjXSV6wWA",
+        "publishedAt": "2026-04-25T08:00:16Z"
+      },
+      {
+        "videoId": "hAIxIdXQySI",
+        "title": "[EN] 금빛 우정은 핑계고｜EP.105",
+        "thumbnail": "https://i.ytimg.com/vi/hAIxIdXQySI/hqdefault.jpg",
+        "channelName": "뜬뜬 DdeunDdeun",
+        "channelImage": "https://yt3.ggpht.com/D0eRDrxMc6Yu0AZSQobnV21TwXPPUo9GWk4a5RunYUXpjyLqJdqw-WNeEZ1RjVfH39TeHr37ng=s88-c-k-c0x00ffffff-no-rj",
+        "viewCount": "조회수 350.3만회",
+        "url": "https://www.youtube.com/watch?v=hAIxIdXQySI",
+        "publishedAt": "2026-04-25T00:00:06Z"
+      },
+      {
+        "videoId": "iTVbpPeDb4s",
+        "title": "[EN] 풍향고2 후일담은 핑계고｜EP.104",
+        "thumbnail": "https://i.ytimg.com/vi/iTVbpPeDb4s/hqdefault.jpg",
+        "channelName": "뜬뜬 DdeunDdeun",
+        "channelImage": "https://yt3.ggpht.com/D0eRDrxMc6Yu0AZSQobnV21TwXPPUo9GWk4a5RunYUXpjyLqJdqw-WNeEZ1RjVfH39TeHr37ng=s88-c-k-c0x00ffffff-no-rj",
+        "viewCount": "조회수 413.3만회",
+        "url": "https://www.youtube.com/watch?v=iTVbpPeDb4s",
+        "publishedAt": "2026-04-18T00:00:06Z"
+      },
+      {
+        "videoId": "IU6SEVtj18c",
+        "title": "날 좋을 때 친구들이랑 '후다닥딱 툭툭' 해먹기 좋은 스테이크 (요정 프랑스 식재료 구입처 공유)",
+        "thumbnail": "https://i.ytimg.com/vi/IU6SEVtj18c/hqdefault.jpg",
+        "channelName": "요정재형",
+        "channelImage": "https://yt3.ggpht.com/y3JMnr5ZNC0flAJhoqb-5vceNtB5fpX590cFC5ssSbJsRvs0o9ONjqFaYzYgAmjFs8_Jmh2PwTU=s88-c-k-c0x00ffffff-no-rj",
+        "viewCount": "조회수 4.6만회",
+        "url": "https://www.youtube.com/watch?v=IU6SEVtj18c",
+        "publishedAt": "2026-04-13T08:00:17Z"
       },
       {
         "videoId": "RSgPFcRdWig",
@@ -34,79 +114,19 @@
         "thumbnail": "https://i.ytimg.com/vi/RSgPFcRdWig/hqdefault.jpg",
         "channelName": "요정재형",
         "channelImage": "https://yt3.ggpht.com/y3JMnr5ZNC0flAJhoqb-5vceNtB5fpX590cFC5ssSbJsRvs0o9ONjqFaYzYgAmjFs8_Jmh2PwTU=s88-c-k-c0x00ffffff-no-rj",
-        "viewCount": "조회수 6.1만회",
+        "viewCount": "조회수 112.7만회",
         "url": "https://www.youtube.com/watch?v=RSgPFcRdWig",
         "publishedAt": "2026-04-12T08:00:26Z"
       },
       {
-        "videoId": "YO7tYucRNUc",
-        "title": "[11화 선공개] (((느껴진다 재능의 벽))) 광희의 웃다가 힘빠지는 응원가 | 마니또 클럽",
-        "thumbnail": "https://i.ytimg.com/vi/YO7tYucRNUc/hqdefault.jpg",
-        "channelName": "TEO 테오",
-        "channelImage": "https://yt3.ggpht.com/rHO6yWNDSuMvF-vaLb7SWaZQBbcDuqRGOIyHyYuFgzkqGo7e7pUg6oJl1pRq2ZFPnPG_W3koTw=s88-c-k-c0x00ffffff-no-rj",
-        "viewCount": "조회수 5098회",
-        "url": "https://www.youtube.com/watch?v=YO7tYucRNUc",
-        "publishedAt": "2026-04-11T23:30:00Z"
-      },
-      {
-        "videoId": "5i98v3ASKHg",
-        "title": "충격 비주얼 수상한 음식의 정체 #크레이지투어",
-        "thumbnail": "https://i.ytimg.com/vi/5i98v3ASKHg/hqdefault.jpg",
-        "channelName": "TEO 테오",
-        "channelImage": "https://yt3.ggpht.com/rHO6yWNDSuMvF-vaLb7SWaZQBbcDuqRGOIyHyYuFgzkqGo7e7pUg6oJl1pRq2ZFPnPG_W3koTw=s88-c-k-c0x00ffffff-no-rj",
-        "viewCount": "조회수 9212회",
-        "url": "https://www.youtube.com/watch?v=5i98v3ASKHg",
-        "publishedAt": "2026-04-11T14:00:00Z"
-      },
-      {
-        "videoId": "1Xo3kycJork",
-        "title": "콧털 다 뽑히는 튀르키예식 제모 #크레이지투어",
-        "thumbnail": "https://i.ytimg.com/vi/1Xo3kycJork/hqdefault.jpg",
-        "channelName": "TEO 테오",
-        "channelImage": "https://yt3.ggpht.com/rHO6yWNDSuMvF-vaLb7SWaZQBbcDuqRGOIyHyYuFgzkqGo7e7pUg6oJl1pRq2ZFPnPG_W3koTw=s88-c-k-c0x00ffffff-no-rj",
-        "viewCount": "조회수 1.7만회",
-        "url": "https://www.youtube.com/watch?v=1Xo3kycJork",
-        "publishedAt": "2026-04-11T14:00:00Z"
-      },
-      {
-        "videoId": "TdCxC08h6gA",
-        "title": "식감이 왜이래ㅜㅜ 양 눈알 먹방 #크레이지투어",
-        "thumbnail": "https://i.ytimg.com/vi/TdCxC08h6gA/hqdefault.jpg",
-        "channelName": "TEO 테오",
-        "channelImage": "https://yt3.ggpht.com/rHO6yWNDSuMvF-vaLb7SWaZQBbcDuqRGOIyHyYuFgzkqGo7e7pUg6oJl1pRq2ZFPnPG_W3koTw=s88-c-k-c0x00ffffff-no-rj",
-        "viewCount": "조회수 6203회",
-        "url": "https://www.youtube.com/watch?v=TdCxC08h6gA",
-        "publishedAt": "2026-04-11T14:00:00Z"
-      },
-      {
-        "videoId": "gF7bB6vAzy4",
-        "title": "[축제 FULL] 원하~잖니 - Call Me Baby | 🏫응답하라 하이스쿨",
-        "thumbnail": "https://i.ytimg.com/vi/gF7bB6vAzy4/hqdefault.jpg",
-        "channelName": "채널십오야",
-        "channelImage": "https://yt3.ggpht.com/iKz6OMmWDbyN7Yi5AN6E-pKw-d9em-C9UVYvClL2A4EmUdHL1qlrxs4WL20QJF8ym0QBXD9EcQ=s88-c-k-c0x00ffffff-no-rj",
-        "viewCount": "조회수 1.5만회",
-        "url": "https://www.youtube.com/watch?v=gF7bB6vAzy4",
-        "publishedAt": "2026-04-11T11:00:52Z"
-      },
-      {
-        "videoId": "1vmkCtVjjvQ",
-        "title": "[축제 FULL] 꽃보다 5인조 - 사랑해 그리고 기억해 | 🏫응답하라 하이스쿨",
-        "thumbnail": "https://i.ytimg.com/vi/1vmkCtVjjvQ/hqdefault.jpg",
-        "channelName": "채널십오야",
-        "channelImage": "https://yt3.ggpht.com/iKz6OMmWDbyN7Yi5AN6E-pKw-d9em-C9UVYvClL2A4EmUdHL1qlrxs4WL20QJF8ym0QBXD9EcQ=s88-c-k-c0x00ffffff-no-rj",
-        "viewCount": "조회수 1.1만회",
-        "url": "https://www.youtube.com/watch?v=1vmkCtVjjvQ",
-        "publishedAt": "2026-04-11T11:00:32Z"
-      },
-      {
-        "videoId": "6i7fbkSf6wI",
-        "title": "[축제 FULL] A.U.I - 환상 속의 그대 | 🏫응답하라 하이스쿨",
-        "thumbnail": "https://i.ytimg.com/vi/6i7fbkSf6wI/hqdefault.jpg",
-        "channelName": "채널십오야",
-        "channelImage": "https://yt3.ggpht.com/iKz6OMmWDbyN7Yi5AN6E-pKw-d9em-C9UVYvClL2A4EmUdHL1qlrxs4WL20QJF8ym0QBXD9EcQ=s88-c-k-c0x00ffffff-no-rj",
-        "viewCount": "조회수 9115회",
-        "url": "https://www.youtube.com/watch?v=6i7fbkSf6wI",
-        "publishedAt": "2026-04-11T11:00:24Z"
+        "videoId": "UJ2tW9WN2n4",
+        "title": "[EN] 전성기는 핑계고｜EP.103",
+        "thumbnail": "https://i.ytimg.com/vi/UJ2tW9WN2n4/hqdefault.jpg",
+        "channelName": "뜬뜬 DdeunDdeun",
+        "channelImage": "https://yt3.ggpht.com/D0eRDrxMc6Yu0AZSQobnV21TwXPPUo9GWk4a5RunYUXpjyLqJdqw-WNeEZ1RjVfH39TeHr37ng=s88-c-k-c0x00ffffff-no-rj",
+        "viewCount": "조회수 389.8만회",
+        "url": "https://www.youtube.com/watch?v=UJ2tW9WN2n4",
+        "publishedAt": "2026-04-11T00:00:06Z"
       }
     ]
   }

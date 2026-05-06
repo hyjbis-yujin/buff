@@ -17,17 +17,19 @@ import { SkeletonBox } from '../../components/common/SkeletonAtom';
 
 import './RankingSection.scss';
 
-const PLATFORMS = Object.values(PROVIDERS).map(p => ({
-  label: p.label,
-  key: p.key
-}));
+import useMediaRanking from '../../hooks/useMediaRanking';
 
 const RankingSection = () => {
   const { goToDetail } = useContentNavigation();
-  const [activePlatform, setActivePlatform] = useState(PLATFORMS[0]); // {label, key}
-  const [rankingData, setRankingData] = useState({});
-  const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const { 
+    platforms, 
+    activePlatform, 
+    currentData, 
+    isLoading, 
+    error, 
+    handleTabClick, 
+    retryFetch 
+  } = useMediaRanking();
 
   const swiperRef = useRef(null);
   const prevRef = useRef(null);
@@ -36,23 +38,6 @@ const RankingSection = () => {
   
   const [isDragging, setIsDragging] = useState(false);
   const dragState = useRef({ isMoved: false, startX: 0, scrollLeft: 0 });
-
-  const loadData = useCallback(async () => {
-    try {
-      setIsLoading(true);
-      setError(null);
-      const data = await fetchRankings();
-      setRankingData(data);
-    } catch (err) {
-      setError(err);
-    } finally {
-      setIsLoading(false);
-    }
-  }, []);
-
-  useEffect(() => {
-    loadData();
-  }, [loadData]);
 
   useEffect(() => {
     if (swiperRef.current) {
@@ -76,19 +61,12 @@ const RankingSection = () => {
     tabsRef.current.scrollLeft = dragState.current.scrollLeft - walk;
   };
 
-  const handleTabClick = (platform) => {
-    if (dragState.current.isMoved) return;
-    setActivePlatform(platform);
-  };
-
-  const currentData = rankingData[activePlatform.key] || [];
-
   const renderContent = () => {
     if (error) {
       return (
         <div className="status-fallback error">
           <p>오늘의 인기 콘텐츠 정보를 불러오지 못했습니다.</p>
-          <button className="retry-btn" onClick={loadData}>새로고침 시도 🔄</button>
+          <button className="retry-btn" onClick={retryFetch}>새로고침 시도 🔄</button>
         </div>
       );
     }
@@ -171,11 +149,11 @@ const RankingSection = () => {
           onMouseUp={onDragEnd}
           onMouseMove={onDragMove}
         >
-          {PLATFORMS.map((platform) => (
+          {platforms.map((platform) => (
             <button 
               key={platform.key}
               className={`tab-btn ${activePlatform.key === platform.key ? 'active' : ''}`}
-              onClick={() => handleTabClick(platform)}
+              onClick={() => handleTabClick(platform, dragState.current.isMoved)}
               draggable={false}
             >
               {platform.label}

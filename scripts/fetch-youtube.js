@@ -6,16 +6,13 @@ const { fetchYouTube, formatViewCount, isOriginalVariety } = require('./lib/yout
 // 1. 환경 변수 로드
 loadEnv();
 
+const { YOUTUBE_CONFIG } = require('./lib/config');
+
 // API 키 체크 (없으면 스크립트 중단하되, fetch-recommends처럼 에러 메시지 출력)
 const API_KEY = process.env.YOUTUBE_API_KEY;
 
-// 채널 리스트 (뜬뜬, 십오야, TEO, 요정재형 등)
-const CHANNELS = [
-  { name: "뜬뜬 DdeunDdeun", id: "UCDNvRZRgvkBTUkQzFoT_8rA" },
-  { name: "채널십오야", id: "UCQ2O-iftmnlfrBuNsUUTofQ" },
-  { name: "TEO 테오", id: "UC-uIpGINZDL-VIHQQzJW8jw" },
-  { name: "요정재형", id: "UCN5XdqTDRbyjXPF5NXUqWdA" }
-];
+// 채널 리스트 (뜬뜬, 십오야, TEO, 요정재형 등) config 연동
+const CHANNELS = YOUTUBE_CONFIG.CHANNELS;
 
 async function fetchYoutubeData() {
   console.log("=========================================");
@@ -42,21 +39,33 @@ async function fetchYoutubeData() {
     for (const channel of CHANNELS) {
       console.log(`[Channel] '${channel.name}' 최신 영상 조회 중...`);
       
-      // 1. 채널의 최신 동영상 검색 (최신 5개씩)
-      const searchUrl = `/search?part=snippet&channelId=${channel.id}&maxResults=5&order=date&type=video`;
+      // 1. 채널의 최신 동영상 검색 (충분한 후보군을 위해 SEARCH_DEPTH 만큼 조회)
+      const searchUrl = `/search?part=snippet&channelId=${channel.id}&maxResults=${YOUTUBE_CONFIG.SEARCH_DEPTH}&order=date&type=video`;
       const searchRes = await fetchYouTube(searchUrl, API_KEY);
       
       const items = searchRes.items || [];
       const videoIds = items.map(i => i.id.videoId).join(',');
 
-      // 2. 영상 상세 통계 조회 (조회수 등)
-      const statsUrl = `/videos?part=snippet,statistics&id=${videoIds}`;
+      // 2. 영상 상세 통계 조회 (조회수 및 영상 길이 등)
+      // Shorts 필터링을 위해 contentDetails(duration) 추가
+      const statsUrl = `/videos?part=snippet,statistics,contentDetails&id=${videoIds}`;
       const statsRes = await fetchYouTube(statsUrl, API_KEY);
       
       const detailedItems = statsRes.items || [];
+      let channelVideoCount = 0;
 
       for (const item of detailedItems) {
-        if (isOriginalVariety(item.snippet)) {
+        // 1. 채널당 최대 노출 수 제한 (다양성 확보)
+        if (channelVideoCount >= YOUTUBE_CONFIG.MAX_VIDEOS_PER_CHANNEL) break;
+
+        // 2. 제목 유사도/중복 체크 (완전 일치 또는 매우 유사한 제목 제외)
+        const normalizedTitle = item.snippet.title.replace(/\s+/g, '').toLowerCase();
+        const isDuplicate = videoList.some(v => 
+          v.title.replace(/\s+/g, '').toLowerCase() === normalizedTitle
+        );
+        if (isDuplicate) continue;
+
+        if (isOriginalVariety(item.snippet, item.contentDetails)) {
           videoList.push({
             videoId: item.id,
             title: item.snippet.title,
@@ -67,14 +76,15 @@ async function fetchYoutubeData() {
             url: `https://www.youtube.com/watch?v=${item.id}`,
             publishedAt: item.snippet.publishedAt
           });
+          channelVideoCount++;
         }
       }
     }
 
-    // 최신순 정렬 후 상위 10개 선별
+    // 최신순 정렬 후 상위 TOTAL_RESULT_COUNT개 선별
     const finalItems = videoList
       .sort((a, b) => new Date(b.publishedAt) - new Date(a.publishedAt))
-      .slice(0, 10);
+      .slice(0, YOUTUBE_CONFIG.TOTAL_RESULT_COUNT);
 
     console.log(`\n[Phase 3] ✅ 영상 선별 완료: 총 ${finalItems.length}개\n`);
 

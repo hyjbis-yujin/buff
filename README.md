@@ -1,16 +1,104 @@
-# React + Vite
+# BUFF
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+### OTT 랭킹 및 미디어 콘텐츠 큐레이션 플랫폼
+**BUFF**는 넷플릭스, 티빙, 웨이브 등 흩어져 있는 OTT 플랫폼의 인기 순위와 고품질 유튜브 오리지널 예능 콘텐츠를 한눈에 탐색할 수 있는 프리미엄 미디어 큐레이션 플랫폼입니다. 복잡한 탐색 과정 없이 지능적인 랭킹 시스템을 통해 지금 가장 화제가 되는 콘텐츠를 제안합니다.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## 🖼️ 미리보기
+![Preview](./src/assets/preview.gif)
 
-## React Compiler
+---
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 🔗 배포 및 데이터 링크
+- **Demo**: [🔗 홈페이지 바로가기](https://buff-gamma.vercel.app/)
+- **Data Source**: TMDB API, YouTube Data API v3
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 📝 프로젝트 소개
+**BUFF**는 '무엇을 볼지 고민하는 시간(Decision Fatigue)'을 혁신적으로 줄여주는 **프리미엄 미디어 큐레이션 플랫폼**입니다. 수많은 OTT 플랫폼과 유튜브에 흩어져 있는 방대한 데이터 속에서, 사용자가 지금 가장 필요로 하는 최신 트렌드와 고품질 콘텐츠를 지능적으로 선별하여 제안합니다.
+
+단순한 인기 차트의 나열을 넘어, **서버리스 API와 전역 상태 관리 시스템**을 통해 5대 OTT의 실시간 랭킹과 검증된 유튜브 오리지널 예능을 통합 관리합니다. 특히 **병렬 데이터 호출(Parallel Fetching)** 구조를 도입하여 여러 섹션의 데이터를 동시에 수집함으로써 사용자에게 지연 없는 초고속 탐색 경험을 제공하는 것이 BUFF만의 핵심 기술 가치입니다.
+
+모바일 웹 환경에 최적화된 **글래스모피즘 기반의 다크 모드 UI**와 가변 해상도 이미지 최적화, 그리고 스마트 프리페칭 기술은 사용자에게 단순한 탐색을 넘어선 즐거운 미디어 경험(Premium Media Experience)을 선사합니다.
+
+---
+
+## 🚀 주요 기능
+
+### 🏆 플랫폼 통합 실시간 랭킹
+- **5대 OTT 통합 비교**: 넷플릭스, 디즈니+, 티빙, 웨이브, 쿠팡플레이의 인기 순위를 한눈에 확인합니다.
+- **지능적 우선순위**: 한국 최신 드라마와 예능을 상단에 우선 배치하는 자체 알고리즘이 적용되어 있습니다.
+
+### 📺 유튜브 오리지널 예능 큐레이션
+- **엄선된 채널**: '채널십오야', '뜬뜬', '테오' 등 검증된 예능 채널의 고품질 콘텐츠만 수집합니다.
+- **스마트 필터링**: Shorts 및 짧은 홍보 영상을 제외하고 3분 이상의 정규 콘텐츠 위주로 자동 선별합니다.
+
+### 🎡 테마별 맞춤 큐레이션
+- **오늘의 추천**: 매일 업데이트되는 데이터를 바탕으로 지금 가장 볼만한 콘텐츠를 제안합니다.
+- **테마 컬렉션**: 특정 장르, 분위기, 배우 등 다양한 테마별로 묶인 전문적인 컬렉션을 제공합니다.
+
+### 🔍 콘텐츠 상세 정보 및 연결
+- **상세 메타데이터**: TMDB API 연동으로 줄거리, 출연진, 개봉일 등 풍부한 정보를 제공합니다.
+- **OTT 다이렉트 링크**: 정보를 확인한 후, 해당 콘텐츠를 제공하는 OTT 서비스로 즉시 연결됩니다.
+
+### ⚡ 최적화된 사용자 인터랙션
+- **병렬 호출 엔진**: `Promise.all` 기반의 데이터 로딩으로 Waterfall 현상을 완벽히 제거했습니다.
+- **안정적인 Fallback**: 실시간 API 장애 시에도 준비된 정적 데이터를 즉시 서빙하여 끊김 없는 서비스를 보장합니다.
+- **가변 해상도 이미지**: 기기 환경에 맞는 최적의 이미지 사이즈를 제공하여 모바일 데이터와 성능을 최적화합니다.
+---
+
+## ✨ UI/UX 특징
+
+- **프리미엄 다크 모드**: 시각적 피로도를 낮추고 콘텐츠 몰입도를 극대화하는 깊이 있는 다크 테마와 세련된 포인트 컬러 활용
+- **인터랙티브 콘텐츠 레일**: Swiper 라이브러리를 고도화하여 모바일 터치 환경에 최적화된 매끄러운 횡스크롤 탐색 경험 제공
+- **시각적 위계 최적화**: 중요도에 따른 카드 크기 변주와 명확한 타이포그래피로 정보 과부하 없는 콘텐츠 스캐닝 환경 구축
+- **동적 히어로 섹션**: 최신 화제작을 강조하는 상단 배너와 동적인 UI 전환을 통해 서비스 진입 시 첫인상 강화
+- **OTT 브랜드 아이덴티티 통합**: 각 플랫폼의 고유 컬러와 로고를 UI에 녹여내어 정보의 출처를 직관적으로 인지 가능하게 설계
+
+---
+
+## 🛠 기술 스택
+
+### Frontend
+- **React**: 컴포넌트 기반 아키텍처를 통한 효율적인 UI 개발 및 유지보수
+- **Vite**: 초고속 빌드 도구를 활용한 쾌적한 개발 및 최적화 환경
+- **React Router**: 선언적 라우팅을 통한 페이지 전환 및 파라미터 기반 상세 페이지 구현
+
+### State Management
+- **Zustand**: 가볍고 성능이 뛰어난 전역 상태 관리 라이브러리 활용
+
+### Styling
+- **Sass (SCSS)**: 변수, 믹스인, 모듈화 시스템을 통한 체계적인 디자인 시스템 구축
+- **Swiper**: 모바일 터치 인터랙션에 최적화된 고성능 슬라이더 구현
+
+### Data Pipeline (Node.js)
+- **Automated Scripts**: TMDB 및 YouTube API를 연동하여 자동으로 데이터를 갱신하는 배치 스크립트 운영
+
+---
+
+## 💡 핵심 구현 포인트
+
+- **병렬 페칭 엔진(Parallel Fetching Engine)**: `Zustand`와 `Promise.all`을 결합하여 여러 도메인의 데이터를 단일 사이클에서 동시에 로드함으로써 초기 로딩 시간(FCP)을 획기적으로 개선
+- **Stale-While-Revalidate 캐싱**: 서버리스 API 응답에 `SWR` 캐시 헤더를 적용하여 실시간성과 응답 속도 사이의 최적의 밸런스 유지
+- **전략적 리소스 최적화**: 런타임 이미지 가변 서빙 로직을 구현하여 네트워크 환경에 맞는 최적의 이미지 리소스 소비 구현
+- **로직 모듈화 (Custom Hooks)**: 비대한 UI 컴포넌트에서 비즈니스 로직과 API 통신부(`useMediaRanking`, `useYoutubeCuration` 등)를 완벽히 분리하여 테스트 가능성과 가독성 확보
+- **지능형 폴백 시스템**: API 장애 시에도 정적 데이터를 즉시 서빙하는 2중 방어 시스템을 구축하여 서비스 가용성을 극대화
+
+---
+
+## 📂 폴더 구조
+
+```text
+src/
+ ┣ assets/      # 이미지, 아이콘 등 정적 자원
+ ┣ components/  # 공통 컴포넌트 (Layout, Header, Footer, SectionHeader 등)
+ ┣ constants/   # UI 텍스트 및 설정 상수 관리
+ ┣ features/    # 도메인별 기능 컴포넌트 (home, detail 등)
+ ┣ pages/       # 라우트 단위 페이지 (Home, Detail, Login)
+ ┣ services/    # API 호출 및 비즈니스 로직
+ ┣ store/       # Zustand 전역 상태 스토어
+ ┣ styles/      # SCSS 디자인 시스템 및 테마 변수
+ ┗ scripts/     # 데이터 수집 및 정제용 Node.js 스크립트 (root 위치)
+```
