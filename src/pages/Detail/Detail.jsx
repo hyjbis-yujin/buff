@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useCallback } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, Scrollbar, Mousewheel } from 'swiper/modules';
+import { Navigation, Scrollbar, Mousewheel, FreeMode } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/scrollbar';
@@ -241,7 +241,7 @@ const Detail = () => {
           ) : data.similarContent.length > 0 ? (
             <div className="card-rail">
               <Swiper
-                modules={[Navigation, Scrollbar, Mousewheel]}
+                modules={[Navigation, Scrollbar, Mousewheel, FreeMode]}
                 {...SLIDER_PRESETS.DETAIL_SIMILAR}
                 grabCursor={true}
                 mousewheel={true}

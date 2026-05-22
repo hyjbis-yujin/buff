@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect, useCallback } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper/modules';
 import 'swiper/css';
@@ -21,9 +21,42 @@ const ThemeCollectionSection = () => {
   const [showModal, setShowModal] = useState(false);
   const [selectedCollection, setSelectedCollection] = useState(null);
 
+  const swiperRef = useRef(null);
   const prevRef = useRef(null);
   const nextRef = useRef(null);
 
+  useEffect(() => {
+    const swiper = swiperRef.current;
+    if (!swiper) return;
+
+    // Swiper 마운트 후 navigation 엘리먼트 강제 바인딩 및 갱신
+    if (swiper.params && swiper.params.navigation) {
+      swiper.params.navigation.prevEl = prevRef.current;
+      swiper.params.navigation.nextEl = nextRef.current;
+      swiper.navigation.destroy();
+      swiper.navigation.init();
+      swiper.navigation.update();
+    }
+
+    let rAFId = null;
+    const handleResize = () => {
+      if (rAFId) cancelAnimationFrame(rAFId);
+      rAFId = requestAnimationFrame(() => {
+        if (swiperRef.current) {
+          swiperRef.current.update();
+          if (swiperRef.current.navigation) {
+            swiperRef.current.navigation.update();
+          }
+        }
+      });
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+      if (rAFId) cancelAnimationFrame(rAFId);
+    };
+  }, [collections]);
 
   const renderContent = () => {
     if (error) {
@@ -62,14 +95,13 @@ const ThemeCollectionSection = () => {
       <div className="slider-container">
         <Swiper
           modules={[Navigation]}
-          onBeforeInit={(swiper) => {
-            swiper.params.navigation.prevEl = prevRef.current;
-            swiper.params.navigation.nextEl = nextRef.current;
+          onSwiper={(swiper) => {
+            swiperRef.current = swiper;
           }}
           {...SLIDER_PRESETS.THEME_COLLECTION}
           navigation={{
-            prevEl: prevRef.current,
-            nextEl: nextRef.current,
+            prevEl: '.theme-prev',
+            nextEl: '.theme-next',
           }}
           className="theme-collection-swiper"
         >

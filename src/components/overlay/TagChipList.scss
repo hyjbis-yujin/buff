@@ -7,6 +7,10 @@
   justify-content: center;
   gap: 0.8rem;
 
+  @media (max-width: 768px) {
+    gap: 0.4rem;
+  }
+
   .tag-chip {
     padding: 0.8rem 1.6rem;
     border-radius: 10.0rem;
@@ -21,10 +25,24 @@
       background-color: rgba(255, 255, 255, 0.1);
     }
 
-    // 포스터 오버레이 전용 (시인성 최우선)
+    // 포스터 오버레이 전용 (시인성 최우선 및 반응형 겹침 방지)
     &.variant-overlay {
       background-color: rgba(255, 255, 255, 0.2);
       font-weight: 500;
+      font-size: 1.4rem; // 데스크톱 원본 크기 복구
+      padding: 0.6rem 1.2rem;
+
+      // 태블릿 구간 자연스러운 축소
+      @media (max-width: 1024px) {
+        font-size: 1.3rem;
+        padding: 0.5rem 1.0rem;
+      }
+
+      // 모바일 구간 (겹침 방지 유지하되 시인성 개선)
+      @media (max-width: 768px) {
+        font-size: 1.15rem;
+        padding: 0.4rem 0.8rem;
+      }
     }
   }
 }

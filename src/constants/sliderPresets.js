@@ -37,9 +37,18 @@ export const SLIDER_PRESETS = {
   DETAIL_SIMILAR: {
     spaceBetween: 26,
     slidesPerView: 2.2,
+    freeMode: true,
     breakpoints: {
-      768: { slidesPerView: 3.5, spaceBetween: 24 },
-      1024: { slidesPerView: 5, spaceBetween: 26 }
+      768: { 
+        slidesPerView: 3.5, 
+        spaceBetween: 24,
+        freeMode: true
+      },
+      1024: { 
+        slidesPerView: 5, 
+        spaceBetween: 26,
+        freeMode: { enabled: false } // 데스크톱은 기존 hover UX 유지를 위해 snap 모드 유지
+      }
     }
   }
 };

@@ -42,4 +42,24 @@
     // 테그 등 하단 정보 영역
     width: 100%;
   }
+
+  @include respond-to(tablet) {
+    padding: 1.2rem;
+    .overlay-title {
+      font-size: 1.7rem;
+      margin-bottom: 0.8rem;
+    }
+  }
+
+  @include respond-to(mobile) {
+    padding: 1.0rem;
+    .overlay-title {
+      font-size: 1.5rem;
+      margin-bottom: 0.6rem;
+    }
+    .top-area {
+      top: 0.6rem;
+      right: 0.6rem;
+    }
+  }
 }

@@ -29,7 +29,9 @@ const RecommendModalContent = ({ collection }) => {
         ref={scrollRef} 
         className={`modal-poster-row ${hasScroll ? 'has-scrollbar' : ''}`}
       >
-        {collection.items.map((item) => (
+        {collection.items
+          .filter(item => item.image && (item.title || item.name))
+          .map((item) => (
           <PosterCard
             key={item.id}
             item={item}

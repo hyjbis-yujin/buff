@@ -20,13 +20,33 @@ const useStore = create((set, get) => ({
   fetchHomeData: async () => {
     if (get().isInitialized) return;
     
-    // 개별적으로 페칭을 시작하고 결과가 나오는 대로 즉시 업데이트
-    // 이렇게 하면 빠른 응답(예: 랭킹)은 먼저 화면에 뜹니다.
+    set({ isLoading: true });
+    const startTime = Date.now();
+    const minDelay = 600; // 스켈레톤 깜박임(Flicker) 방지를 위한 최소 600ms 보정 지연
+
+    const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
+
+    const wrapWithDelay = async (fetchFn, stateKey) => {
+      try {
+        const data = await fetchFn();
+        const elapsed = Date.now() - startTime;
+        if (elapsed < minDelay) {
+          await delay(minDelay - elapsed);
+        }
+        set({ [stateKey]: data });
+      } catch (err) {
+        console.error(err);
+      }
+    };
     
-    fetchRankings().then(data => set({ rankings: data })).catch(() => {});
-    fetchYoutubeVideos().then(data => set({ youtubeList: data })).catch(() => {});
-    fetchRecommendations().then(data => set({ recommends: data })).catch(() => {});
-    fetchThemeCollections().then(data => set({ collections: data })).catch(() => {});
+    Promise.all([
+      wrapWithDelay(fetchRankings, 'rankings'),
+      wrapWithDelay(fetchYoutubeVideos, 'youtubeList'),
+      wrapWithDelay(fetchRecommendations, 'recommends'),
+      wrapWithDelay(fetchThemeCollections, 'collections')
+    ]).finally(() => {
+      set({ isLoading: false });
+    });
     
     set({ isInitialized: true });
   },

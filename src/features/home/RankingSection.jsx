@@ -1,13 +1,11 @@
-import { useState, useRef, useEffect, useCallback } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
 
 import rankingArrow from '../../assets/icons/ranking-arrow.png';
-import { fetchRankings } from '../../services/api/rankingService';
 import useContentNavigation from '../../hooks/useContentNavigation';
-import { PROVIDERS } from '../../constants/providers';
 import { SLIDER_PRESETS } from '../../constants/sliderPresets';
 
 // Components
@@ -39,11 +37,45 @@ const RankingSection = () => {
   const [isDragging, setIsDragging] = useState(false);
   const dragState = useRef({ isMoved: false, startX: 0, scrollLeft: 0 });
 
+  // 탭 전환(activePlatform 변경) 시에만 slideTo(0, 0) 실행
   useEffect(() => {
     if (swiperRef.current) {
       swiperRef.current.slideTo(0, 0);
     }
   }, [activePlatform]);
+
+  // 리사이즈 및 navigation 수동 연결
+  useEffect(() => {
+    const swiper = swiperRef.current;
+    if (!swiper) return;
+
+    if (swiper.params && swiper.params.navigation) {
+      swiper.params.navigation.prevEl = prevRef.current;
+      swiper.params.navigation.nextEl = nextRef.current;
+      swiper.navigation.destroy();
+      swiper.navigation.init();
+      swiper.navigation.update();
+    }
+
+    let rAFId = null;
+    const handleResize = () => {
+      if (rAFId) cancelAnimationFrame(rAFId);
+      rAFId = requestAnimationFrame(() => {
+        if (swiperRef.current) {
+          swiperRef.current.update();
+          if (swiperRef.current.navigation) {
+            swiperRef.current.navigation.update();
+          }
+        }
+      });
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+      if (rAFId) cancelAnimationFrame(rAFId);
+    };
+  }, [currentData]);
 
   // Tab Drag Logic
   const onDragStart = (e) => {
@@ -93,12 +125,15 @@ const RankingSection = () => {
 
     return (
       <div className="slider-container">
-        <button className="nav-btn prev-btn ranking-prev">
+        <button ref={prevRef} className="nav-btn prev-btn ranking-prev">
           <img src={rankingArrow} alt="Previous" />
         </button>
         
         <Swiper
           modules={[Navigation]}
+          onSwiper={(swiper) => {
+            swiperRef.current = swiper;
+          }}
           navigation={{
             prevEl: '.ranking-prev',
             nextEl: '.ranking-next',
@@ -120,7 +155,7 @@ const RankingSection = () => {
           ))}
         </Swiper>
         
-        <button className="nav-btn next-btn ranking-next">
+        <button ref={nextRef} className="nav-btn next-btn ranking-next">
           <img src={rankingArrow} alt="Next" />
         </button>
       </div>

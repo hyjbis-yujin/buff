@@ -50,12 +50,11 @@
 
     .ranking-swiper {
       padding-bottom: 2.5rem; 
-      margin-bottom: -2.5rem; 
     }
 
     .nav-btn {
       position: absolute;
-      top: 50%;
+      top: calc(50% - 1.25rem); // padding-bottom 2.5rem의 절반만큼 올려서 포스터 중앙에 정확히 고정
       transform: translateY(-50%);
       width: 4.8rem;
       height: 4.8rem;
@@ -69,12 +68,14 @@
 
       &.prev-btn { 
         left: -2.5rem; 
-        @media screen and (max-width: 1330px) { left: -1.0rem; }
       }
       &.next-btn { 
         right: -2.5rem; 
-        @media screen and (max-width: 1330px) { right: -1.0rem; }
         img { transform: rotate(180deg); }
+      }
+
+      @include respond-to(mobile) {
+        display: none; // 모바일 등 좁은 해상도에서는 숨기고 터치 슬라이드로만 동작
       }
 
       &.swiper-button-disabled {
@@ -97,6 +98,7 @@
       .skeleton-cards {
         display: flex;
         gap: 2.6rem;
+        padding-bottom: 2.5rem;
         .sk-card {
           flex: 1;
           aspect-ratio: 2 / 3;

@@ -15,7 +15,9 @@ const PosterCard = React.memo(({
   showOverlay = true,
   className = '' 
 }) => {
-  if (!item) return null;
+  const [imageError, setImageError] = React.useState(false);
+
+  if (!item || imageError) return null;
 
   const optimizedImage = getOptimizedImageUrl(item.image);
 
@@ -40,6 +42,13 @@ const PosterCard = React.memo(({
       onClick={handleInternalClick}
       onMouseEnter={handleMouseEnter}
     >
+      {/* 이미지 로드 실패 감지용 숨김 태그 */}
+      <img 
+        src={optimizedImage} 
+        alt={item.title || item.name} 
+        style={{ display: 'none' }} 
+        onError={() => setImageError(true)} 
+      />
       <div 
         className="poster-image" 
         style={{ backgroundImage: `url(${optimizedImage})` }}
@@ -47,7 +56,7 @@ const PosterCard = React.memo(({
       
       {showOverlay && (
         <PosterOverlay 
-          title={item.title}
+          title={item.title || item.name}
           providers={item.providers}
           tags={item.tags}
         />

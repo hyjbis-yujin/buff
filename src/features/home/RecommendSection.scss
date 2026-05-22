@@ -33,6 +33,10 @@
     flex-direction: column;
     gap: 2.0rem;
 
+    @media (max-width: 949px) {
+      flex: 5.5; // 왼쪽 텍스트 영역 늘림
+    }
+
     .top-icons {
       display: flex;
       gap: 0.8rem;
@@ -49,7 +53,18 @@
       display: flex;
       flex-wrap: wrap;
       gap: 0.8rem;
-      @include respond-to(mobile) { justify-content: center; }
+      
+      // 태블릿 이상에서는 왼쪽 정렬 강제 (TagChipList의 기본 center 무시)
+      .tag-chip-list {
+        justify-content: flex-start;
+      }
+
+      @include respond-to(mobile) { 
+        justify-content: center; 
+        .tag-chip-list {
+          justify-content: center;
+        }
+      }
 
       .tag-pill {
         padding: 0.6rem 1.4rem;
@@ -111,6 +126,10 @@
     flex: 6.5; 
     min-width: 0;
     width: 100%;
+
+    @media (max-width: 949px) {
+      flex: 4.5; 
+    }
     
     @include respond-to(mobile) { width: 100%; flex: none; }
 
@@ -121,7 +140,7 @@
       padding: 1.0rem 0;
 
       @media (max-width: 1199px) { max-width: 49.0rem; }
-      @media (max-width: 949px) { max-width: 24.0rem; }
+      @media (max-width: 949px) { max-width: 24.0rem; } 
       @include respond-to(mobile) { max-width: 100%; padding: 0; }
     }
 
@@ -179,7 +198,7 @@
   width: 100%;
   display: flex;
   flex-direction: column;
-  align-items: center; // 중앙 정렬로 변경
+  align-items: center; 
   max-height: 100%;
   overflow: hidden;
 
@@ -189,38 +208,40 @@
     font-weight: 700;
     color: #FFFFFF;
     margin-bottom: 4.0rem;
-    text-align: center; // 중앙 정렬로 변경
+    text-align: center; 
     @include respond-to(tablet) { font-size: 2.4rem; margin-bottom: 2.4rem; } 
-    @include respond-to(mobile) { font-size: 2.0rem; margin-bottom: 2.4rem; } // 1.6 -> 2.4로 확대
+    @include respond-to(mobile) { font-size: 2.0rem; margin-bottom: 2.4rem; } 
   }
 
   .modal-poster-row {
-    display: flex;
-    flex-wrap: wrap; 
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(18.0rem, 1fr));
+    justify-content: center; 
     gap: 3.2rem;
-    justify-content: flex-start; 
     width: 100%;
     flex: 1;
     overflow-y: auto;
-    padding: 2.0rem 1.6rem; // 좌우 패딩 축소
+    padding: 2.0rem 1.6rem; 
 
     &::-webkit-scrollbar { width: 0.6rem; }
     &::-webkit-scrollbar-track { background: rgba(255, 255, 255, 0.05); }
     &::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.2); border-radius: 1.0rem; }
     
-    @include respond-to(mobile) { 
-      gap: 1.6rem; 
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      padding: 1.0rem 0.8rem; // 모바일 좌우 패딩 축소
+    @include respond-to(tablet) {
+      grid-template-columns: repeat(auto-fit, minmax(15.0rem, 1fr));
     }
 
-    // 모달용 포스터 카드 커스텀
+    @include respond-to(mobile) { 
+      gap: 1.6rem; 
+      grid-template-columns: repeat(2, 1fr);
+      padding: 1.0rem 0.8rem; 
+    }
+
+    // 포스터 카드가 그리드 셀에 맞춰지도록 flex/min-width 해제
     .poster-card {
-      flex: 0 0 calc(20% - 2.6rem);
-      min-width: 18.0rem;
-      @include respond-to(tablet) { min-width: 15.0rem; }
-      @include respond-to(mobile) { flex: 1; min-width: 0; }
+      width: 100%;
+      flex: none;
+      min-width: 0;
     }
   }
 }

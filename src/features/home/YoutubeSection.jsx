@@ -1,11 +1,10 @@
-import { useState, useRef, useEffect, useCallback } from 'react';
+import { useRef, useEffect } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
 
 import navArrow from '../../assets/icons/bottom-arrow.png';
-import { fetchYoutubeVideos } from '../../services/api/youtubeService';
 import { SLIDER_PRESETS } from '../../constants/sliderPresets';
 
 // Components
@@ -18,9 +17,43 @@ import useYoutubeCuration from '../../hooks/useYoutubeCuration';
 
 const YoutubeSection = () => {
   const { videos, isLoading, error, retryFetch } = useYoutubeCuration();
+  const swiperRef = useRef(null);
 
   const prevRef = useRef(null);
   const nextRef = useRef(null);
+
+  useEffect(() => {
+    const swiper = swiperRef.current;
+    if (!swiper) return;
+
+    // Swiper 마운트 후 navigation 엘리먼트 강제 바인딩 및 갱신
+    if (swiper.params && swiper.params.navigation) {
+      swiper.params.navigation.prevEl = prevRef.current;
+      swiper.params.navigation.nextEl = nextRef.current;
+      swiper.navigation.destroy();
+      swiper.navigation.init();
+      swiper.navigation.update();
+    }
+
+    let rAFId = null;
+    const handleResize = () => {
+      if (rAFId) cancelAnimationFrame(rAFId);
+      rAFId = requestAnimationFrame(() => {
+        if (swiperRef.current) {
+          swiperRef.current.update();
+          if (swiperRef.current.navigation) {
+            swiperRef.current.navigation.update();
+          }
+        }
+      });
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+      if (rAFId) cancelAnimationFrame(rAFId);
+    };
+  }, [videos]);
 
   const renderContent = () => {
     if (error) {
@@ -60,14 +93,13 @@ const YoutubeSection = () => {
       <div className="slider-container">
         <Swiper
           modules={[Navigation]}
-          onBeforeInit={(swiper) => {
-            swiper.params.navigation.prevEl = prevRef.current;
-            swiper.params.navigation.nextEl = nextRef.current;
+          onSwiper={(swiper) => {
+            swiperRef.current = swiper;
           }}
           {...SLIDER_PRESETS.YOUTUBE}
           navigation={{
-            prevEl: prevRef.current,
-            nextEl: nextRef.current,
+            prevEl: '.youtube-prev',
+            nextEl: '.youtube-next',
           }}
           className="youtube-swiper"
         >

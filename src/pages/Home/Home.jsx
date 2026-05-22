@@ -1,4 +1,4 @@
-import React, { Suspense, lazy } from 'react';
+import React from 'react';
 import HeroBanner from '../../features/home/HeroBanner';
 import RankingSection from '../../features/home/RankingSection';
 import RecommendSection from '../../features/home/RecommendSection';
