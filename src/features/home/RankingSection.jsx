@@ -108,7 +108,8 @@ const RankingSection = () => {
         <div className="slider-container loading">
           <div className="skeleton-cards">
             {[1, 2, 3, 4, 5].map(i => (
-              <SkeletonBox key={i} className="sk-card" borderRadius="20px" />
+              // border-radius는 SCSS(.sk-card)에서 브레이크포인트별로 제어
+              <SkeletonBox key={i} className="sk-card" />
             ))}
           </div>
         </div>

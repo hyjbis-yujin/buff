@@ -99,12 +99,26 @@
         display: flex;
         gap: 2.6rem;
         padding-bottom: 2.5rem;
+        overflow: hidden; // 브레이크포인트별 노출 개수를 넘는 카드는 잘라내어 Swiper와 동일하게 보이도록
+
+        // 노출 개수는 SLIDER_PRESETS.RANKING의 breakpoints와 1:1로 일치시킴
+        // gap(2.6rem = 26px)은 Swiper의 spaceBetween(26)과 동일
         .sk-card {
-          flex: 1;
+          flex: 0 0 calc((100% - (2.6rem * 4)) / 5); // >= 1024px : 5장
           aspect-ratio: 2 / 3;
           background: rgba(255, 255, 255, 0.05);
           border-radius: 2.0rem;
           @include skeleton-pulse;
+
+          @include respond-to(tablet) { // <= 1023px : 3.5장
+            flex: 0 0 calc((100% - (2.6rem * 2.5)) / 3.5);
+            border-radius: 1.5rem; // PosterCard의 tablet 라운드값과 동일
+          }
+
+          @include respond-to(mobile) { // <= 767px : 2.2장
+            flex: 0 0 calc((100% - (2.6rem * 1.2)) / 2.2);
+            border-radius: 1.5rem;
+          }
         }
       }
     }

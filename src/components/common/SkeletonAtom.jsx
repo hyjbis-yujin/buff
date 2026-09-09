@@ -2,7 +2,9 @@
 import React from 'react';
 import './SkeletonAtom.scss';
 
-export const SkeletonBox = ({ width, height, borderRadius = '4px', className = '' }) => (
+// borderRadius를 넘기지 않으면 인라인 style이 붙지 않아 SCSS 쪽에서 브레이크포인트별로
+// 라운드값을 제어할 수 있다. 기본값 4px은 SkeletonAtom.scss의 .skeleton-box에 정의.
+export const SkeletonBox = ({ width, height, borderRadius, className = '' }) => (
   <div 
     className={`skeleton-box pulse ${className}`}
     style={{ width, height, borderRadius }}

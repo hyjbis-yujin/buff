@@ -4,7 +4,8 @@
 
 .skeleton-box {
   background-color: $skeleton-bg;
-  
+  border-radius: 4px; // 기본값. borderRadius prop을 넘기면 인라인 style이 우선한다.
+
   &.pulse {
     @include skeleton-pulse;
   }
